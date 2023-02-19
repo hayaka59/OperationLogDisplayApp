@@ -32,6 +32,7 @@
             this.BtnDisplay1 = new System.Windows.Forms.Button();
             this.BtnClear = new System.Windows.Forms.Button();
             this.LblResult = new System.Windows.Forms.Label();
+            this.LstViewResult = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // LstBoxResult
@@ -39,10 +40,10 @@
             this.LstBoxResult.Font = new System.Drawing.Font("ＭＳ ゴシック", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LstBoxResult.FormattingEnabled = true;
             this.LstBoxResult.ItemHeight = 16;
-            this.LstBoxResult.Location = new System.Drawing.Point(12, 12);
+            this.LstBoxResult.Location = new System.Drawing.Point(12, 284);
             this.LstBoxResult.Name = "LstBoxResult";
             this.LstBoxResult.ScrollAlwaysVisible = true;
-            this.LstBoxResult.Size = new System.Drawing.Size(1313, 340);
+            this.LstBoxResult.Size = new System.Drawing.Size(1313, 68);
             this.LstBoxResult.TabIndex = 0;
             // 
             // BtnDisplay1
@@ -76,11 +77,20 @@
             this.LblResult.TabIndex = 3;
             this.LblResult.Text = "LblResult";
             // 
+            // LstViewResult
+            // 
+            this.LstViewResult.Location = new System.Drawing.Point(9, 12);
+            this.LstViewResult.Name = "LstViewResult";
+            this.LstViewResult.Size = new System.Drawing.Size(1316, 260);
+            this.LstViewResult.TabIndex = 4;
+            this.LstViewResult.UseCompatibleStateImageBehavior = false;
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1337, 431);
+            this.Controls.Add(this.LstViewResult);
             this.Controls.Add(this.LblResult);
             this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.BtnDisplay1);
@@ -102,5 +112,6 @@
         private Button BtnDisplay1;
         private Button BtnClear;
         private Label LblResult;
+        private ListView LstViewResult;
     }
 }
