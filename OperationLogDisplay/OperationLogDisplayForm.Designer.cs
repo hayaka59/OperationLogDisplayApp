@@ -43,7 +43,7 @@
             this.LstBoxResult.Font = new System.Drawing.Font("ＭＳ ゴシック", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LstBoxResult.FormattingEnabled = true;
             this.LstBoxResult.ItemHeight = 16;
-            this.LstBoxResult.Location = new System.Drawing.Point(241, 622);
+            this.LstBoxResult.Location = new System.Drawing.Point(39, 743);
             this.LstBoxResult.Name = "LstBoxResult";
             this.LstBoxResult.ScrollAlwaysVisible = true;
             this.LstBoxResult.Size = new System.Drawing.Size(1083, 20);
@@ -52,9 +52,9 @@
             // 
             // BtnDisplay1
             // 
-            this.BtnDisplay1.Location = new System.Drawing.Point(39, 619);
+            this.BtnDisplay1.Location = new System.Drawing.Point(39, 622);
             this.BtnDisplay1.Name = "BtnDisplay1";
-            this.BtnDisplay1.Size = new System.Drawing.Size(75, 23);
+            this.BtnDisplay1.Size = new System.Drawing.Size(94, 46);
             this.BtnDisplay1.TabIndex = 1;
             this.BtnDisplay1.Text = "表示１";
             this.BtnDisplay1.UseVisualStyleBackColor = true;
@@ -62,9 +62,9 @@
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(133, 619);
+            this.BtnClear.Location = new System.Drawing.Point(39, 674);
             this.BtnClear.Name = "BtnClear";
-            this.BtnClear.Size = new System.Drawing.Size(75, 23);
+            this.BtnClear.Size = new System.Drawing.Size(94, 46);
             this.BtnClear.TabIndex = 2;
             this.BtnClear.Text = "クリア";
             this.BtnClear.UseVisualStyleBackColor = true;
