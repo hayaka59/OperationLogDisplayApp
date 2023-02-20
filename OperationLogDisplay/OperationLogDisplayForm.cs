@@ -34,48 +34,48 @@ namespace OperationLogDisplay
             }
         }
 
-        private void DisplayHeader(ListView LstViewResult)
+        private static void DisplayHeader(ListView LstViewResult)
         {
             try
             {
                 LstViewResult.View = View.Details;
 
                 #region 列の新規作成
-                ColumnHeader col01 = new ColumnHeader();
-                ColumnHeader col02 = new ColumnHeader();
-                ColumnHeader col03 = new ColumnHeader();
-                ColumnHeader col04 = new ColumnHeader();
-                ColumnHeader col05 = new ColumnHeader();
-                ColumnHeader col06 = new ColumnHeader();
-                ColumnHeader col07 = new ColumnHeader();
-                ColumnHeader col08 = new ColumnHeader();
-                ColumnHeader col09 = new ColumnHeader();
-                ColumnHeader col10 = new ColumnHeader();
-                ColumnHeader col11 = new ColumnHeader();
-                ColumnHeader col12 = new ColumnHeader();
-                ColumnHeader col13 = new ColumnHeader();
-                ColumnHeader col14 = new ColumnHeader();
-                ColumnHeader col15 = new ColumnHeader();
-                ColumnHeader col16 = new ColumnHeader();
-                ColumnHeader col17 = new ColumnHeader();
-                ColumnHeader col18 = new ColumnHeader();
-                ColumnHeader col19 = new ColumnHeader();
-                ColumnHeader col20 = new ColumnHeader();
-                ColumnHeader col21 = new ColumnHeader();
-                ColumnHeader col22 = new ColumnHeader();
-                ColumnHeader col23 = new ColumnHeader();
-                ColumnHeader col24 = new ColumnHeader();
-                ColumnHeader col25 = new ColumnHeader();
-                ColumnHeader col26 = new ColumnHeader();
-                ColumnHeader col27 = new ColumnHeader();
-                ColumnHeader col28 = new ColumnHeader();
-                ColumnHeader col29 = new ColumnHeader();
-                ColumnHeader col30 = new ColumnHeader();
-                ColumnHeader col31 = new ColumnHeader();
-                ColumnHeader col32 = new ColumnHeader();
-                ColumnHeader col33 = new ColumnHeader();
-                ColumnHeader col34 = new ColumnHeader();
-                ColumnHeader col35 = new ColumnHeader();
+                ColumnHeader col01 = new();
+                ColumnHeader col03 = new();
+                ColumnHeader col04 = new();
+                ColumnHeader col05 = new();
+                ColumnHeader col06 = new();
+                ColumnHeader col07 = new();
+                ColumnHeader col08 = new();
+                ColumnHeader col09 = new();
+                ColumnHeader col10 = new();
+                ColumnHeader col11 = new();
+                ColumnHeader col12 = new();
+                ColumnHeader col13 = new();
+                ColumnHeader col02 = new();
+                ColumnHeader col14 = new();
+                ColumnHeader col15 = new();
+                ColumnHeader col16 = new();
+                ColumnHeader col17 = new();
+                ColumnHeader col18 = new();
+                ColumnHeader col19 = new();
+                ColumnHeader col20 = new();
+                ColumnHeader col21 = new();
+                ColumnHeader col22 = new();
+                ColumnHeader col23 = new();
+                ColumnHeader col24 = new();
+                ColumnHeader col25 = new();
+                ColumnHeader col26 = new();
+                ColumnHeader col27 = new();
+                ColumnHeader col28 = new();
+                ColumnHeader col29 = new();
+                ColumnHeader col30 = new();
+                ColumnHeader col31 = new();
+                ColumnHeader col32 = new();
+                ColumnHeader col33 = new();
+                ColumnHeader col34 = new();
+                ColumnHeader col35 = new();
                 #endregion
 
                 #region 列名称設定
@@ -208,7 +208,7 @@ namespace OperationLogDisplay
         }
 
 
-        public void ExecuteNonQuery(string query)
+        public static void ExecuteNonQuery(string query)
         {
             // MySQLへの接続情報を設定
             //var server = "127.0.0.1";  // ホスト名
@@ -221,18 +221,16 @@ namespace OperationLogDisplay
 
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                using (var command = connection.CreateCommand())
-                {
-                    // MySQLへ接続
-                    connection.Open();
+                using MySqlConnection connection = new(connectionString);
+                using var command = connection.CreateCommand();
+                // MySQLへ接続
+                connection.Open();
 
-                    // クエリーの実行処理
-                    command.CommandText = query;
-                    //command.ExecuteNonQuery();
-                    var value = command.ExecuteNonQuery();
-                    MessageBox.Show($"更新されたレコード数は {value} です。");
-                }
+                // クエリーの実行処理
+                command.CommandText = query;
+                //command.ExecuteNonQuery();
+                var value = command.ExecuteNonQuery();
+                MessageBox.Show($"更新されたレコード数は {value} です。");
             }
             catch (Exception ex)
             {
@@ -245,10 +243,10 @@ namespace OperationLogDisplay
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        private List<OrderData> ExecuteReader1(string query)
+        private static List<OrderData> ExecuteReader1(string query)
         {
             // 検索条件に一致したレコードを格納するコレクション
-            List<OrderData> Datas = new List<OrderData>();
+            List<OrderData> Datas = new();
 
             // MySQLへの接続情報を設定
             var server = "127.0.0.1";   // ホスト名
@@ -262,58 +260,54 @@ namespace OperationLogDisplay
 
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                using (var commnad = connection.CreateCommand())
-                {
-                    // MySQLへ接続
-                    connection.Open();
+                using MySqlConnection connection = new(connectionString);
+                using var commnad = connection.CreateCommand();
+                // MySQLへ接続
+                connection.Open();
 
-                    // クエリーの実行処理
-                    commnad.CommandText = query;
-                    using (var reader = commnad.ExecuteReader())
+                // クエリーの実行処理
+                commnad.CommandText = query;
+                using var reader = commnad.ExecuteReader();
+                while (reader.Read())
+                {
+                    Datas.Add(new OrderData
                     {
-                        while (reader.Read())
-                        {
-                            Datas.Add(new OrderData
-                            {
-                                Id = reader.GetInt32("id"),
-                                Import_time = reader.GetInt64("import_time"),
-                                Import_index = reader.GetInt32("import_index"),
-                                Status = reader.GetInt32("status"),
-                                Is_retried = reader.GetInt32("is_retried"),
-                                Record_id = reader.GetString("record_id"),
-                                Data_category = reader.GetInt32("data_category"),
-                                Logistics_center_code = reader.GetInt32("logistics_center_code"),
-                                Shipment_no = reader.GetInt32("shipment_no"),
-                                Process_id = reader.GetString("process_id"),
-                                Planed_shipping_date = reader.GetInt64("planed_shipping_date"),
-                                Picking_no = reader.GetInt32("picking_no"),
-                                List_pattern_name = reader.GetString("list_pattern_name"),
-                                Process_category = reader.GetInt32("process_category"),
-                                Customer_center_code = reader.GetString("customer_center_code"),
-                                Customer_company_code = reader.GetInt32("customer_company_code"),
-                                Customer_name = reader.GetString("customer_name"),
-                                Customer_center_name = reader.GetString("customer_center_name"),
-                                Product_code = reader.GetString("product_code"),
-                                Product_sub_code = reader.GetString("product_sub_code"),
-                                Product_name = reader.GetString("product_name"),
-                                Count_per_case = reader.GetInt32("count_per_case"),
-                                Piece_count = reader.GetInt32("piece_count"),
-                                Count_per_pack = reader.GetInt32("count_per_pack"),
-                                Limit_type = reader.GetInt32("limit_type"),
-                                Limit_days = reader.GetInt32("limit_days"),
-                                Case_paste_category = reader.GetInt32("case_paste_category"),
-                                Selling_price = reader.GetInt32("selling_price"),
-                                Storage_method = reader.GetString("storage_method"),
-                                Planed_count = reader.GetInt32("planed_count"),
-                                Skipped_count = reader.GetInt32("skipped_count"),
-                                Printed_count = reader.GetInt32("printed_count"),
-                                Pasted_count = reader.GetInt32("pasted_count"),
-                                Passed_count = reader.GetInt32("passed_count"),
-                                Rejected_count = reader.GetInt32("rejected_count"),
-                            });
-                        }
-                    }
+                        Id = reader.GetInt32("id"),
+                        Import_time = reader.GetInt64("import_time"),
+                        Import_index = reader.GetInt32("import_index"),
+                        Status = reader.GetInt32("status"),
+                        Is_retried = reader.GetInt32("is_retried"),
+                        Record_id = reader.GetString("record_id"),
+                        Data_category = reader.GetInt32("data_category"),
+                        Logistics_center_code = reader.GetInt32("logistics_center_code"),
+                        Shipment_no = reader.GetInt32("shipment_no"),
+                        Process_id = reader.GetString("process_id"),
+                        Planed_shipping_date = reader.GetInt64("planed_shipping_date"),
+                        Picking_no = reader.GetInt32("picking_no"),
+                        List_pattern_name = reader.GetString("list_pattern_name"),
+                        Process_category = reader.GetInt32("process_category"),
+                        Customer_center_code = reader.GetString("customer_center_code"),
+                        Customer_company_code = reader.GetInt32("customer_company_code"),
+                        Customer_name = reader.GetString("customer_name"),
+                        Customer_center_name = reader.GetString("customer_center_name"),
+                        Product_code = reader.GetString("product_code"),
+                        Product_sub_code = reader.GetString("product_sub_code"),
+                        Product_name = reader.GetString("product_name"),
+                        Count_per_case = reader.GetInt32("count_per_case"),
+                        Piece_count = reader.GetInt32("piece_count"),
+                        Count_per_pack = reader.GetInt32("count_per_pack"),
+                        Limit_type = reader.GetInt32("limit_type"),
+                        Limit_days = reader.GetInt32("limit_days"),
+                        Case_paste_category = reader.GetInt32("case_paste_category"),
+                        Selling_price = reader.GetInt32("selling_price"),
+                        Storage_method = reader.GetString("storage_method"),
+                        Planed_count = reader.GetInt32("planed_count"),
+                        Skipped_count = reader.GetInt32("skipped_count"),
+                        Printed_count = reader.GetInt32("printed_count"),
+                        Pasted_count = reader.GetInt32("pasted_count"),
+                        Passed_count = reader.GetInt32("passed_count"),
+                        Rejected_count = reader.GetInt32("rejected_count"),
+                    });
                 }
             }
             catch (Exception ex)
@@ -323,10 +317,10 @@ namespace OperationLogDisplay
             return Datas;
         }
 
-        private List<OrderData> ExecuteReader2(string query)
+        private static List<OrderData> ExecuteReader2(string query)
         {
             // 検索条件に一致したレコードを格納するコレクション
-            List<OrderData> Datas = new List<OrderData>();
+            List<OrderData> Datas = new();
 
             // MySQLへの接続情報を設定
             var server = "127.0.0.1";   // ホスト名
@@ -340,58 +334,54 @@ namespace OperationLogDisplay
 
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                using (var commnad = connection.CreateCommand())
-                {
-                    // MySQLへ接続
-                    connection.Open();
+                using MySqlConnection connection = new(connectionString);
+                using var commnad = connection.CreateCommand();
+                // MySQLへ接続
+                connection.Open();
 
-                    // クエリーの実行処理
-                    commnad.CommandText = query;
-                    using (var reader = commnad.ExecuteReader())
+                // クエリーの実行処理
+                commnad.CommandText = query;
+                using var reader = commnad.ExecuteReader();
+                while (reader.Read())
+                {
+                    Datas.Add(new OrderData
                     {
-                        while (reader.Read())
-                        {
-                            Datas.Add(new OrderData
-                            {
-                                Id = reader.GetInt32("id"),
-                                Import_time = reader.GetInt64("import_time"),
-                                Import_index = reader.GetInt32("import_index"),
-                                Status = reader.GetInt32("status"),
-                                Is_retried = reader.GetInt32("is_retried"),
-                                Record_id = reader.GetString("record_id"),
-                                Data_category = reader.GetInt32("data_category"),
-                                Logistics_center_code = reader.GetInt32("logistics_center_code"),
-                                Shipment_no = reader.GetInt32("shipment_no"),
-                                Process_id = reader.GetString("process_id"),
-                                Planed_shipping_date = reader.GetInt64("planed_shipping_date"),
-                                Picking_no = reader.GetInt32("picking_no"),
-                                List_pattern_name = reader.GetString("list_pattern_name"),
-                                Process_category = reader.GetInt32("process_category"),
-                                Customer_center_code = reader.GetString("customer_center_code"),
-                                Customer_company_code = reader.GetInt32("customer_company_code"),
-                                Customer_name = reader.GetString("customer_name"),
-                                Customer_center_name = reader.GetString("customer_center_name"),
-                                Product_code = reader.GetString("product_code"),
-                                Product_sub_code = reader.GetString("product_sub_code"),
-                                Product_name = reader.GetString("product_name"),
-                                Count_per_case = reader.GetInt32("count_per_case"),
-                                Piece_count = reader.GetInt32("piece_count"),
-                                Count_per_pack = reader.GetInt32("count_per_pack"),
-                                Limit_type = reader.GetInt32("limit_type"),
-                                Limit_days = reader.GetInt32("limit_days"),
-                                Case_paste_category = reader.GetInt32("case_paste_category"),
-                                Selling_price = reader.GetInt32("selling_price"),
-                                Storage_method = reader.GetString("storage_method"),
-                                Planed_count = reader.GetInt32("planed_count"),
-                                Skipped_count = reader.GetInt32("skipped_count"),
-                                Printed_count = reader.GetInt32("printed_count"),
-                                Pasted_count = reader.GetInt32("pasted_count"),
-                                Passed_count = reader.GetInt32("passed_count"),
-                                Rejected_count = reader.GetInt32("rejected_count"),
-                            });
-                        }
-                    }
+                        Id = reader.GetInt32("id"),
+                        Import_time = reader.GetInt64("import_time"),
+                        Import_index = reader.GetInt32("import_index"),
+                        Status = reader.GetInt32("status"),
+                        Is_retried = reader.GetInt32("is_retried"),
+                        Record_id = reader.GetString("record_id"),
+                        Data_category = reader.GetInt32("data_category"),
+                        Logistics_center_code = reader.GetInt32("logistics_center_code"),
+                        Shipment_no = reader.GetInt32("shipment_no"),
+                        Process_id = reader.GetString("process_id"),
+                        Planed_shipping_date = reader.GetInt64("planed_shipping_date"),
+                        Picking_no = reader.GetInt32("picking_no"),
+                        List_pattern_name = reader.GetString("list_pattern_name"),
+                        Process_category = reader.GetInt32("process_category"),
+                        Customer_center_code = reader.GetString("customer_center_code"),
+                        Customer_company_code = reader.GetInt32("customer_company_code"),
+                        Customer_name = reader.GetString("customer_name"),
+                        Customer_center_name = reader.GetString("customer_center_name"),
+                        Product_code = reader.GetString("product_code"),
+                        Product_sub_code = reader.GetString("product_sub_code"),
+                        Product_name = reader.GetString("product_name"),
+                        Count_per_case = reader.GetInt32("count_per_case"),
+                        Piece_count = reader.GetInt32("piece_count"),
+                        Count_per_pack = reader.GetInt32("count_per_pack"),
+                        Limit_type = reader.GetInt32("limit_type"),
+                        Limit_days = reader.GetInt32("limit_days"),
+                        Case_paste_category = reader.GetInt32("case_paste_category"),
+                        Selling_price = reader.GetInt32("selling_price"),
+                        Storage_method = reader.GetString("storage_method"),
+                        Planed_count = reader.GetInt32("planed_count"),
+                        Skipped_count = reader.GetInt32("skipped_count"),
+                        Printed_count = reader.GetInt32("printed_count"),
+                        Pasted_count = reader.GetInt32("pasted_count"),
+                        Passed_count = reader.GetInt32("passed_count"),
+                        Rejected_count = reader.GetInt32("rejected_count"),
+                    });
                 }
             }
             catch (Exception ex)
@@ -497,7 +487,7 @@ namespace OperationLogDisplay
 
                     itm1 = new ListViewItem(col);
                     LstViewResult1.Items.Add(itm1);
-                    LstViewResult1.Items[LstViewResult1.Items.Count - 1].UseItemStyleForSubItems = false;
+                    LstViewResult1.Items[^1].UseItemStyleForSubItems = false;
 
                 }
                 LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
@@ -520,7 +510,7 @@ namespace OperationLogDisplay
 
             try
             {
-                var result2 = ExecuteReader1("SELECT * FROM `order`;");
+                var result2 = ExecuteReader2("SELECT * FROM `order`;");
                 foreach (var ret in result2)
                 {
                     // 検索結果を表示
@@ -562,7 +552,7 @@ namespace OperationLogDisplay
 
                     itm2 = new ListViewItem(col);
                     LstViewResult2.Items.Add(itm2);
-                    LstViewResult2.Items[LstViewResult2.Items.Count - 1].UseItemStyleForSubItems = false;
+                    LstViewResult2.Items[^1].UseItemStyleForSubItems = false;
 
                 }
                 LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
