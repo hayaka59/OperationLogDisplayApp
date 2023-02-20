@@ -23,8 +23,8 @@ namespace OperationLogDisplay
         {
             try
             {
-                LblResult.Text = "";
-
+                LblResult1.Text = "";
+                LblResult2.Text = "";
                 DisplayHeader(LstViewResult1);
                 DisplayHeader(LstViewResult2);
             }
@@ -80,26 +80,26 @@ namespace OperationLogDisplay
 
                 #region 列名称設定
                 col01.Text = "id";
-                col02.Text = "import_time";
-                col03.Text = "import_index";
-                col04.Text = "status";
+                col02.Text = "取込日時";                // import_time
+                col03.Text = "import_index"; 
+                col04.Text = "状況";                  // status
                 col05.Text = "is_retried";
                 col06.Text = "record_id";
                 col07.Text = "data_category";
                 col08.Text = "logistics_center_code";
                 col09.Text = "shipment_no";
                 col10.Text = "process_id";
-                col11.Text = "planed_shipping_date";
+                col11.Text = "出荷予定日時";          // planed_shipping_date
                 col12.Text = "picking_no";
                 col13.Text = "list_pattern_name";
-                col14.Text = "process_category";
+                col14.Text = "作業区分";        // process_category
                 col15.Text = "customer_center_code";
                 col16.Text = "customer_company_code";
                 col17.Text = "customer_name";
                 col18.Text = "customer_center_name";
-                col19.Text = "product_code";
+                col19.Text = "商品コード";            // product_code
                 col20.Text = "product_sub_code";
-                col21.Text = "product_name";
+                col21.Text = "商品名";                 // product_name
                 col22.Text = "count_per_case";
                 col23.Text = "piece_count";
                 col24.Text = "count_per_pack";
@@ -108,10 +108,10 @@ namespace OperationLogDisplay
                 col27.Text = "case_paste_category";
                 col28.Text = "selling_price";
                 col29.Text = "storage_method";
-                col30.Text = "planed_count";
+                col30.Text = "予定数";        // planed_count
                 col31.Text = "skipped_count";
                 col32.Text = "printed_count";
-                col33.Text = "pasted_count";
+                col33.Text = "貼付枚数";        // pasted_count
                 col34.Text = "passed_count";
                 col35.Text = "rejected_count";
                 #endregion
@@ -137,7 +137,7 @@ namespace OperationLogDisplay
                 col18.TextAlign = HorizontalAlignment.Center;
                 col19.TextAlign = HorizontalAlignment.Center;
                 col20.TextAlign = HorizontalAlignment.Center;
-                col21.TextAlign = HorizontalAlignment.Center;
+                col21.TextAlign = HorizontalAlignment.Left;     // 商品名
                 col22.TextAlign = HorizontalAlignment.Center;
                 col23.TextAlign = HorizontalAlignment.Center;
                 col24.TextAlign = HorizontalAlignment.Center;
@@ -156,7 +156,7 @@ namespace OperationLogDisplay
 
                 #region 列幅指定
                 col01.Width = 00;       // id
-                col02.Width = 00;       // import_time
+                col02.Width = 205;      // import_time
                 col03.Width = 00;       // import_index
                 col04.Width = 00;       // status
                 col05.Width = 00;       // is_retried
@@ -165,17 +165,17 @@ namespace OperationLogDisplay
                 col08.Width = 00;       // logistics_center_code
                 col09.Width = 00;       // shipment_no
                 col10.Width = 00;       // process_id
-                col11.Width = 220;      // planed_shipping_date
+                col11.Width = 205;      // planed_shipping_date
                 col12.Width = 00;       // picking_no
                 col13.Width = 00;       // list_pattern_name
-                col14.Width = 70;       // process_category
+                col14.Width = 00;       // process_category
                 col15.Width = 00;       // customer_center_code
                 col16.Width = 00;       // customer_company_code
                 col17.Width = 00;       // customer_name
                 col18.Width = 00;       // customer_center_name
                 col19.Width = 120;      // product_code
                 col20.Width = 00;       // product_sub_code
-                col21.Width = 230;      // product_name
+                col21.Width = 220;      // product_name
                 col22.Width = 00;       // count_per_case
                 col23.Width = 00;       // piece_count
                 col24.Width = 00;       // count_per_pack
@@ -184,10 +184,10 @@ namespace OperationLogDisplay
                 col27.Width = 00;       // case_paste_category
                 col28.Width = 00;       // selling_price
                 col29.Width = 00;       // storage_method
-                col30.Width = 60;       // planed_count
+                col30.Width = 70;       // planed_count
                 col31.Width = 00;       // skipped_count
                 col32.Width = 00;       // printed_count
-                col33.Width = 60;       // pasted_count
+                col33.Width = 70;       // pasted_count
                 col34.Width = 00;       // passed_count
                 col35.Width = 00;       // rejected_count
                 #endregion
@@ -371,36 +371,29 @@ namespace OperationLogDisplay
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnDisplay1_Click(object sender, EventArgs e)
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            LstViewResult1.Items.Clear();
+        }
+
+        /// <summary>
+        /// 「更新１」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRefresh1_Click(object sender, EventArgs e)
         {
             string[] col = new string[35];
             ListViewItem itm1;
             ListViewItem itm2;
             try
             {
-                LstBoxResult.Items.Clear();
                 var result = ExecuteReader("SELECT * FROM `order`;");
                 foreach (var ret in result)
                 {
                     // 検索結果を表示
-                    string sData = "";
-                    sData += "【" + ret.Id.ToString("000") + "】";
-                    sData += DateTimeOffset.FromUnixTimeSeconds(ret.Import_time/1000).ToLocalTime() + ",";
-                    sData += DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date/1000).ToLocalTime() + ",";
-                    sData += ret.Product_code + ",";
-                    sData += ret.Product_name + ",";
-                    sData += ret.Planed_count + ",";
-                    sData += ret.Skipped_count + ",";
-                    sData += ret.Printed_count + ",";
-                    sData += ret.Pasted_count + ",";
-                    sData += ret.Passed_count + ",";
-                    sData += ret.Rejected_count + ",";
-                    LstBoxResult.Items.Add(sData);
-
-
                     col[0] = ret.Id.ToString();
-                    //col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
-                    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToString();
+                    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
                     col[2] = ret.Import_index.ToString();
                     col[3] = ret.Status.ToString();
                     col[4] = ret.Is_retried.ToString();
@@ -409,8 +402,7 @@ namespace OperationLogDisplay
                     col[7] = ret.Logistics_center_code.ToString();
                     col[8] = ret.Shipment_no.ToString();
                     col[9] = ret.Process_id.ToString();
-                    //col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
-                    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToString();
+                    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
                     col[11] = ret.Picking_no.ToString();
                     col[12] = ret.List_pattern_name.ToString();
                     col[13] = ret.Process_category.ToString();
@@ -436,7 +428,6 @@ namespace OperationLogDisplay
                     col[33] = ret.Passed_count.ToString();
                     col[34] = ret.Rejected_count.ToString();
 
-
                     itm1 = new ListViewItem(col);
                     LstViewResult1.Items.Add(itm1);
                     LstViewResult1.Items[LstViewResult1.Items.Count - 1].UseItemStyleForSubItems = false;
@@ -444,25 +435,14 @@ namespace OperationLogDisplay
                     itm2 = new ListViewItem(col);
                     LstViewResult2.Items.Add(itm2);
                     LstViewResult2.Items[LstViewResult2.Items.Count - 1].UseItemStyleForSubItems = false;
-
-
                 }
-                LblResult.Text = LstBoxResult.Items.Count.ToString("###,##0")+"件";
+                LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
+                LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【BtnDisplay1_Click】", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【BtnDisplay1_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnClear_Click(object sender, EventArgs e)
-        {
-            LstBoxResult.Items.Clear();
         }
     }
 }

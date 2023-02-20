@@ -28,58 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.LstBoxResult = new System.Windows.Forms.ListBox();
-            this.BtnDisplay1 = new System.Windows.Forms.Button();
+            this.BtnRefresh1 = new System.Windows.Forms.Button();
             this.BtnClear = new System.Windows.Forms.Button();
-            this.LblResult = new System.Windows.Forms.Label();
+            this.LblResult1 = new System.Windows.Forms.Label();
             this.LstViewResult1 = new System.Windows.Forms.ListView();
             this.LstViewResult2 = new System.Windows.Forms.ListView();
             this.LblTitle1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.LblResult2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // LstBoxResult
+            // BtnRefresh1
             // 
-            this.LstBoxResult.Font = new System.Drawing.Font("ＭＳ ゴシック", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LstBoxResult.FormattingEnabled = true;
-            this.LstBoxResult.ItemHeight = 16;
-            this.LstBoxResult.Location = new System.Drawing.Point(39, 743);
-            this.LstBoxResult.Name = "LstBoxResult";
-            this.LstBoxResult.ScrollAlwaysVisible = true;
-            this.LstBoxResult.Size = new System.Drawing.Size(1083, 20);
-            this.LstBoxResult.TabIndex = 0;
-            this.LstBoxResult.Visible = false;
-            // 
-            // BtnDisplay1
-            // 
-            this.BtnDisplay1.Location = new System.Drawing.Point(39, 622);
-            this.BtnDisplay1.Name = "BtnDisplay1";
-            this.BtnDisplay1.Size = new System.Drawing.Size(94, 46);
-            this.BtnDisplay1.TabIndex = 1;
-            this.BtnDisplay1.Text = "表示１";
-            this.BtnDisplay1.UseVisualStyleBackColor = true;
-            this.BtnDisplay1.Click += new System.EventHandler(this.BtnDisplay1_Click);
+            this.BtnRefresh1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefresh1.Location = new System.Drawing.Point(39, 622);
+            this.BtnRefresh1.Name = "BtnRefresh1";
+            this.BtnRefresh1.Size = new System.Drawing.Size(133, 40);
+            this.BtnRefresh1.TabIndex = 1;
+            this.BtnRefresh1.Text = "更新";
+            this.BtnRefresh1.UseVisualStyleBackColor = true;
+            this.BtnRefresh1.Click += new System.EventHandler(this.BtnRefresh1_Click);
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(39, 674);
+            this.BtnClear.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnClear.Location = new System.Drawing.Point(178, 622);
             this.BtnClear.Name = "BtnClear";
-            this.BtnClear.Size = new System.Drawing.Size(94, 46);
+            this.BtnClear.Size = new System.Drawing.Size(133, 40);
             this.BtnClear.TabIndex = 2;
             this.BtnClear.Text = "クリア";
             this.BtnClear.UseVisualStyleBackColor = true;
             this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
-            // LblResult
+            // LblResult1
             // 
-            this.LblResult.AutoSize = true;
-            this.LblResult.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblResult.ForeColor = System.Drawing.Color.Red;
-            this.LblResult.Location = new System.Drawing.Point(39, 580);
-            this.LblResult.Name = "LblResult";
-            this.LblResult.Size = new System.Drawing.Size(81, 24);
-            this.LblResult.TabIndex = 3;
-            this.LblResult.Text = "LblResult";
+            this.LblResult1.AutoSize = true;
+            this.LblResult1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblResult1.ForeColor = System.Drawing.Color.Red;
+            this.LblResult1.Location = new System.Drawing.Point(39, 580);
+            this.LblResult1.Name = "LblResult1";
+            this.LblResult1.Size = new System.Drawing.Size(91, 24);
+            this.LblResult1.TabIndex = 3;
+            this.LblResult1.Text = "LblResult1";
             // 
             // LstViewResult1
             // 
@@ -125,19 +115,30 @@
             this.label1.Text = "２号機";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // LblResult2
+            // 
+            this.LblResult2.AutoSize = true;
+            this.LblResult2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblResult2.ForeColor = System.Drawing.Color.Red;
+            this.LblResult2.Location = new System.Drawing.Point(966, 580);
+            this.LblResult2.Name = "LblResult2";
+            this.LblResult2.Size = new System.Drawing.Size(91, 24);
+            this.LblResult2.TabIndex = 8;
+            this.LblResult2.Text = "LblResult2";
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.ClientSize = new System.Drawing.Size(1904, 693);
+            this.Controls.Add(this.LblResult2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LblTitle1);
             this.Controls.Add(this.LstViewResult2);
             this.Controls.Add(this.LstViewResult1);
-            this.Controls.Add(this.LblResult);
+            this.Controls.Add(this.LblResult1);
             this.Controls.Add(this.BtnClear);
-            this.Controls.Add(this.BtnDisplay1);
-            this.Controls.Add(this.LstBoxResult);
+            this.Controls.Add(this.BtnRefresh1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OperationLogDisplayForm";
@@ -150,14 +151,13 @@
         }
 
         #endregion
-
-        private ListBox LstBoxResult;
-        private Button BtnDisplay1;
+        private Button BtnRefresh1;
         private Button BtnClear;
-        private Label LblResult;
+        private Label LblResult1;
         private ListView LstViewResult1;
         private ListView LstViewResult2;
         private Label LblTitle1;
         private Label label1;
+        private Label LblResult2;
     }
 }
