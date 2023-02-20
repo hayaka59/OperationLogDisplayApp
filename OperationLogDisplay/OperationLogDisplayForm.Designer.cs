@@ -32,7 +32,10 @@
             this.BtnDisplay1 = new System.Windows.Forms.Button();
             this.BtnClear = new System.Windows.Forms.Button();
             this.LblResult = new System.Windows.Forms.Label();
-            this.LstViewResult = new System.Windows.Forms.ListView();
+            this.LstViewResult1 = new System.Windows.Forms.ListView();
+            this.LstViewResult2 = new System.Windows.Forms.ListView();
+            this.LblTitle1 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // LstBoxResult
@@ -40,15 +43,16 @@
             this.LstBoxResult.Font = new System.Drawing.Font("ＭＳ ゴシック", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.LstBoxResult.FormattingEnabled = true;
             this.LstBoxResult.ItemHeight = 16;
-            this.LstBoxResult.Location = new System.Drawing.Point(12, 284);
+            this.LstBoxResult.Location = new System.Drawing.Point(241, 622);
             this.LstBoxResult.Name = "LstBoxResult";
             this.LstBoxResult.ScrollAlwaysVisible = true;
-            this.LstBoxResult.Size = new System.Drawing.Size(1313, 68);
+            this.LstBoxResult.Size = new System.Drawing.Size(1083, 20);
             this.LstBoxResult.TabIndex = 0;
+            this.LstBoxResult.Visible = false;
             // 
             // BtnDisplay1
             // 
-            this.BtnDisplay1.Location = new System.Drawing.Point(31, 396);
+            this.BtnDisplay1.Location = new System.Drawing.Point(39, 619);
             this.BtnDisplay1.Name = "BtnDisplay1";
             this.BtnDisplay1.Size = new System.Drawing.Size(75, 23);
             this.BtnDisplay1.TabIndex = 1;
@@ -58,7 +62,7 @@
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(125, 396);
+            this.BtnClear.Location = new System.Drawing.Point(133, 619);
             this.BtnClear.Name = "BtnClear";
             this.BtnClear.Size = new System.Drawing.Size(75, 23);
             this.BtnClear.TabIndex = 2;
@@ -71,26 +75,59 @@
             this.LblResult.AutoSize = true;
             this.LblResult.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblResult.ForeColor = System.Drawing.Color.Red;
-            this.LblResult.Location = new System.Drawing.Point(12, 355);
+            this.LblResult.Location = new System.Drawing.Point(20, 592);
             this.LblResult.Name = "LblResult";
             this.LblResult.Size = new System.Drawing.Size(81, 24);
             this.LblResult.TabIndex = 3;
             this.LblResult.Text = "LblResult";
             // 
-            // LstViewResult
+            // LstViewResult1
             // 
-            this.LstViewResult.Location = new System.Drawing.Point(9, 12);
-            this.LstViewResult.Name = "LstViewResult";
-            this.LstViewResult.Size = new System.Drawing.Size(1316, 260);
-            this.LstViewResult.TabIndex = 4;
-            this.LstViewResult.UseCompatibleStateImageBehavior = false;
+            this.LstViewResult1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LstViewResult1.FullRowSelect = true;
+            this.LstViewResult1.Location = new System.Drawing.Point(39, 50);
+            this.LstViewResult1.Name = "LstViewResult1";
+            this.LstViewResult1.Size = new System.Drawing.Size(900, 500);
+            this.LstViewResult1.TabIndex = 4;
+            this.LstViewResult1.UseCompatibleStateImageBehavior = false;
+            // 
+            // LstViewResult2
+            // 
+            this.LstViewResult2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LstViewResult2.FullRowSelect = true;
+            this.LstViewResult2.Location = new System.Drawing.Point(966, 50);
+            this.LstViewResult2.Name = "LstViewResult2";
+            this.LstViewResult2.Size = new System.Drawing.Size(900, 500);
+            this.LstViewResult2.TabIndex = 5;
+            this.LstViewResult2.UseCompatibleStateImageBehavior = false;
+            // 
+            // LblTitle1
+            // 
+            this.LblTitle1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTitle1.Location = new System.Drawing.Point(39, 17);
+            this.LblTitle1.Name = "LblTitle1";
+            this.LblTitle1.Size = new System.Drawing.Size(160, 30);
+            this.LblTitle1.TabIndex = 6;
+            this.LblTitle1.Text = "１号機";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(979, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(160, 30);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "２号機";
             // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1337, 431);
-            this.Controls.Add(this.LstViewResult);
+            this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LblTitle1);
+            this.Controls.Add(this.LstViewResult2);
+            this.Controls.Add(this.LstViewResult1);
             this.Controls.Add(this.LblResult);
             this.Controls.Add(this.BtnClear);
             this.Controls.Add(this.BtnDisplay1);
@@ -112,6 +149,9 @@
         private Button BtnDisplay1;
         private Button BtnClear;
         private Label LblResult;
-        private ListView LstViewResult;
+        private ListView LstViewResult1;
+        private ListView LstViewResult2;
+        private Label LblTitle1;
+        private Label label1;
     }
 }
