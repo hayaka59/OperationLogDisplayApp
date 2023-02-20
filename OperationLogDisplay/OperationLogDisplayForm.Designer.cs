@@ -75,7 +75,7 @@
             this.LblResult.AutoSize = true;
             this.LblResult.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblResult.ForeColor = System.Drawing.Color.Red;
-            this.LblResult.Location = new System.Drawing.Point(20, 592);
+            this.LblResult.Location = new System.Drawing.Point(39, 580);
             this.LblResult.Name = "LblResult";
             this.LblResult.Size = new System.Drawing.Size(81, 24);
             this.LblResult.TabIndex = 3;
