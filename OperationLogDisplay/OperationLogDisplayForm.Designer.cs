@@ -103,21 +103,27 @@
             // 
             // LblTitle1
             // 
+            this.LblTitle1.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblTitle1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblTitle1.Location = new System.Drawing.Point(39, 17);
+            this.LblTitle1.ForeColor = System.Drawing.Color.White;
+            this.LblTitle1.Location = new System.Drawing.Point(39, 20);
             this.LblTitle1.Name = "LblTitle1";
-            this.LblTitle1.Size = new System.Drawing.Size(160, 30);
+            this.LblTitle1.Size = new System.Drawing.Size(900, 30);
             this.LblTitle1.TabIndex = 6;
             this.LblTitle1.Text = "１号機";
+            this.LblTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.RoyalBlue;
             this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(979, 17);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(966, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 30);
+            this.label1.Size = new System.Drawing.Size(900, 30);
             this.label1.TabIndex = 7;
             this.label1.Text = "２号機";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // OperationLogDisplayForm
             // 
