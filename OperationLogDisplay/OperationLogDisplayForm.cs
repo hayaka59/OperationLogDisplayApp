@@ -245,7 +245,7 @@ namespace OperationLogDisplay
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        private List<OrderData> ExecuteReader(string query)
+        private List<OrderData> ExecuteReader1(string query)
         {
             // 検索条件に一致したレコードを格納するコレクション
             List<OrderData> Datas = new List<OrderData>();
@@ -323,6 +323,83 @@ namespace OperationLogDisplay
             return Datas;
         }
 
+        private List<OrderData> ExecuteReader2(string query)
+        {
+            // 検索条件に一致したレコードを格納するコレクション
+            List<OrderData> Datas = new List<OrderData>();
+
+            // MySQLへの接続情報を設定
+            var server = "127.0.0.1";   // ホスト名
+            //var server = "192.168.101.10";   // ホスト名
+            var port = 3306;            // ポート
+            var user = "devuser";       // ユーザー名
+            var pass = "Pf6QfXcQ";      // パスワード
+            var charset = "utf8";       // エンコード
+            var database = "srobo";     // データベース
+            var connectionString = $"Server={server};Port={port};Username={user};Password={pass};Charset={charset};Database={database}";
+
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (var commnad = connection.CreateCommand())
+                {
+                    // MySQLへ接続
+                    connection.Open();
+
+                    // クエリーの実行処理
+                    commnad.CommandText = query;
+                    using (var reader = commnad.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Datas.Add(new OrderData
+                            {
+                                Id = reader.GetInt32("id"),
+                                Import_time = reader.GetInt64("import_time"),
+                                Import_index = reader.GetInt32("import_index"),
+                                Status = reader.GetInt32("status"),
+                                Is_retried = reader.GetInt32("is_retried"),
+                                Record_id = reader.GetString("record_id"),
+                                Data_category = reader.GetInt32("data_category"),
+                                Logistics_center_code = reader.GetInt32("logistics_center_code"),
+                                Shipment_no = reader.GetInt32("shipment_no"),
+                                Process_id = reader.GetString("process_id"),
+                                Planed_shipping_date = reader.GetInt64("planed_shipping_date"),
+                                Picking_no = reader.GetInt32("picking_no"),
+                                List_pattern_name = reader.GetString("list_pattern_name"),
+                                Process_category = reader.GetInt32("process_category"),
+                                Customer_center_code = reader.GetString("customer_center_code"),
+                                Customer_company_code = reader.GetInt32("customer_company_code"),
+                                Customer_name = reader.GetString("customer_name"),
+                                Customer_center_name = reader.GetString("customer_center_name"),
+                                Product_code = reader.GetString("product_code"),
+                                Product_sub_code = reader.GetString("product_sub_code"),
+                                Product_name = reader.GetString("product_name"),
+                                Count_per_case = reader.GetInt32("count_per_case"),
+                                Piece_count = reader.GetInt32("piece_count"),
+                                Count_per_pack = reader.GetInt32("count_per_pack"),
+                                Limit_type = reader.GetInt32("limit_type"),
+                                Limit_days = reader.GetInt32("limit_days"),
+                                Case_paste_category = reader.GetInt32("case_paste_category"),
+                                Selling_price = reader.GetInt32("selling_price"),
+                                Storage_method = reader.GetString("storage_method"),
+                                Planed_count = reader.GetInt32("planed_count"),
+                                Skipped_count = reader.GetInt32("skipped_count"),
+                                Printed_count = reader.GetInt32("printed_count"),
+                                Pasted_count = reader.GetInt32("pasted_count"),
+                                Passed_count = reader.GetInt32("passed_count"),
+                                Rejected_count = reader.GetInt32("rejected_count"),
+                            });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return Datas;
+        }
 
         /// <summary>
         /// 
@@ -367,16 +444,6 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnClear_Click(object sender, EventArgs e)
-        {
-            LstViewResult1.Items.Clear();
-        }
-
-        /// <summary>
         /// 「更新１」ボタン処理
         /// </summary>
         /// <param name="sender"></param>
@@ -385,11 +452,11 @@ namespace OperationLogDisplay
         {
             string[] col = new string[35];
             ListViewItem itm1;
-            ListViewItem itm2;
+            
             try
             {
-                var result = ExecuteReader("SELECT * FROM `order`;");
-                foreach (var ret in result)
+                var result1 = ExecuteReader1("SELECT * FROM `order`;");
+                foreach (var ret in result1)
                 {
                     // 検索結果を表示
                     col[0] = ret.Id.ToString();
@@ -432,17 +499,100 @@ namespace OperationLogDisplay
                     LstViewResult1.Items.Add(itm1);
                     LstViewResult1.Items[LstViewResult1.Items.Count - 1].UseItemStyleForSubItems = false;
 
-                    itm2 = new ListViewItem(col);
-                    LstViewResult2.Items.Add(itm2);
-                    LstViewResult2.Items[LstViewResult2.Items.Count - 1].UseItemStyleForSubItems = false;
                 }
                 LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
-                LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "【BtnDisplay1_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// 「更新２」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRefresh2_Click(object sender, EventArgs e)
+        {
+            string[] col = new string[35];
+            ListViewItem itm2;
+
+            try
+            {
+                var result2 = ExecuteReader1("SELECT * FROM `order`;");
+                foreach (var ret in result2)
+                {
+                    // 検索結果を表示
+                    col[0] = ret.Id.ToString();
+                    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
+                    col[2] = ret.Import_index.ToString();
+                    col[3] = ret.Status.ToString();
+                    col[4] = ret.Is_retried.ToString();
+                    col[5] = ret.Record_id.ToString();
+                    col[6] = ret.Data_category.ToString();
+                    col[7] = ret.Logistics_center_code.ToString();
+                    col[8] = ret.Shipment_no.ToString();
+                    col[9] = ret.Process_id.ToString();
+                    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
+                    col[11] = ret.Picking_no.ToString();
+                    col[12] = ret.List_pattern_name.ToString();
+                    col[13] = ret.Process_category.ToString();
+                    col[14] = ret.Customer_center_code.ToString();
+                    col[15] = ret.Customer_company_code.ToString();
+                    col[16] = ret.Customer_name.ToString();
+                    col[17] = ret.Customer_center_name.ToString();
+                    col[18] = ret.Product_code.ToString();
+                    col[19] = ret.Product_sub_code.ToString();
+                    col[20] = ret.Product_name.ToString();
+                    col[21] = ret.Count_per_case.ToString();
+                    col[22] = ret.Piece_count.ToString();
+                    col[23] = ret.Count_per_pack.ToString();
+                    col[24] = ret.Limit_type.ToString();
+                    col[25] = ret.Limit_days.ToString();
+                    col[26] = ret.Case_paste_category.ToString();
+                    col[27] = ret.Selling_price.ToString();
+                    col[28] = ret.Storage_method.ToString();
+                    col[29] = ret.Planed_count.ToString();
+                    col[30] = ret.Skipped_count.ToString();
+                    col[31] = ret.Printed_count.ToString();
+                    col[32] = ret.Pasted_count.ToString();
+                    col[33] = ret.Passed_count.ToString();
+                    col[34] = ret.Rejected_count.ToString();
+
+                    itm2 = new ListViewItem(col);
+                    LstViewResult2.Items.Add(itm2);
+                    LstViewResult2.Items[LstViewResult2.Items.Count - 1].UseItemStyleForSubItems = false;
+
+                }
+                LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnDisplay2_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /// <summary>
+        /// 「クリア１」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnClear1_Click(object sender, EventArgs e)
+        {
+            LstViewResult1.Items.Clear();
+        }
+
+        /// <summary>
+        /// 「クリア２」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnClear2_Click(object sender, EventArgs e)
+        {
+            LstViewResult2.Items.Clear();
+        }
+
     }
 }

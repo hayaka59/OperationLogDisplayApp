@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.BtnRefresh1 = new System.Windows.Forms.Button();
-            this.BtnClear = new System.Windows.Forms.Button();
+            this.BtnClear1 = new System.Windows.Forms.Button();
             this.LblResult1 = new System.Windows.Forms.Label();
             this.LstViewResult1 = new System.Windows.Forms.ListView();
             this.LstViewResult2 = new System.Windows.Forms.ListView();
             this.LblTitle1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.LblResult2 = new System.Windows.Forms.Label();
+            this.BtnClear2 = new System.Windows.Forms.Button();
+            this.BtnRefresh2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BtnRefresh1
@@ -49,16 +51,16 @@
             this.BtnRefresh1.UseVisualStyleBackColor = true;
             this.BtnRefresh1.Click += new System.EventHandler(this.BtnRefresh1_Click);
             // 
-            // BtnClear
+            // BtnClear1
             // 
-            this.BtnClear.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnClear.Location = new System.Drawing.Point(178, 622);
-            this.BtnClear.Name = "BtnClear";
-            this.BtnClear.Size = new System.Drawing.Size(133, 40);
-            this.BtnClear.TabIndex = 2;
-            this.BtnClear.Text = "クリア";
-            this.BtnClear.UseVisualStyleBackColor = true;
-            this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            this.BtnClear1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnClear1.Location = new System.Drawing.Point(178, 622);
+            this.BtnClear1.Name = "BtnClear1";
+            this.BtnClear1.Size = new System.Drawing.Size(133, 40);
+            this.BtnClear1.TabIndex = 2;
+            this.BtnClear1.Text = "クリア";
+            this.BtnClear1.UseVisualStyleBackColor = true;
+            this.BtnClear1.Click += new System.EventHandler(this.BtnClear1_Click);
             // 
             // LblResult1
             // 
@@ -126,18 +128,42 @@
             this.LblResult2.TabIndex = 8;
             this.LblResult2.Text = "LblResult2";
             // 
+            // BtnClear2
+            // 
+            this.BtnClear2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnClear2.Location = new System.Drawing.Point(1105, 622);
+            this.BtnClear2.Name = "BtnClear2";
+            this.BtnClear2.Size = new System.Drawing.Size(133, 40);
+            this.BtnClear2.TabIndex = 10;
+            this.BtnClear2.Text = "クリア";
+            this.BtnClear2.UseVisualStyleBackColor = true;
+            this.BtnClear2.Click += new System.EventHandler(this.BtnClear2_Click);
+            // 
+            // BtnRefresh2
+            // 
+            this.BtnRefresh2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefresh2.Location = new System.Drawing.Point(966, 622);
+            this.BtnRefresh2.Name = "BtnRefresh2";
+            this.BtnRefresh2.Size = new System.Drawing.Size(133, 40);
+            this.BtnRefresh2.TabIndex = 9;
+            this.BtnRefresh2.Text = "更新";
+            this.BtnRefresh2.UseVisualStyleBackColor = true;
+            this.BtnRefresh2.Click += new System.EventHandler(this.BtnRefresh2_Click);
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 693);
+            this.Controls.Add(this.BtnClear2);
+            this.Controls.Add(this.BtnRefresh2);
             this.Controls.Add(this.LblResult2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.LblTitle1);
             this.Controls.Add(this.LstViewResult2);
             this.Controls.Add(this.LstViewResult1);
             this.Controls.Add(this.LblResult1);
-            this.Controls.Add(this.BtnClear);
+            this.Controls.Add(this.BtnClear1);
             this.Controls.Add(this.BtnRefresh1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -152,12 +178,14 @@
 
         #endregion
         private Button BtnRefresh1;
-        private Button BtnClear;
+        private Button BtnClear1;
         private Label LblResult1;
         private ListView LstViewResult1;
         private ListView LstViewResult2;
         private Label LblTitle1;
         private Label label1;
         private Label LblResult2;
+        private Button BtnClear2;
+        private Button BtnRefresh2;
     }
 }
