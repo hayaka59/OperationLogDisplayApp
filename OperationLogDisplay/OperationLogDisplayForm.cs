@@ -2,6 +2,7 @@ using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace OperationLogDisplay
 {
@@ -23,6 +24,169 @@ namespace OperationLogDisplay
             try
             {
                 LblResult.Text = "";
+
+                LstViewResult.View = View.Details;
+
+                #region 列の新規作成
+                ColumnHeader col01 = new ColumnHeader();
+                ColumnHeader col02 = new ColumnHeader();
+                ColumnHeader col03 = new ColumnHeader();
+                ColumnHeader col04 = new ColumnHeader();
+                ColumnHeader col05 = new ColumnHeader();
+                ColumnHeader col06 = new ColumnHeader();
+                ColumnHeader col07 = new ColumnHeader();
+                ColumnHeader col08 = new ColumnHeader();
+                ColumnHeader col09 = new ColumnHeader();
+                ColumnHeader col10 = new ColumnHeader();
+                ColumnHeader col11 = new ColumnHeader();
+                ColumnHeader col12 = new ColumnHeader();
+                ColumnHeader col13 = new ColumnHeader();
+                ColumnHeader col14 = new ColumnHeader();
+                ColumnHeader col15 = new ColumnHeader();
+                ColumnHeader col16 = new ColumnHeader();
+                ColumnHeader col17 = new ColumnHeader();
+                ColumnHeader col18 = new ColumnHeader();
+                ColumnHeader col19 = new ColumnHeader();
+                ColumnHeader col20 = new ColumnHeader();
+                ColumnHeader col21 = new ColumnHeader();
+                ColumnHeader col22 = new ColumnHeader();
+                ColumnHeader col23 = new ColumnHeader();
+                ColumnHeader col24 = new ColumnHeader();
+                ColumnHeader col25 = new ColumnHeader();
+                ColumnHeader col26 = new ColumnHeader();
+                ColumnHeader col27 = new ColumnHeader();
+                ColumnHeader col28 = new ColumnHeader();
+                ColumnHeader col29 = new ColumnHeader();
+                ColumnHeader col30 = new ColumnHeader();
+                ColumnHeader col31 = new ColumnHeader();
+                ColumnHeader col32 = new ColumnHeader();
+                ColumnHeader col33 = new ColumnHeader();
+                ColumnHeader col34 = new ColumnHeader();
+                ColumnHeader col35 = new ColumnHeader();
+                #endregion
+
+                #region 列名称設定
+                col01.Text = "id";
+                col02.Text = "import_time";
+                col03.Text = "import_index";
+                col04.Text = "status";
+                col05.Text = "is_retried";
+                col06.Text = "record_id";
+                col07.Text = "data_category";
+                col08.Text = "logistics_center_code";
+                col09.Text = "shipment_no";
+                col10.Text = "process_id";
+                col11.Text = "planed_shipping_date";
+                col12.Text = "picking_no";
+                col13.Text = "list_pattern_name";
+                col14.Text = "process_category";
+                col15.Text = "customer_center_code";
+                col16.Text = "customer_company_code";
+                col17.Text = "customer_name";
+                col18.Text = "customer_center_name";
+                col19.Text = "product_code";
+                col20.Text = "product_sub_code";
+                col21.Text = "product_name";
+                col22.Text = "count_per_case";
+                col23.Text = "piece_count";
+                col24.Text = "count_per_pack";
+                col25.Text = "limit_type";
+                col26.Text = "limit_days";
+                col27.Text = "case_paste_category";
+                col28.Text = "selling_price";
+                col29.Text = "storage_method";
+                col30.Text = "planed_count";
+                col31.Text = "skipped_count";
+                col32.Text = "printed_count";
+                col33.Text = "pasted_count";
+                col34.Text = "passed_count";
+                col35.Text = "rejected_count";
+                #endregion
+
+                #region 列揃え指定
+                col01.TextAlign = HorizontalAlignment.Center;
+                col02.TextAlign = HorizontalAlignment.Center;
+                col03.TextAlign = HorizontalAlignment.Center;
+                col04.TextAlign = HorizontalAlignment.Center;
+                col05.TextAlign = HorizontalAlignment.Center;
+                col06.TextAlign = HorizontalAlignment.Center;
+                col07.TextAlign = HorizontalAlignment.Center;
+                col08.TextAlign = HorizontalAlignment.Center;
+                col09.TextAlign = HorizontalAlignment.Center;
+                col10.TextAlign = HorizontalAlignment.Center;
+                col11.TextAlign = HorizontalAlignment.Center;
+                col12.TextAlign = HorizontalAlignment.Center;
+                col13.TextAlign = HorizontalAlignment.Center;
+                col14.TextAlign = HorizontalAlignment.Center;
+                col15.TextAlign = HorizontalAlignment.Center;
+                col16.TextAlign = HorizontalAlignment.Center;
+                col17.TextAlign = HorizontalAlignment.Center;
+                col18.TextAlign = HorizontalAlignment.Center;
+                col19.TextAlign = HorizontalAlignment.Center;
+                col20.TextAlign = HorizontalAlignment.Center;
+                col21.TextAlign = HorizontalAlignment.Center;
+                col22.TextAlign = HorizontalAlignment.Center;
+                col23.TextAlign = HorizontalAlignment.Center;
+                col24.TextAlign = HorizontalAlignment.Center;
+                col25.TextAlign = HorizontalAlignment.Center;
+                col26.TextAlign = HorizontalAlignment.Center;
+                col27.TextAlign = HorizontalAlignment.Center;
+                col28.TextAlign = HorizontalAlignment.Center;
+                col29.TextAlign = HorizontalAlignment.Center;
+                col30.TextAlign = HorizontalAlignment.Center;
+                col31.TextAlign = HorizontalAlignment.Center;
+                col32.TextAlign = HorizontalAlignment.Center;
+                col33.TextAlign = HorizontalAlignment.Center;
+                col34.TextAlign = HorizontalAlignment.Center;
+                col35.TextAlign = HorizontalAlignment.Center;
+                #endregion
+
+                #region 列幅指定
+                col01.Width = 30;       // 
+                col02.Width = 180;      // 
+                col03.Width = 70;       // 
+                col04.Width = 80;       // 
+                col05.Width = 80;       // 
+                col06.Width = 80;       // 
+                col07.Width = 90;       // 
+                col08.Width = 70;       // 
+                col09.Width = 60;       // 
+                col10.Width = 100;      // 
+                col11.Width = 180;      // 
+                col12.Width = 100;      // ﾞ
+                col13.Width = 150;      // 
+                col14.Width = 70;       // 
+                col15.Width = 150;      // 
+                col16.Width = 150;      // 
+                col17.Width = 60;       // 
+                col18.Width = 60;       // 
+                col19.Width = 60;       // 
+                col20.Width = 60;       // 
+                col21.Width = 60;       // 
+                col22.Width = 60;       // 
+                col23.Width = 60;       // 
+                col24.Width = 60;       // 
+                col25.Width = 60;       // 
+                col26.Width = 60;       // 
+                col27.Width = 60;       // 
+                col28.Width = 60;       // 
+                col29.Width = 60;       // 
+                col30.Width = 60;       // 
+                col31.Width = 60;       // 
+                col32.Width = 60;       // 
+                col33.Width = 60;       // 
+                col34.Width = 60;       // 
+                col35.Width = 60;       // 
+                #endregion
+
+                #region 列表示
+                ColumnHeader[] colHeader = new[] { col01, col02, col03, col04, col05, col06, col07, col08, col09, col10,
+                                                   col11, col12, col13, col14, col15, col16, col17, col18, col19, col20,
+                                                   col21, col22, col23, col24, col25, col26, col27, col28, col29, col30,
+                                                   col31, col32, col33, col34, col35};
+                LstViewResult.Columns.AddRange(colHeader);
+                #endregion
+
             }
             catch (Exception ex)
             {
@@ -67,10 +231,10 @@ namespace OperationLogDisplay
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        private List<Data> ExecuteReader(string query)
+        private List<OrderData> ExecuteReader(string query)
         {
             // 検索条件に一致したレコードを格納するコレクション
-            List<Data> Datas = new List<Data>();
+            List<OrderData> Datas = new List<OrderData>();
 
             // MySQLへの接続情報を設定
             var server = "127.0.0.1";   // ホスト名
@@ -96,14 +260,37 @@ namespace OperationLogDisplay
                     {
                         while (reader.Read())
                         {
-                            Datas.Add(new Data
+                            Datas.Add(new OrderData
                             {
+                                Id = reader.GetInt32("id"),
                                 Import_time = reader.GetInt64("import_time"),
+                                Import_index = reader.GetInt32("import_index"),
+                                Status = reader.GetInt32("status"),
+                                Is_retried = reader.GetInt32("is_retried"),
+                                Record_id = reader.GetString("record_id"),
+                                Data_category = reader.GetInt32("data_category"),
+                                Logistics_center_code = reader.GetInt32("logistics_center_code"),
+                                Shipment_no = reader.GetInt32("shipment_no"),
+                                Process_id = reader.GetString("process_id"),
                                 Planed_shipping_date = reader.GetInt64("planed_shipping_date"),
-
+                                Picking_no = reader.GetInt32("picking_no"),
+                                List_pattern_name = reader.GetString("list_pattern_name"),
+                                Process_category = reader.GetInt32("process_category"),
+                                Customer_center_code = reader.GetString("customer_center_code"),
+                                Customer_company_code = reader.GetInt32("customer_company_code"),
+                                Customer_name = reader.GetString("customer_name"),
+                                Customer_center_name = reader.GetString("customer_center_name"),
                                 Product_code = reader.GetString("product_code"),
+                                Product_sub_code = reader.GetString("product_sub_code"),
                                 Product_name = reader.GetString("product_name"),
-
+                                Count_per_case = reader.GetInt32("count_per_case"),
+                                Piece_count = reader.GetInt32("piece_count"),
+                                Count_per_pack = reader.GetInt32("count_per_pack"),
+                                Limit_type = reader.GetInt32("limit_type"),
+                                Limit_days = reader.GetInt32("limit_days"),
+                                Case_paste_category = reader.GetInt32("case_paste_category"),
+                                Selling_price = reader.GetInt32("selling_price"),
+                                Storage_method = reader.GetString("storage_method"),
                                 Planed_count = reader.GetInt32("planed_count"),
                                 Skipped_count = reader.GetInt32("skipped_count"),
                                 Printed_count = reader.GetInt32("printed_count"),
@@ -126,13 +313,37 @@ namespace OperationLogDisplay
         /// <summary>
         /// 
         /// </summary>
-        class Data
+        class OrderData
         {
+            public int Id { get; set; }
             public long Import_time { get; set; }
+            public int Import_index { get; set; }
+            public int Status { get; set; }
+            public int Is_retried { get; set; }
+            public string? Record_id { get; set; }
+            public int Data_category { get; set; }
+            public int Logistics_center_code { get; set; }
+            public int Shipment_no { get; set; }
+            public string? Process_id { get; set; }
             public long Planed_shipping_date { get; set; }
-
-            public string Product_code { get; set; }
-            public string Product_name { get; set; }
+            public int Picking_no { get; set; }
+            public string? List_pattern_name { get; set; }
+            public int Process_category { get; set; }
+            public string? Customer_center_code { get; set; }
+            public int Customer_company_code { get; set; }
+            public string? Customer_name { get; set; }
+            public string? Customer_center_name { get; set; }
+            public string? Product_code { get; set; }
+            public string? Product_sub_code { get; set; }
+            public string? Product_name { get; set; }
+            public int Count_per_case { get; set; }
+            public int Piece_count { get; set; }
+            public int Count_per_pack { get; set; }
+            public int Limit_type { get; set; }
+            public int Limit_days { get; set; }
+            public int Case_paste_category { get; set; }
+            public int Selling_price { get; set; }
+            public string? Storage_method { get; set; }
             public int Planed_count { get; set; }
             public int Skipped_count { get; set; }
             public int Printed_count { get; set; }
@@ -148,6 +359,9 @@ namespace OperationLogDisplay
         /// <param name="e"></param>
         private void BtnDisplay1_Click(object sender, EventArgs e)
         {
+            string[] col = new string[35];
+            ListViewItem itm;
+
             try
             {
                 LstBoxResult.Items.Clear();
@@ -156,20 +370,63 @@ namespace OperationLogDisplay
                 {
                     // 検索結果を表示
                     string sData = "";
+                    sData += "【" + ret.Id.ToString("000") + "】";
                     sData += DateTimeOffset.FromUnixTimeSeconds(ret.Import_time/1000).ToLocalTime() + ",";
                     sData += DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date/1000).ToLocalTime() + ",";
-
                     sData += ret.Product_code + ",";
                     sData += ret.Product_name + ",";
-
                     sData += ret.Planed_count + ",";
                     sData += ret.Skipped_count + ",";
                     sData += ret.Printed_count + ",";
                     sData += ret.Pasted_count + ",";
                     sData += ret.Passed_count + ",";
                     sData += ret.Rejected_count + ",";
-
                     LstBoxResult.Items.Add(sData);
+
+
+                    col[0] = ret.Id.ToString();
+                    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
+                    col[2] = ret.Import_index.ToString();
+                    col[3] = ret.Status.ToString();
+                    col[4] = ret.Is_retried.ToString();
+                    col[5] = ret.Record_id.ToString();
+                    col[6] = ret.Data_category.ToString();
+                    col[7] = ret.Logistics_center_code.ToString();
+                    col[8] = ret.Shipment_no.ToString();
+                    col[9] = ret.Process_id.ToString();
+                    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
+                    col[11] = ret.Picking_no.ToString();
+                    col[12] = ret.List_pattern_name.ToString();
+                    col[13] = ret.Process_category.ToString();
+                    col[14] = ret.Customer_center_code.ToString();
+                    col[15] = ret.Customer_company_code.ToString();
+                    col[16] = ret.Customer_name.ToString();
+                    col[17] = ret.Customer_center_name.ToString();
+                    col[18] = ret.Product_code.ToString();
+                    col[19] = ret.Product_sub_code.ToString();
+                    col[20] = ret.Product_name.ToString();
+                    col[21] = ret.Count_per_case.ToString();
+                    col[22] = ret.Piece_count.ToString();
+                    col[23] = ret.Count_per_pack.ToString();
+                    col[24] = ret.Limit_type.ToString();
+                    col[25] = ret.Limit_days.ToString();
+                    col[26] = ret.Case_paste_category.ToString();
+                    col[27] = ret.Selling_price.ToString();
+                    col[28] = ret.Storage_method.ToString();
+                    col[29] = ret.Planed_count.ToString();
+                    col[30] = ret.Skipped_count.ToString();
+                    col[31] = ret.Printed_count.ToString();
+                    col[32] = ret.Pasted_count.ToString();
+                    col[33] = ret.Passed_count.ToString();
+                    col[34] = ret.Rejected_count.ToString();
+
+
+                    itm = new ListViewItem(col);
+                    LstViewResult.Items.Add(itm);
+                    LstViewResult.Items[LstViewResult.Items.Count - 1].UseItemStyleForSubItems = false;
+
+
+
                 }
                 LblResult.Text = LstBoxResult.Items.Count.ToString("###,##0")+"件";
             }
