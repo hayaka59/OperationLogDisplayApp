@@ -313,7 +313,7 @@ namespace OperationLogDisplay
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "【ExecuteReader1】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return Datas;
         }
@@ -386,7 +386,7 @@ namespace OperationLogDisplay
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "【ExecuteReader2】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return Datas;
         }
