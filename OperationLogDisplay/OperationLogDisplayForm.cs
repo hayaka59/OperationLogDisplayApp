@@ -23,6 +23,7 @@ namespace OperationLogDisplay
         {
             try
             {
+                LblVersion.Text = "Ver.0.0.0.1";
                 TxtIpAddress1.Text = "127.0.0.1";
                 TxtIpAddress2.Text = "192.168.3.11";
                 LblResult1.Text = "";
@@ -288,22 +289,22 @@ namespace OperationLogDisplay
 
                 #region 列幅指定
                 col01.Width = 50;       // id
-                col02.Width = 100;      // import_time
-                col03.Width = 100;      // import_index
-                col04.Width = 100;      // status
-                col05.Width = 100;      // is_retried
-                col06.Width = 100;      // record_id
-                col07.Width = 100;      // data_category
-                col08.Width = 100;      // logistics_center_code
-                col09.Width = 100;      // shipment_no
-                col10.Width = 100;      // process_id
-                col11.Width = 100;      // planed_shipping_date
-                col12.Width = 100;      // picking_no
-                col13.Width = 100;      // list_pattern_name
-                col14.Width = 100;      // process_category
-                col15.Width = 200;      // customer_center_code
-                col16.Width = 100;      // customer_company_code
-                col17.Width = 100;      // customer_name
+                col02.Width = 80;       // start_count
+                col03.Width = 80;       // planed_count
+                col04.Width = 80;       // skipped_count
+                col05.Width = 80;       // printed_count
+                col06.Width = 80;       // pasted_count
+                col07.Width = 80;       // passed_count
+                col08.Width = 80;       // rejected_count
+                col09.Width = 200;      // process_date_start
+                col10.Width = 200;      // process_date_end
+                col11.Width = 100;      // user_code
+                col12.Width = 100;      // device_id
+                col13.Width = 100;      // is_offline
+                col14.Width = 100;      // is_retried
+                col15.Width = 200;      // cancel_reason
+                col16.Width = 100;      // productivity_time
+                col17.Width = 100;      // order_id
                 #endregion
 
                 #region 列表示
@@ -773,27 +774,11 @@ namespace OperationLogDisplay
             }
         }
 
-
         /// <summary>
-        /// 「クリア１」ボタン処理
+        /// 「更新３」ボタン処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnClear1_Click(object sender, EventArgs e)
-        {
-            LstViewResult1.Items.Clear();
-        }
-
-        /// <summary>
-        /// 「クリア２」ボタン処理
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnClear2_Click(object sender, EventArgs e)
-        {
-            LstViewResult2.Items.Clear();
-        }
-
         private void BtnRefresh3_Click(object sender, EventArgs e)
         {
             string[] col = new string[17];
@@ -845,5 +830,6 @@ namespace OperationLogDisplay
             }
 
         }
+
     }
 }
