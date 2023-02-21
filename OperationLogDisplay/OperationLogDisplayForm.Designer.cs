@@ -38,6 +38,12 @@
             this.LblResult2 = new System.Windows.Forms.Label();
             this.BtnClear2 = new System.Windows.Forms.Button();
             this.BtnRefresh2 = new System.Windows.Forms.Button();
+            this.TxtIpAddress1 = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.TxtIpAddress2 = new System.Windows.Forms.TextBox();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRefresh1
@@ -60,6 +66,7 @@
             this.BtnClear1.TabIndex = 2;
             this.BtnClear1.Text = "クリア";
             this.BtnClear1.UseVisualStyleBackColor = true;
+            this.BtnClear1.Visible = false;
             this.BtnClear1.Click += new System.EventHandler(this.BtnClear1_Click);
             // 
             // LblResult1
@@ -77,7 +84,7 @@
             // 
             this.LstViewResult1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult1.FullRowSelect = true;
-            this.LstViewResult1.Location = new System.Drawing.Point(39, 50);
+            this.LstViewResult1.Location = new System.Drawing.Point(39, 60);
             this.LstViewResult1.Name = "LstViewResult1";
             this.LstViewResult1.Size = new System.Drawing.Size(900, 500);
             this.LstViewResult1.TabIndex = 4;
@@ -87,7 +94,7 @@
             // 
             this.LstViewResult2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult2.FullRowSelect = true;
-            this.LstViewResult2.Location = new System.Drawing.Point(966, 50);
+            this.LstViewResult2.Location = new System.Drawing.Point(966, 60);
             this.LstViewResult2.Name = "LstViewResult2";
             this.LstViewResult2.Size = new System.Drawing.Size(900, 500);
             this.LstViewResult2.TabIndex = 5;
@@ -98,9 +105,9 @@
             this.LblTitle1.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblTitle1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTitle1.ForeColor = System.Drawing.Color.White;
-            this.LblTitle1.Location = new System.Drawing.Point(39, 20);
+            this.LblTitle1.Location = new System.Drawing.Point(39, 9);
             this.LblTitle1.Name = "LblTitle1";
-            this.LblTitle1.Size = new System.Drawing.Size(900, 30);
+            this.LblTitle1.Size = new System.Drawing.Size(144, 51);
             this.LblTitle1.TabIndex = 6;
             this.LblTitle1.Text = "１号機";
             this.LblTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -110,9 +117,9 @@
             this.label1.BackColor = System.Drawing.Color.RoyalBlue;
             this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(966, 20);
+            this.label1.Location = new System.Drawing.Point(966, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(900, 30);
+            this.label1.Size = new System.Drawing.Size(144, 51);
             this.label1.TabIndex = 7;
             this.label1.Text = "２号機";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -137,6 +144,7 @@
             this.BtnClear2.TabIndex = 10;
             this.BtnClear2.Text = "クリア";
             this.BtnClear2.UseVisualStyleBackColor = true;
+            this.BtnClear2.Visible = false;
             this.BtnClear2.Click += new System.EventHandler(this.BtnClear2_Click);
             // 
             // BtnRefresh2
@@ -150,11 +158,53 @@
             this.BtnRefresh2.UseVisualStyleBackColor = true;
             this.BtnRefresh2.Click += new System.EventHandler(this.BtnRefresh2_Click);
             // 
+            // TxtIpAddress1
+            // 
+            this.TxtIpAddress1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtIpAddress1.Location = new System.Drawing.Point(11, 21);
+            this.TxtIpAddress1.Name = "TxtIpAddress1";
+            this.TxtIpAddress1.Size = new System.Drawing.Size(155, 27);
+            this.TxtIpAddress1.TabIndex = 11;
+            this.TxtIpAddress1.Text = "255.255.255.255";
+            this.TxtIpAddress1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.TxtIpAddress1);
+            this.groupBox1.Location = new System.Drawing.Point(189, 1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(180, 59);
+            this.groupBox1.TabIndex = 13;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "1号機IPアドレス";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.TxtIpAddress2);
+            this.groupBox2.Location = new System.Drawing.Point(1116, 1);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(180, 59);
+            this.groupBox2.TabIndex = 14;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "2号機IPアドレス";
+            // 
+            // TxtIpAddress2
+            // 
+            this.TxtIpAddress2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtIpAddress2.Location = new System.Drawing.Point(11, 21);
+            this.TxtIpAddress2.Name = "TxtIpAddress2";
+            this.TxtIpAddress2.Size = new System.Drawing.Size(155, 27);
+            this.TxtIpAddress2.TabIndex = 11;
+            this.TxtIpAddress2.Text = "255.255.255.255";
+            this.TxtIpAddress2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 693);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.BtnClear2);
             this.Controls.Add(this.BtnRefresh2);
             this.Controls.Add(this.LblResult2);
@@ -171,6 +221,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "稼働ログ表示";
             this.Load += new System.EventHandler(this.OperationLogDisplayForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,5 +241,9 @@
         private Label LblResult2;
         private Button BtnClear2;
         private Button BtnRefresh2;
+        private TextBox TxtIpAddress1;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private TextBox TxtIpAddress2;
     }
 }

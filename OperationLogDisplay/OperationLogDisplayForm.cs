@@ -23,6 +23,8 @@ namespace OperationLogDisplay
         {
             try
             {
+                TxtIpAddress1.Text = "127.0.0.1";
+                TxtIpAddress2.Text = "192.168.3.11";
                 LblResult1.Text = "";
                 LblResult2.Text = "";
                 DisplayHeader(LstViewResult1);
@@ -243,19 +245,18 @@ namespace OperationLogDisplay
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        private static List<OrderData> ExecuteReader1(string query)
+        private List<OrderData> ExecuteReader1(string query)
         {
             // 検索条件に一致したレコードを格納するコレクション
             List<OrderData> Datas = new();
 
             // MySQLへの接続情報を設定
-            var server = "127.0.0.1";   // ホスト名
-            //var server = "192.168.101.10";   // ホスト名
-            var port = 3306;            // ポート
-            var user = "devuser";       // ユーザー名
-            var pass = "Pf6QfXcQ";      // パスワード
-            var charset = "utf8";       // エンコード
-            var database = "srobo";     // データベース
+            var server = TxtIpAddress1.Text;    // ホスト名
+            var port = 3306;                    // ポート
+            var user = "devuser";               // ユーザー名
+            var pass = "Pf6QfXcQ";              // パスワード
+            var charset = "utf8";               // エンコード
+            var database = "srobo";             // データベース
             var connectionString = $"Server={server};Port={port};Username={user};Password={pass};Charset={charset};Database={database}";
 
             try
@@ -317,19 +318,18 @@ namespace OperationLogDisplay
             return Datas;
         }
 
-        private static List<OrderData> ExecuteReader2(string query)
+        private List<OrderData> ExecuteReader2(string query)
         {
             // 検索条件に一致したレコードを格納するコレクション
             List<OrderData> Datas = new();
 
             // MySQLへの接続情報を設定
-            var server = "127.0.0.1";   // ホスト名
-            //var server = "192.168.101.10";   // ホスト名
-            var port = 3306;            // ポート
-            var user = "devuser";       // ユーザー名
-            var pass = "Pf6QfXcQ";      // パスワード
-            var charset = "utf8";       // エンコード
-            var database = "srobo";     // データベース
+            var server = TxtIpAddress2.Text;    // ホスト名
+            var port = 3306;                    // ポート
+            var user = "devuser";               // ユーザー名
+            var pass = "Pf6QfXcQ";              // パスワード
+            var charset = "utf8";               // エンコード
+            var database = "srobo";             // データベース
             var connectionString = $"Server={server};Port={port};Username={user};Password={pass};Charset={charset};Database={database}";
 
             try
@@ -445,6 +445,7 @@ namespace OperationLogDisplay
             
             try
             {
+                LstViewResult1.Items.Clear();
                 var result1 = ExecuteReader1("SELECT * FROM `order`;");
                 foreach (var ret in result1)
                 {
@@ -510,6 +511,7 @@ namespace OperationLogDisplay
 
             try
             {
+                LstViewResult2.Items.Clear();
                 var result2 = ExecuteReader2("SELECT * FROM `order`;");
                 foreach (var ret in result2)
                 {
