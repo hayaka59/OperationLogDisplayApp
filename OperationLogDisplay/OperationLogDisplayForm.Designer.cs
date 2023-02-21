@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperationLogDisplayForm));
             this.BtnRefresh1 = new System.Windows.Forms.Button();
             this.BtnClear1 = new System.Windows.Forms.Button();
             this.LblResult1 = new System.Windows.Forms.Label();
@@ -49,11 +50,14 @@
             // BtnRefresh1
             // 
             this.BtnRefresh1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefresh1.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh1.Location = new System.Drawing.Point(39, 622);
             this.BtnRefresh1.Name = "BtnRefresh1";
             this.BtnRefresh1.Size = new System.Drawing.Size(133, 40);
             this.BtnRefresh1.TabIndex = 1;
             this.BtnRefresh1.Text = "更新";
+            this.BtnRefresh1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRefresh1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnRefresh1.UseVisualStyleBackColor = true;
             this.BtnRefresh1.Click += new System.EventHandler(this.BtnRefresh1_Click);
             // 
@@ -150,11 +154,14 @@
             // BtnRefresh2
             // 
             this.BtnRefresh2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefresh2.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh2.Location = new System.Drawing.Point(966, 622);
             this.BtnRefresh2.Name = "BtnRefresh2";
             this.BtnRefresh2.Size = new System.Drawing.Size(133, 40);
             this.BtnRefresh2.TabIndex = 9;
             this.BtnRefresh2.Text = "更新";
+            this.BtnRefresh2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRefresh2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnRefresh2.UseVisualStyleBackColor = true;
             this.BtnRefresh2.Click += new System.EventHandler(this.BtnRefresh2_Click);
             // 
@@ -215,6 +222,7 @@
             this.Controls.Add(this.LblResult1);
             this.Controls.Add(this.BtnClear1);
             this.Controls.Add(this.BtnRefresh1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OperationLogDisplayForm";
