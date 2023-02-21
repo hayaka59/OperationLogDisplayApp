@@ -1,8 +1,8 @@
-using Microsoft.VisualBasic;
+//using Microsoft.VisualBasic;
 using MySql.Data.MySqlClient;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
+//using System.Collections.Generic;
+//using System.Diagnostics;
+//using System.Drawing;
 
 namespace OperationLogDisplay
 {
@@ -27,8 +27,11 @@ namespace OperationLogDisplay
                 TxtIpAddress2.Text = "192.168.3.11";
                 LblResult1.Text = "";
                 LblResult2.Text = "";
+                LblResult3.Text = "";
                 DisplayHeader(LstViewResult1);
                 DisplayHeader(LstViewResult2);
+
+                DisplayHeaderForHistory(LstViewResult3);
             }
             catch (Exception ex)
             {
@@ -36,6 +39,10 @@ namespace OperationLogDisplay
             }
         }
 
+        /// <summary>
+        /// オーダーテーブルのテーブルヘッダー表示
+        /// </summary>
+        /// <param name="LstViewResult"></param>
         private static void DisplayHeader(ListView LstViewResult)
         {
             try
@@ -208,6 +215,110 @@ namespace OperationLogDisplay
                 MessageBox.Show(ex.Message, "【DisplayHeader】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// 履歴テーブルのテーブルヘッダー表示
+        /// </summary>
+        /// <param name="LstViewResult"></param>
+        private static void DisplayHeaderForHistory(ListView LstViewResult)
+        {
+            try
+            {
+                LstViewResult.View = View.Details;
+
+                #region 列の新規作成
+                ColumnHeader col01 = new();
+                ColumnHeader col03 = new();
+                ColumnHeader col04 = new();
+                ColumnHeader col05 = new();
+                ColumnHeader col06 = new();
+                ColumnHeader col07 = new();
+                ColumnHeader col08 = new();
+                ColumnHeader col09 = new();
+                ColumnHeader col10 = new();
+                ColumnHeader col11 = new();
+                ColumnHeader col12 = new();
+                ColumnHeader col13 = new();
+                ColumnHeader col02 = new();
+                ColumnHeader col14 = new();
+                ColumnHeader col15 = new();
+                ColumnHeader col16 = new();
+                ColumnHeader col17 = new();
+                #endregion
+
+                #region 列名称設定
+                col01.Text = "id";
+                col02.Text = "start_count";
+                col03.Text = "planed_count";
+                col04.Text = "skipped_count";
+                col05.Text = "printed_count";
+                col06.Text = "pasted_count";
+                col07.Text = "passed_count";
+                col08.Text = "rejected_count";
+                col09.Text = "process_date_start";
+                col10.Text = "process_date_end";
+                col11.Text = "user_code";
+                col12.Text = "device_id";
+                col13.Text = "is_offline";
+                col14.Text = "is_retried";
+                col15.Text = "cancel_reason";
+                col16.Text = "productivity_time";
+                col17.Text = "order_id";
+                #endregion
+
+                #region 列揃え指定
+                col01.TextAlign = HorizontalAlignment.Center;
+                col02.TextAlign = HorizontalAlignment.Center;
+                col03.TextAlign = HorizontalAlignment.Center;
+                col04.TextAlign = HorizontalAlignment.Center;
+                col05.TextAlign = HorizontalAlignment.Center;
+                col06.TextAlign = HorizontalAlignment.Center;
+                col07.TextAlign = HorizontalAlignment.Center;
+                col08.TextAlign = HorizontalAlignment.Center;
+                col09.TextAlign = HorizontalAlignment.Center;
+                col10.TextAlign = HorizontalAlignment.Center;
+                col11.TextAlign = HorizontalAlignment.Center;
+                col12.TextAlign = HorizontalAlignment.Center;
+                col13.TextAlign = HorizontalAlignment.Center;
+                col14.TextAlign = HorizontalAlignment.Center;
+                col15.TextAlign = HorizontalAlignment.Left;
+                col16.TextAlign = HorizontalAlignment.Center;
+                col17.TextAlign = HorizontalAlignment.Center;
+                #endregion
+
+                #region 列幅指定
+                col01.Width = 50;       // id
+                col02.Width = 100;      // import_time
+                col03.Width = 100;      // import_index
+                col04.Width = 100;      // status
+                col05.Width = 100;      // is_retried
+                col06.Width = 100;      // record_id
+                col07.Width = 100;      // data_category
+                col08.Width = 100;      // logistics_center_code
+                col09.Width = 100;      // shipment_no
+                col10.Width = 100;      // process_id
+                col11.Width = 100;      // planed_shipping_date
+                col12.Width = 100;      // picking_no
+                col13.Width = 100;      // list_pattern_name
+                col14.Width = 100;      // process_category
+                col15.Width = 200;      // customer_center_code
+                col16.Width = 100;      // customer_company_code
+                col17.Width = 100;      // customer_name
+                #endregion
+
+                #region 列表示
+                ColumnHeader[] colHeader = new[] { col01, col02, col03, col04, col05, col06, col07, col08, col09, col10,
+                                                   col11, col12, col13, col14, col15, col16, col17};
+                LstViewResult.Columns.AddRange(colHeader);
+                #endregion
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【DisplayHeaderForHistory】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
 
         public static void ExecuteNonQuery(string query)
@@ -391,6 +502,87 @@ namespace OperationLogDisplay
             return Datas;
         }
 
+        private List<HistoryData> ExecuteReaderForHistory(string query)
+        {
+            // 検索条件に一致したレコードを格納するコレクション
+            List<HistoryData> Datas = new();
+
+            // MySQLへの接続情報を設定
+            var server = TxtIpAddress1.Text;    // ホスト名
+            var port = 3306;                    // ポート
+            var user = "devuser";               // ユーザー名
+            var pass = "Pf6QfXcQ";              // パスワード
+            var charset = "utf8";               // エンコード
+            var database = "srobo";             // データベース
+            var connectionString = $"Server={server};Port={port};Username={user};Password={pass};Charset={charset};Database={database}";
+
+            try
+            {
+                using MySqlConnection connection = new(connectionString);
+                using var commnad = connection.CreateCommand();
+                // MySQLへ接続
+                connection.Open();
+
+                // クエリーの実行処理
+                commnad.CommandText = query;
+                using var reader = commnad.ExecuteReader();
+                while (reader.Read())
+                {
+                    Datas.Add(new HistoryData
+                    {
+                        Id = reader.GetInt32("id"),
+                        Start_count = reader.GetInt32("start_count"),
+                        Planed_count = reader.GetInt32("planed_count"),
+                        Skipped_count = reader.GetInt32("skipped_count"),
+                        Printed_count = reader.GetInt32("printed_count"),
+                        Pasted_count = reader.GetInt32("pasted_count"),
+                        Passed_count = reader.GetInt32("passed_count"),
+                        Rejected_count = reader.GetInt32("rejected_count"),
+                        Process_date_start = reader.GetInt64("process_date_start"),
+                        Process_date_end = reader.GetInt64("process_date_end"),
+                        User_code = reader.GetString("user_code"),
+                        Device_id = reader.GetString("device_id"),
+                        Is_offline = reader.GetInt32("is_offline"),
+                        Is_retried = reader.GetInt32("is_retried"),
+                        Cancel_reason = reader.GetString("cancel_reason"),
+                        Productivity_time = reader.GetString("productivity_time"),
+                        Order_id = reader.GetInt32("order_id"),
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【ExecuteReaderForHistory】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return Datas;
+        }
+
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        class HistoryData
+        {
+            public int Id { get; set; }
+            public int Start_count { get; set; }
+            public int Planed_count { get; set; }
+            public int Skipped_count { get; set; }
+            public int Printed_count { get; set; }
+            public int Pasted_count { get; set; }
+            public int Passed_count { get; set; }
+            public int Rejected_count { get; set; }
+            public long Process_date_start { get; set; }
+            public long Process_date_end { get; set; }
+            public string? User_code { get; set; }
+            public string? Device_id { get; set; }
+            public int Is_offline { get; set; }
+            public int Is_retried { get; set; }
+            public string? Cancel_reason { get; set; }
+            public string? Productivity_time { get; set; }
+            public int Order_id { get; set; }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -490,6 +682,14 @@ namespace OperationLogDisplay
                     LstViewResult1.Items.Add(itm1);
                     LstViewResult1.Items[^1].UseItemStyleForSubItems = false;
 
+                    if (LstViewResult1.Items.Count % 2 == 0)
+                    {
+                        // 偶数行の色反転
+                        for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
+                        {
+                            LstViewResult1.Items[LstViewResult1.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(230, 200, 200);
+                        }
+                    }
                 }
                 LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
             }
@@ -556,6 +756,14 @@ namespace OperationLogDisplay
                     LstViewResult2.Items.Add(itm2);
                     LstViewResult2.Items[^1].UseItemStyleForSubItems = false;
 
+                    if (LstViewResult2.Items.Count % 2 == 0)
+                    {
+                        // 偶数行の色反転
+                        for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
+                        {
+                            LstViewResult2.Items[LstViewResult2.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 230, 200);
+                        }
+                    }
                 }
                 LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
             }
@@ -586,5 +794,56 @@ namespace OperationLogDisplay
             LstViewResult2.Items.Clear();
         }
 
+        private void BtnRefresh3_Click(object sender, EventArgs e)
+        {
+            string[] col = new string[17];
+            ListViewItem itm3;
+
+            try
+            {
+                LstViewResult3.Items.Clear();
+                var result3 = ExecuteReaderForHistory("SELECT * FROM `history`;");
+                foreach (var ret in result3)
+                {
+                    // 検索結果を表示
+                    col[0] = ret.Id.ToString();
+                    col[1] = ret.Start_count.ToString();
+                    col[2] = ret.Planed_count.ToString();
+                    col[3] = ret.Skipped_count.ToString();
+                    col[4] = ret.Printed_count.ToString();
+                    col[5] = ret.Pasted_count.ToString();
+                    col[6] = ret.Passed_count.ToString();
+                    col[7] = ret.Rejected_count.ToString();
+                    col[8] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_start/1000).ToString();
+                    col[9] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_end/1000).ToString();
+                    col[10] = ret.User_code.ToString();
+                    col[11] = ret.Device_id.ToString();
+                    col[12] = ret.Is_offline.ToString();
+                    col[13] = ret.Is_retried.ToString();
+                    col[14] = ret.Cancel_reason.ToString();
+                    col[15] = ret.Productivity_time.ToString();
+                    col[16] = ret.Order_id.ToString();
+
+                    itm3 = new ListViewItem(col);
+                    LstViewResult3.Items.Add(itm3);
+                    LstViewResult3.Items[^1].UseItemStyleForSubItems = false;
+
+                    if (LstViewResult3.Items.Count % 2 == 0)
+                    {
+                        // 偶数行の色反転
+                        for (var intLoopCnt = 0; intLoopCnt <= 16; intLoopCnt++)
+                        {
+                            LstViewResult3.Items[LstViewResult3.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                        }
+                    }
+                }
+                LblResult3.Text = LstViewResult3.Items.Count.ToString("###,##0") + "件";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnRefresh3_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }
