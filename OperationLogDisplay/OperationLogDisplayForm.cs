@@ -1,5 +1,7 @@
 //using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Diagnostics;
 //using System.Drawing;
@@ -29,6 +31,13 @@ namespace OperationLogDisplay
                 LblResult1.Text = "";
                 LblResult2.Text = "";
                 LblResult3.Text = "";
+
+                CmbComp.Items.Clear();
+                CmbComp.Items.Add("＞");
+                CmbComp.Items.Add("＝");
+                CmbComp.Items.Add("＜");
+                CmbComp.SelectedIndex = 1;
+
                 DisplayHeader(LstViewResult1);
                 DisplayHeader(LstViewResult2);
 
@@ -639,7 +648,33 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult1.Items.Clear();
-                var result1 = ExecuteReader1("SELECT * FROM `order`;");
+
+                string sPicDay1 = "";
+                string sPicDay2 = "";
+                string sDate1 = "";
+                string sDate2 = "";
+                string sSQLData = "";
+
+                sPicDay1 = dTimPickerImportDate.Value.ToString("yyyy-MM-dd");
+                sPicDay2 = dTimPickerImportDate.Value.AddDays(1).ToString("yyyy-MM-dd");
+                sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
+
+                switch (CmbComp.SelectedIndex)
+                {
+                    case 0: // ＞                        
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME > " + sDate1 + ";";
+                        break;
+                    case 1: // ＝
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME BETWEEN " + sDate1 + " AND " + sDate2 + ";";
+                        break;
+                    case 2: // ＜
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
+                        break;
+                }
+
+                var result1 = ExecuteReader1(sSQLData);
+                //var result1 = ExecuteReader1("SELECT * FROM `order`;");
                 foreach (var ret in result1)
                 {
                     // 検索結果を表示
