@@ -45,6 +45,7 @@
             this.BtnRefresh3 = new System.Windows.Forms.Button();
             this.LblResult3 = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
+            this.BtnEnd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -222,18 +223,33 @@
             // 
             this.LblVersion.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblVersion.Location = new System.Drawing.Point(1612, 913);
+            this.LblVersion.Location = new System.Drawing.Point(1612, 929);
             this.LblVersion.Name = "LblVersion";
             this.LblVersion.Size = new System.Drawing.Size(254, 23);
             this.LblVersion.TabIndex = 18;
             this.LblVersion.Text = "LblVersion";
             this.LblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // BtnEnd
+            // 
+            this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
+            this.BtnEnd.Location = new System.Drawing.Point(1733, 869);
+            this.BtnEnd.Name = "BtnEnd";
+            this.BtnEnd.Size = new System.Drawing.Size(133, 45);
+            this.BtnEnd.TabIndex = 19;
+            this.BtnEnd.Text = "終了";
+            this.BtnEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnEnd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnEnd.UseVisualStyleBackColor = true;
+            this.BtnEnd.Click += new System.EventHandler(this.BtnEnd_Click);
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.BtnEnd);
             this.Controls.Add(this.LblVersion);
             this.Controls.Add(this.LblResult3);
             this.Controls.Add(this.BtnRefresh3);
@@ -254,6 +270,7 @@
             this.Name = "OperationLogDisplayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "稼働ログ表示";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OperationLogDisplayForm_FormClosing);
             this.Load += new System.EventHandler(this.OperationLogDisplayForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -281,5 +298,6 @@
         private Button BtnRefresh3;
         private Label LblResult3;
         private Label LblVersion;
+        private Button BtnEnd;
     }
 }

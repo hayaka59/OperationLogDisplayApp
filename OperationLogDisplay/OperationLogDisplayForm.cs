@@ -831,5 +831,35 @@ namespace OperationLogDisplay
 
         }
 
+        /// <summary>
+        /// 「終了」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnEnd_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult;
+            dialogResult = MessageBox.Show("終了しますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult==DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 「✕」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OperationLogDisplayForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult;
+            dialogResult = MessageBox.Show("終了しますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.No)
+            {
+                // フォームを閉じるのをキャンセル
+                e.Cancel = true;
+            }            
+        }
     }
 }
