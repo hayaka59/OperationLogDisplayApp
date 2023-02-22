@@ -1,5 +1,7 @@
 //using Microsoft.VisualBasic;
+using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Diagnostics;
 //using System.Drawing;
@@ -29,10 +31,25 @@ namespace OperationLogDisplay
                 LblResult1.Text = "";
                 LblResult2.Text = "";
                 LblResult3.Text = "";
+                LblResult4.Text = "";
+
+                CmbComp1.Items.Clear();
+                CmbComp1.Items.Add("＞");
+                CmbComp1.Items.Add("＝");
+                CmbComp1.Items.Add("＜");
+                CmbComp1.SelectedIndex = 1;
+
+                CmbComp2.Items.Clear();
+                CmbComp2.Items.Add("＞");
+                CmbComp2.Items.Add("＝");
+                CmbComp2.Items.Add("＜");
+                CmbComp2.SelectedIndex = 1;
+
                 DisplayHeader(LstViewResult1);
                 DisplayHeader(LstViewResult2);
 
                 DisplayHeaderForHistory(LstViewResult3);
+                DisplayHeaderForHistory(LstViewResult4);
             }
             catch (Exception ex)
             {
@@ -250,10 +267,10 @@ namespace OperationLogDisplay
                 #region 列名称設定
                 col01.Text = "id";
                 col02.Text = "start_count";
-                col03.Text = "planed_count";
+                col03.Text = "予定数";                 // planed_count 
                 col04.Text = "skipped_count";
-                col05.Text = "printed_count";
-                col06.Text = "pasted_count";
+                col05.Text = "printed_count";           
+                col06.Text = "貼付枚数";            // pasted_count
                 col07.Text = "passed_count";
                 col08.Text = "rejected_count";
                 col09.Text = "process_date_start";
@@ -262,7 +279,7 @@ namespace OperationLogDisplay
                 col12.Text = "device_id";
                 col13.Text = "is_offline";
                 col14.Text = "is_retried";
-                col15.Text = "cancel_reason";
+                col15.Text = "中止理由";            // cancel_reason
                 col16.Text = "productivity_time";
                 col17.Text = "order_id";
                 #endregion
@@ -357,13 +374,13 @@ namespace OperationLogDisplay
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        private List<OrderData> ExecuteReader1(string query)
+        private List<OrderData> ExecuteReader(string query, string sServer)
         {
             // 検索条件に一致したレコードを格納するコレクション
             List<OrderData> Datas = new();
 
             // MySQLへの接続情報を設定
-            var server = TxtIpAddress1.Text;    // ホスト名
+            var server = sServer;               // ホスト名
             var port = 3306;                    // ポート
             var user = "devuser";               // ユーザー名
             var pass = "Pf6QfXcQ";              // パスワード
@@ -430,86 +447,19 @@ namespace OperationLogDisplay
             return Datas;
         }
 
-        private List<OrderData> ExecuteReader2(string query)
-        {
-            // 検索条件に一致したレコードを格納するコレクション
-            List<OrderData> Datas = new();
-
-            // MySQLへの接続情報を設定
-            var server = TxtIpAddress2.Text;    // ホスト名
-            var port = 3306;                    // ポート
-            var user = "devuser";               // ユーザー名
-            var pass = "Pf6QfXcQ";              // パスワード
-            var charset = "utf8";               // エンコード
-            var database = "srobo";             // データベース
-            var connectionString = $"Server={server};Port={port};Username={user};Password={pass};Charset={charset};Database={database}";
-
-            try
-            {
-                using MySqlConnection connection = new(connectionString);
-                using var commnad = connection.CreateCommand();
-                // MySQLへ接続
-                connection.Open();
-
-                // クエリーの実行処理
-                commnad.CommandText = query;
-                using var reader = commnad.ExecuteReader();
-                while (reader.Read())
-                {
-                    Datas.Add(new OrderData
-                    {
-                        Id = reader.GetInt32("id"),
-                        Import_time = reader.GetInt64("import_time"),
-                        Import_index = reader.GetInt32("import_index"),
-                        Status = reader.GetInt32("status"),
-                        Is_retried = reader.GetInt32("is_retried"),
-                        Record_id = reader.GetString("record_id"),
-                        Data_category = reader.GetInt32("data_category"),
-                        Logistics_center_code = reader.GetInt32("logistics_center_code"),
-                        Shipment_no = reader.GetInt32("shipment_no"),
-                        Process_id = reader.GetString("process_id"),
-                        Planed_shipping_date = reader.GetInt64("planed_shipping_date"),
-                        Picking_no = reader.GetInt32("picking_no"),
-                        List_pattern_name = reader.GetString("list_pattern_name"),
-                        Process_category = reader.GetInt32("process_category"),
-                        Customer_center_code = reader.GetString("customer_center_code"),
-                        Customer_company_code = reader.GetInt32("customer_company_code"),
-                        Customer_name = reader.GetString("customer_name"),
-                        Customer_center_name = reader.GetString("customer_center_name"),
-                        Product_code = reader.GetString("product_code"),
-                        Product_sub_code = reader.GetString("product_sub_code"),
-                        Product_name = reader.GetString("product_name"),
-                        Count_per_case = reader.GetInt32("count_per_case"),
-                        Piece_count = reader.GetInt32("piece_count"),
-                        Count_per_pack = reader.GetInt32("count_per_pack"),
-                        Limit_type = reader.GetInt32("limit_type"),
-                        Limit_days = reader.GetInt32("limit_days"),
-                        Case_paste_category = reader.GetInt32("case_paste_category"),
-                        Selling_price = reader.GetInt32("selling_price"),
-                        Storage_method = reader.GetString("storage_method"),
-                        Planed_count = reader.GetInt32("planed_count"),
-                        Skipped_count = reader.GetInt32("skipped_count"),
-                        Printed_count = reader.GetInt32("printed_count"),
-                        Pasted_count = reader.GetInt32("pasted_count"),
-                        Passed_count = reader.GetInt32("passed_count"),
-                        Rejected_count = reader.GetInt32("rejected_count"),
-                    });
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "【ExecuteReader2】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return Datas;
-        }
-
-        private List<HistoryData> ExecuteReaderForHistory(string query)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="sServer"></param>
+        /// <returns></returns>
+        private List<HistoryData> ExecuteReaderForHistory(string query, string sServer)
         {
             // 検索条件に一致したレコードを格納するコレクション
             List<HistoryData> Datas = new();
 
             // MySQLへの接続情報を設定
-            var server = TxtIpAddress1.Text;    // ホスト名
+            var server = sServer;               // ホスト名
             var port = 3306;                    // ポート
             var user = "devuser";               // ユーザー名
             var pass = "Pf6QfXcQ";              // パスワード
@@ -557,8 +507,6 @@ namespace OperationLogDisplay
             }
             return Datas;
         }
-
-
 
         /// <summary>
         /// 
@@ -639,8 +587,28 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult1.Items.Clear();
-                var result1 = ExecuteReader1("SELECT * FROM `order`;");
-                foreach (var ret in result1)
+
+                string sSQLData = "";
+                string sPicDay1 = dTimPickerImportDate1.Value.ToString("yyyy-MM-dd");
+                string sPicDay2 = dTimPickerImportDate1.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                string sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
+
+                switch (CmbComp1.SelectedIndex)
+                {
+                    case 0: // ＞                        
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME > " + sDate1 + ";";
+                        break;
+                    case 1: // ＝
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME BETWEEN " + sDate1 + " AND " + sDate2 + ";";
+                        break;
+                    case 2: // ＜
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
+                        break;
+                }
+
+                var result = ExecuteReader(sSQLData, TxtIpAddress1.Text);
+                foreach (var ret in result)
                 {
                     // 検索結果を表示
                     col[0] = ret.Id.ToString();
@@ -713,8 +681,28 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult2.Items.Clear();
-                var result2 = ExecuteReader2("SELECT * FROM `order`;");
-                foreach (var ret in result2)
+
+                string sSQLData = "";
+                string sPicDay1 = dTimPickerImportDate2.Value.ToString("yyyy-MM-dd");
+                string sPicDay2 = dTimPickerImportDate2.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                string sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
+
+                switch (CmbComp2.SelectedIndex)
+                {
+                    case 0: // ＞                        
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME > " + sDate1 + ";";
+                        break;
+                    case 1: // ＝
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME BETWEEN " + sDate1 + " AND " + sDate2 + ";";
+                        break;
+                    case 2: // ＜
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
+                        break;
+                }
+
+                var result = ExecuteReader(sSQLData, TxtIpAddress2.Text);
+                foreach (var ret in result)
                 {
                     // 検索結果を表示
                     col[0] = ret.Id.ToString();
@@ -787,8 +775,26 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult3.Items.Clear();
-                var result3 = ExecuteReaderForHistory("SELECT * FROM `history`;");
-                foreach (var ret in result3)
+
+                string sSQLData = "";
+                string sPicDay1 = dTimPickerImportDate1.Value.ToString("yyyy-MM-dd");
+                string sPicDay2 = dTimPickerImportDate1.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                string sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
+                switch (CmbComp1.SelectedIndex)
+                {
+                    case 0: // ＞                        
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START > " + sDate1 + ";";
+                        break;
+                    case 1: // ＝
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START BETWEEN " + sDate1 + " AND " + sDate2 + ";";
+                        break;
+                    case 2: // ＜
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START < " + sDate1 + ";";
+                        break;
+                }
+                var result = ExecuteReaderForHistory(sSQLData, TxtIpAddress1.Text);
+                foreach (var ret in result)
                 {
                     // 検索結果を表示
                     col[0] = ret.Id.ToString();
@@ -829,6 +835,112 @@ namespace OperationLogDisplay
                 MessageBox.Show(ex.Message, "【BtnRefresh3_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+
+        /// <summary>
+        /// 「更新４」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRefresh4_Click(object sender, EventArgs e)
+        {
+            string[] col = new string[17];
+            ListViewItem itm4;
+
+            try
+            {
+                LstViewResult4.Items.Clear();
+
+                string sSQLData = "";
+                string sPicDay1 = dTimPickerImportDate2.Value.ToString("yyyy-MM-dd");
+                string sPicDay2 = dTimPickerImportDate2.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                string sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
+                switch (CmbComp2.SelectedIndex)
+                {
+                    case 0: // ＞                        
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START > " + sDate1 + ";";
+                        break;
+                    case 1: // ＝
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START BETWEEN " + sDate1 + " AND " + sDate2 + ";";
+                        break;
+                    case 2: // ＜
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START < " + sDate1 + ";";
+                        break;
+                }
+                var result4 = ExecuteReaderForHistory(sSQLData, TxtIpAddress2.Text);
+                foreach (var ret in result4)
+                {
+                    // 検索結果を表示
+                    col[0] = ret.Id.ToString();
+                    col[1] = ret.Start_count.ToString();
+                    col[2] = ret.Planed_count.ToString();
+                    col[3] = ret.Skipped_count.ToString();
+                    col[4] = ret.Printed_count.ToString();
+                    col[5] = ret.Pasted_count.ToString();
+                    col[6] = ret.Passed_count.ToString();
+                    col[7] = ret.Rejected_count.ToString();
+                    col[8] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_start / 1000).ToString();
+                    col[9] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_end / 1000).ToString();
+                    col[10] = ret.User_code.ToString();
+                    col[11] = ret.Device_id.ToString();
+                    col[12] = ret.Is_offline.ToString();
+                    col[13] = ret.Is_retried.ToString();
+                    col[14] = ret.Cancel_reason.ToString();
+                    col[15] = ret.Productivity_time.ToString();
+                    col[16] = ret.Order_id.ToString();
+
+                    itm4 = new ListViewItem(col);
+                    LstViewResult4.Items.Add(itm4);
+                    LstViewResult4.Items[^1].UseItemStyleForSubItems = false;
+
+                    if (LstViewResult4.Items.Count % 2 == 0)
+                    {
+                        // 偶数行の色反転
+                        for (var intLoopCnt = 0; intLoopCnt <= 16; intLoopCnt++)
+                        {
+                            LstViewResult4.Items[LstViewResult4.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                        }
+                    }
+                }
+                LblResult4.Text = LstViewResult4.Items.Count.ToString("###,##0") + "件";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnRefresh4_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// 「終了」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnEnd_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult;
+            dialogResult = MessageBox.Show("終了しますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                this.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// 「✕」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OperationLogDisplayForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialogResult;
+            dialogResult = MessageBox.Show("終了しますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.No)
+            {
+                // フォームを閉じるのをキャンセル
+                e.Cancel = true;
+            }            
         }
 
     }

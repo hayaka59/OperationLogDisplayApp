@@ -63,6 +63,16 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap exit_icon_small {
+            get {
+                object obj = ResourceManager.GetObject("exit_icon_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap reload_small {
             get {
                 object obj = ResourceManager.GetObject("reload_small", resourceCulture);
