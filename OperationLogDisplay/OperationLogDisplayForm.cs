@@ -44,6 +44,12 @@ namespace OperationLogDisplay
                 CmbComp2.Items.Add("＜");
                 CmbComp2.SelectedIndex = 1;
 
+                CmbComp3.Items.Clear();
+                CmbComp3.Items.Add("＞");
+                CmbComp3.Items.Add("＝");
+                CmbComp3.Items.Add("＜");
+                CmbComp3.SelectedIndex = 1;
+
                 DisplayHeader(LstViewResult1);
                 DisplayHeader(LstViewResult2);
 
@@ -842,7 +848,25 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult3.Items.Clear();
-                var result3 = ExecuteReaderForHistory("SELECT * FROM `history`;");
+
+                string sSQLData = "";
+                string sPicDay1 = dTimPickerImportDate3.Value.ToString("yyyy-MM-dd");
+                string sPicDay2 = dTimPickerImportDate3.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                string sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
+                switch (CmbComp3.SelectedIndex)
+                {
+                    case 0: // ＞                        
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START > " + sDate1 + ";";
+                        break;
+                    case 1: // ＝
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START BETWEEN " + sDate1 + " AND " + sDate2 + ";";
+                        break;
+                    case 2: // ＜
+                        sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START < " + sDate1 + ";";
+                        break;
+                }
+                var result3 = ExecuteReaderForHistory(sSQLData);
                 foreach (var ret in result3)
                 {
                     // 検索結果を表示

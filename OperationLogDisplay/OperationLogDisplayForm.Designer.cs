@@ -52,10 +52,18 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.CmbComp2 = new System.Windows.Forms.ComboBox();
             this.dTimPickerImportDate2 = new System.Windows.Forms.DateTimePicker();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.CmbComp3 = new System.Windows.Forms.ComboBox();
+            this.dTimPickerImportDate3 = new System.Windows.Forms.DateTimePicker();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.TxtIpAddress3 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRefresh1
@@ -77,7 +85,7 @@
             this.LblResult1.AutoSize = true;
             this.LblResult1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblResult1.ForeColor = System.Drawing.Color.Red;
-            this.LblResult1.Location = new System.Drawing.Point(39, 415);
+            this.LblResult1.Location = new System.Drawing.Point(848, 415);
             this.LblResult1.Name = "LblResult1";
             this.LblResult1.Size = new System.Drawing.Size(91, 24);
             this.LblResult1.TabIndex = 3;
@@ -132,7 +140,7 @@
             this.LblResult2.AutoSize = true;
             this.LblResult2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblResult2.ForeColor = System.Drawing.Color.Red;
-            this.LblResult2.Location = new System.Drawing.Point(966, 415);
+            this.LblResult2.Location = new System.Drawing.Point(1775, 415);
             this.LblResult2.Name = "LblResult2";
             this.LblResult2.Size = new System.Drawing.Size(91, 24);
             this.LblResult2.TabIndex = 8;
@@ -196,7 +204,7 @@
             // 
             this.LstViewResult3.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult3.FullRowSelect = true;
-            this.LstViewResult3.Location = new System.Drawing.Point(39, 442);
+            this.LstViewResult3.Location = new System.Drawing.Point(39, 501);
             this.LstViewResult3.Name = "LstViewResult3";
             this.LstViewResult3.Size = new System.Drawing.Size(1827, 397);
             this.LstViewResult3.TabIndex = 15;
@@ -206,7 +214,7 @@
             // 
             this.BtnRefresh3.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRefresh3.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
-            this.BtnRefresh3.Location = new System.Drawing.Point(39, 869);
+            this.BtnRefresh3.Location = new System.Drawing.Point(639, 450);
             this.BtnRefresh3.Name = "BtnRefresh3";
             this.BtnRefresh3.Size = new System.Drawing.Size(133, 45);
             this.BtnRefresh3.TabIndex = 16;
@@ -220,7 +228,7 @@
             // 
             this.LblResult3.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblResult3.ForeColor = System.Drawing.Color.Red;
-            this.LblResult3.Location = new System.Drawing.Point(39, 842);
+            this.LblResult3.Location = new System.Drawing.Point(1733, 901);
             this.LblResult3.Name = "LblResult3";
             this.LblResult3.Size = new System.Drawing.Size(133, 24);
             this.LblResult3.TabIndex = 17;
@@ -242,7 +250,7 @@
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
-            this.BtnEnd.Location = new System.Drawing.Point(1733, 869);
+            this.BtnEnd.Location = new System.Drawing.Point(39, 907);
             this.BtnEnd.Name = "BtnEnd";
             this.BtnEnd.Size = new System.Drawing.Size(133, 45);
             this.BtnEnd.TabIndex = 19;
@@ -308,11 +316,74 @@
             this.dTimPickerImportDate2.Size = new System.Drawing.Size(160, 27);
             this.dTimPickerImportDate2.TabIndex = 20;
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.CmbComp3);
+            this.groupBox5.Controls.Add(this.dTimPickerImportDate3);
+            this.groupBox5.Location = new System.Drawing.Point(377, 440);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(247, 59);
+            this.groupBox5.TabIndex = 23;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "取込日付";
+            // 
+            // CmbComp3
+            // 
+            this.CmbComp3.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbComp3.FormattingEnabled = true;
+            this.CmbComp3.Location = new System.Drawing.Point(15, 22);
+            this.CmbComp3.Name = "CmbComp3";
+            this.CmbComp3.Size = new System.Drawing.Size(50, 28);
+            this.CmbComp3.TabIndex = 20;
+            // 
+            // dTimPickerImportDate3
+            // 
+            this.dTimPickerImportDate3.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dTimPickerImportDate3.Location = new System.Drawing.Point(71, 22);
+            this.dTimPickerImportDate3.Name = "dTimPickerImportDate3";
+            this.dTimPickerImportDate3.Size = new System.Drawing.Size(160, 27);
+            this.dTimPickerImportDate3.TabIndex = 20;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.TxtIpAddress3);
+            this.groupBox6.Location = new System.Drawing.Point(189, 440);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(180, 59);
+            this.groupBox6.TabIndex = 22;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "1号機IPアドレス";
+            // 
+            // TxtIpAddress3
+            // 
+            this.TxtIpAddress3.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtIpAddress3.Location = new System.Drawing.Point(11, 21);
+            this.TxtIpAddress3.Name = "TxtIpAddress3";
+            this.TxtIpAddress3.Size = new System.Drawing.Size(155, 27);
+            this.TxtIpAddress3.TabIndex = 11;
+            this.TxtIpAddress3.Text = "255.255.255.255";
+            this.TxtIpAddress3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.RoyalBlue;
+            this.label2.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(39, 450);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 45);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "履歴テーブル";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.BtnEnd);
@@ -344,6 +415,9 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,5 +447,11 @@
         private GroupBox groupBox4;
         private ComboBox CmbComp2;
         private DateTimePicker dTimPickerImportDate2;
+        private GroupBox groupBox5;
+        private ComboBox CmbComp3;
+        private DateTimePicker dTimPickerImportDate3;
+        private GroupBox groupBox6;
+        private TextBox TxtIpAddress3;
+        private Label label2;
     }
 }
