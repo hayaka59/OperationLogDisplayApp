@@ -46,12 +46,16 @@
             this.LblResult3 = new System.Windows.Forms.Label();
             this.LblVersion = new System.Windows.Forms.Label();
             this.BtnEnd = new System.Windows.Forms.Button();
-            this.dTimPickerImportDate = new System.Windows.Forms.DateTimePicker();
+            this.dTimPickerImportDate1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.CmbComp = new System.Windows.Forms.ComboBox();
+            this.CmbComp1 = new System.Windows.Forms.ComboBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.CmbComp2 = new System.Windows.Forms.ComboBox();
+            this.dTimPickerImportDate2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRefresh1
@@ -138,7 +142,7 @@
             // 
             this.BtnRefresh2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRefresh2.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
-            this.BtnRefresh2.Location = new System.Drawing.Point(1304, 9);
+            this.BtnRefresh2.Location = new System.Drawing.Point(1555, 12);
             this.BtnRefresh2.Name = "BtnRefresh2";
             this.BtnRefresh2.Size = new System.Drawing.Size(133, 45);
             this.BtnRefresh2.TabIndex = 9;
@@ -248,18 +252,18 @@
             this.BtnEnd.UseVisualStyleBackColor = true;
             this.BtnEnd.Click += new System.EventHandler(this.BtnEnd_Click);
             // 
-            // dTimPickerImportDate
+            // dTimPickerImportDate1
             // 
-            this.dTimPickerImportDate.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dTimPickerImportDate.Location = new System.Drawing.Point(71, 22);
-            this.dTimPickerImportDate.Name = "dTimPickerImportDate";
-            this.dTimPickerImportDate.Size = new System.Drawing.Size(160, 27);
-            this.dTimPickerImportDate.TabIndex = 20;
+            this.dTimPickerImportDate1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dTimPickerImportDate1.Location = new System.Drawing.Point(71, 22);
+            this.dTimPickerImportDate1.Name = "dTimPickerImportDate1";
+            this.dTimPickerImportDate1.Size = new System.Drawing.Size(160, 27);
+            this.dTimPickerImportDate1.TabIndex = 20;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.CmbComp);
-            this.groupBox3.Controls.Add(this.dTimPickerImportDate);
+            this.groupBox3.Controls.Add(this.CmbComp1);
+            this.groupBox3.Controls.Add(this.dTimPickerImportDate1);
             this.groupBox3.Location = new System.Drawing.Point(377, 0);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(247, 59);
@@ -267,20 +271,49 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "取込日付";
             // 
-            // CmbComp
+            // CmbComp1
             // 
-            this.CmbComp.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.CmbComp.FormattingEnabled = true;
-            this.CmbComp.Location = new System.Drawing.Point(15, 22);
-            this.CmbComp.Name = "CmbComp";
-            this.CmbComp.Size = new System.Drawing.Size(50, 28);
-            this.CmbComp.TabIndex = 20;
+            this.CmbComp1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbComp1.FormattingEnabled = true;
+            this.CmbComp1.Location = new System.Drawing.Point(15, 22);
+            this.CmbComp1.Name = "CmbComp1";
+            this.CmbComp1.Size = new System.Drawing.Size(50, 28);
+            this.CmbComp1.TabIndex = 20;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.CmbComp2);
+            this.groupBox4.Controls.Add(this.dTimPickerImportDate2);
+            this.groupBox4.Location = new System.Drawing.Point(1302, 0);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(247, 59);
+            this.groupBox4.TabIndex = 20;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "取込日付";
+            // 
+            // CmbComp2
+            // 
+            this.CmbComp2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbComp2.FormattingEnabled = true;
+            this.CmbComp2.Location = new System.Drawing.Point(15, 22);
+            this.CmbComp2.Name = "CmbComp2";
+            this.CmbComp2.Size = new System.Drawing.Size(50, 28);
+            this.CmbComp2.TabIndex = 20;
+            // 
+            // dTimPickerImportDate2
+            // 
+            this.dTimPickerImportDate2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.dTimPickerImportDate2.Location = new System.Drawing.Point(71, 22);
+            this.dTimPickerImportDate2.Name = "dTimPickerImportDate2";
+            this.dTimPickerImportDate2.Size = new System.Drawing.Size(160, 27);
+            this.dTimPickerImportDate2.TabIndex = 20;
             // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.BtnEnd);
             this.Controls.Add(this.LblVersion);
@@ -310,6 +343,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,8 +367,11 @@
         private Label LblResult3;
         private Label LblVersion;
         private Button BtnEnd;
-        private DateTimePicker dTimPickerImportDate;
+        private DateTimePicker dTimPickerImportDate1;
         private GroupBox groupBox3;
-        private ComboBox CmbComp;
+        private ComboBox CmbComp1;
+        private GroupBox groupBox4;
+        private ComboBox CmbComp2;
+        private DateTimePicker dTimPickerImportDate2;
     }
 }

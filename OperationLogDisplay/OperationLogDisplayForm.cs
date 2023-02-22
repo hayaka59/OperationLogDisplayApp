@@ -32,11 +32,17 @@ namespace OperationLogDisplay
                 LblResult2.Text = "";
                 LblResult3.Text = "";
 
-                CmbComp.Items.Clear();
-                CmbComp.Items.Add("＞");
-                CmbComp.Items.Add("＝");
-                CmbComp.Items.Add("＜");
-                CmbComp.SelectedIndex = 1;
+                CmbComp1.Items.Clear();
+                CmbComp1.Items.Add("＞");
+                CmbComp1.Items.Add("＝");
+                CmbComp1.Items.Add("＜");
+                CmbComp1.SelectedIndex = 1;
+
+                CmbComp2.Items.Clear();
+                CmbComp2.Items.Add("＞");
+                CmbComp2.Items.Add("＝");
+                CmbComp2.Items.Add("＜");
+                CmbComp2.SelectedIndex = 1;
 
                 DisplayHeader(LstViewResult1);
                 DisplayHeader(LstViewResult2);
@@ -649,18 +655,13 @@ namespace OperationLogDisplay
             {
                 LstViewResult1.Items.Clear();
 
-                string sPicDay1 = "";
-                string sPicDay2 = "";
-                string sDate1 = "";
-                string sDate2 = "";
                 string sSQLData = "";
+                string sPicDay1 = dTimPickerImportDate1.Value.ToString("yyyy-MM-dd");
+                string sPicDay2 = dTimPickerImportDate1.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                string sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
 
-                sPicDay1 = dTimPickerImportDate.Value.ToString("yyyy-MM-dd");
-                sPicDay2 = dTimPickerImportDate.Value.AddDays(1).ToString("yyyy-MM-dd");
-                sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
-                sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
-
-                switch (CmbComp.SelectedIndex)
+                switch (CmbComp1.SelectedIndex)
                 {
                     case 0: // ＞                        
                         sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME > " + sDate1 + ";";
@@ -674,7 +675,6 @@ namespace OperationLogDisplay
                 }
 
                 var result1 = ExecuteReader1(sSQLData);
-                //var result1 = ExecuteReader1("SELECT * FROM `order`;");
                 foreach (var ret in result1)
                 {
                     // 検索結果を表示
@@ -748,7 +748,27 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult2.Items.Clear();
-                var result2 = ExecuteReader2("SELECT * FROM `order`;");
+
+                string sSQLData = "";
+                string sPicDay1 = dTimPickerImportDate2.Value.ToString("yyyy-MM-dd");
+                string sPicDay2 = dTimPickerImportDate2.Value.AddDays(1).ToString("yyyy-MM-dd");
+                string sDate1 = "UNIX_TIMESTAMP('" + sPicDay1 + " 00:00:00') * 1000";
+                string sDate2 = "UNIX_TIMESTAMP('" + sPicDay2 + " 00:00:00') * 1000";
+
+                switch (CmbComp2.SelectedIndex)
+                {
+                    case 0: // ＞                        
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME > " + sDate1 + ";";
+                        break;
+                    case 1: // ＝
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME BETWEEN " + sDate1 + " AND " + sDate2 + ";";
+                        break;
+                    case 2: // ＜
+                        sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
+                        break;
+                }
+
+                var result2 = ExecuteReader1(sSQLData);
                 foreach (var ret in result2)
                 {
                     // 検索結果を表示
