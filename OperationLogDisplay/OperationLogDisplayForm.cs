@@ -370,7 +370,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// オーダーデータ読込
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -448,7 +448,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// 履歴データ読込
         /// </summary>
         /// <param name="query"></param>
         /// <param name="sServer"></param>
@@ -509,7 +509,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// 履歴データ
         /// </summary>
         class HistoryData
         {
@@ -533,7 +533,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// オーダーデータ
         /// </summary>
         class OrderData
         {
@@ -616,22 +616,31 @@ namespace OperationLogDisplay
                     col[2] = ret.Import_index.ToString();
                     col[3] = ret.Status.ToString();
                     col[4] = ret.Is_retried.ToString();
-                    col[5] = ret.Record_id.ToString();
+                    if(ret.Record_id is not null)
+                        col[5] = ret.Record_id.ToString();
                     col[6] = ret.Data_category.ToString();
                     col[7] = ret.Logistics_center_code.ToString();
                     col[8] = ret.Shipment_no.ToString();
-                    col[9] = ret.Process_id.ToString();
+                    if(ret.Process_id is not null)
+                        col[9] = ret.Process_id.ToString();                    
                     col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
                     col[11] = ret.Picking_no.ToString();
-                    col[12] = ret.List_pattern_name.ToString();
+                    if(ret.List_pattern_name is not null)
+                        col[12] = ret.List_pattern_name.ToString();
                     col[13] = ret.Process_category.ToString();
-                    col[14] = ret.Customer_center_code.ToString();
+                    if(ret.Customer_center_code is not null)
+                        col[14] = ret.Customer_center_code.ToString();                    
                     col[15] = ret.Customer_company_code.ToString();
-                    col[16] = ret.Customer_name.ToString();
-                    col[17] = ret.Customer_center_name.ToString();
-                    col[18] = ret.Product_code.ToString();
-                    col[19] = ret.Product_sub_code.ToString();
-                    col[20] = ret.Product_name.ToString();
+                    if (ret.Customer_name is not null)
+                        col[16] = ret.Customer_name.ToString();
+                    if (ret.Customer_center_name is not null)
+                        col[17] = ret.Customer_center_name.ToString();
+                    if (ret.Product_code is not null)
+                        col[18] = ret.Product_code.ToString();
+                    if (ret.Product_sub_code is not null)
+                        col[19] = ret.Product_sub_code.ToString();
+                    if (ret.Product_name is not null)
+                        col[20] = ret.Product_name.ToString();
                     col[21] = ret.Count_per_case.ToString();
                     col[22] = ret.Piece_count.ToString();
                     col[23] = ret.Count_per_pack.ToString();
@@ -639,7 +648,8 @@ namespace OperationLogDisplay
                     col[25] = ret.Limit_days.ToString();
                     col[26] = ret.Case_paste_category.ToString();
                     col[27] = ret.Selling_price.ToString();
-                    col[28] = ret.Storage_method.ToString();
+                    if(ret.Storage_method is not null)
+                        col[28] = ret.Storage_method.ToString();
                     col[29] = ret.Planed_count.ToString();
                     col[30] = ret.Skipped_count.ToString();
                     col[31] = ret.Printed_count.ToString();
@@ -656,11 +666,14 @@ namespace OperationLogDisplay
                         // 偶数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
                         {
-                            LstViewResult1.Items[LstViewResult1.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(230, 200, 200);
+                            LstViewResult1.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
                 }
                 LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
+
+                // 履歴テーブルの更新
+                BtnRefresh3_Click(sender, e);
             }
             catch (Exception ex)
             {
@@ -710,22 +723,31 @@ namespace OperationLogDisplay
                     col[2] = ret.Import_index.ToString();
                     col[3] = ret.Status.ToString();
                     col[4] = ret.Is_retried.ToString();
-                    col[5] = ret.Record_id.ToString();
+                    if(ret.Record_id is not null)
+                        col[5] = ret.Record_id.ToString();
                     col[6] = ret.Data_category.ToString();
                     col[7] = ret.Logistics_center_code.ToString();
                     col[8] = ret.Shipment_no.ToString();
-                    col[9] = ret.Process_id.ToString();
+                    if(ret.Process_id is not null)
+                        col[9] = ret.Process_id.ToString();
                     col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
                     col[11] = ret.Picking_no.ToString();
-                    col[12] = ret.List_pattern_name.ToString();
+                    if(ret.List_pattern_name is not null)    
+                        col[12] = ret.List_pattern_name.ToString();
                     col[13] = ret.Process_category.ToString();
-                    col[14] = ret.Customer_center_code.ToString();
+                    if(ret.Customer_center_code is not null)
+                        col[14] = ret.Customer_center_code.ToString();
                     col[15] = ret.Customer_company_code.ToString();
-                    col[16] = ret.Customer_name.ToString();
-                    col[17] = ret.Customer_center_name.ToString();
-                    col[18] = ret.Product_code.ToString();
-                    col[19] = ret.Product_sub_code.ToString();
-                    col[20] = ret.Product_name.ToString();
+                    if(ret.Customer_name is not null)
+                        col[16] = ret.Customer_name.ToString();                                       
+                    if(ret.Customer_center_name is not null)
+                        col[17] = ret.Customer_center_name.ToString();
+                    if (ret.Product_code is not null)
+                        col[18] = ret.Product_code.ToString();
+                    if (ret.Product_sub_code is not null)
+                        col[19] = ret.Product_sub_code.ToString();
+                    if (ret.Product_name is not null)
+                        col[20] = ret.Product_name.ToString();
                     col[21] = ret.Count_per_case.ToString();
                     col[22] = ret.Piece_count.ToString();
                     col[23] = ret.Count_per_pack.ToString();
@@ -733,7 +755,8 @@ namespace OperationLogDisplay
                     col[25] = ret.Limit_days.ToString();
                     col[26] = ret.Case_paste_category.ToString();
                     col[27] = ret.Selling_price.ToString();
-                    col[28] = ret.Storage_method.ToString();
+                    if(ret.Storage_method is not null)
+                        col[28] = ret.Storage_method.ToString();
                     col[29] = ret.Planed_count.ToString();
                     col[30] = ret.Skipped_count.ToString();
                     col[31] = ret.Printed_count.ToString();
@@ -750,11 +773,15 @@ namespace OperationLogDisplay
                         // 偶数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
                         {
-                            LstViewResult2.Items[LstViewResult2.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 230, 200);
+                            LstViewResult2.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
                 }
                 LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
+
+                // 履歴テーブルの更新
+                BtnRefresh4_Click(sender, e);
+
             }
             catch (Exception ex)
             {
@@ -807,12 +834,16 @@ namespace OperationLogDisplay
                     col[7] = ret.Rejected_count.ToString();
                     col[8] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_start/1000).ToString();
                     col[9] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_end/1000).ToString();
-                    col[10] = ret.User_code.ToString();
-                    col[11] = ret.Device_id.ToString();
+                    if(ret.User_code is not null)
+                        col[10] = ret.User_code.ToString();
+                    if(ret.Device_id is not null)
+                        col[11] = ret.Device_id.ToString();
                     col[12] = ret.Is_offline.ToString();
                     col[13] = ret.Is_retried.ToString();
-                    col[14] = ret.Cancel_reason.ToString();
-                    col[15] = ret.Productivity_time.ToString();
+                    if(ret.Cancel_reason is not null)
+                        col[14] = ret.Cancel_reason.ToString();
+                    if(ret.Productivity_time is not null)
+                        col[15] = ret.Productivity_time.ToString();
                     col[16] = ret.Order_id.ToString();
 
                     itm3 = new ListViewItem(col);
@@ -824,7 +855,7 @@ namespace OperationLogDisplay
                         // 偶数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 16; intLoopCnt++)
                         {
-                            LstViewResult3.Items[LstViewResult3.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                            LstViewResult3.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
                 }
@@ -883,12 +914,16 @@ namespace OperationLogDisplay
                     col[7] = ret.Rejected_count.ToString();
                     col[8] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_start / 1000).ToString();
                     col[9] = DateTimeOffset.FromUnixTimeSeconds(ret.Process_date_end / 1000).ToString();
-                    col[10] = ret.User_code.ToString();
-                    col[11] = ret.Device_id.ToString();
+                    if(ret.User_code is not null)
+                        col[10] = ret.User_code.ToString();
+                    if(ret.Device_id is not null)
+                        col[11] = ret.Device_id.ToString();
                     col[12] = ret.Is_offline.ToString();
                     col[13] = ret.Is_retried.ToString();
-                    col[14] = ret.Cancel_reason.ToString();
-                    col[15] = ret.Productivity_time.ToString();
+                    if(ret.Cancel_reason is not null)
+                        col[14] = ret.Cancel_reason.ToString();
+                    if(ret.Productivity_time is not null)
+                        col[15] = ret.Productivity_time.ToString();
                     col[16] = ret.Order_id.ToString();
 
                     itm4 = new ListViewItem(col);
@@ -900,7 +935,7 @@ namespace OperationLogDisplay
                         // 偶数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 16; intLoopCnt++)
                         {
-                            LstViewResult4.Items[LstViewResult4.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                            LstViewResult4.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
                 }
