@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperationLogDisplayForm));
             this.BtnRefresh1 = new System.Windows.Forms.Button();
             this.LblResult1 = new System.Windows.Forms.Label();
-            this.LstViewResult1 = new System.Windows.Forms.ListView();
             this.LstViewResult2 = new System.Windows.Forms.ListView();
             this.LblTitle1 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,19 +56,24 @@
             this.label3 = new System.Windows.Forms.Label();
             this.BtnRefresh4 = new System.Windows.Forms.Button();
             this.LblResult4 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.LstViewResult1 = new System.Windows.Forms.ListView();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRefresh1
             // 
             this.BtnRefresh1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRefresh1.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
-            this.BtnRefresh1.Location = new System.Drawing.Point(639, 10);
+            this.BtnRefresh1.Location = new System.Drawing.Point(515, 33);
             this.BtnRefresh1.Name = "BtnRefresh1";
-            this.BtnRefresh1.Size = new System.Drawing.Size(133, 45);
+            this.BtnRefresh1.Size = new System.Drawing.Size(133, 50);
             this.BtnRefresh1.TabIndex = 1;
             this.BtnRefresh1.Text = "更新";
             this.BtnRefresh1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -80,64 +84,56 @@
             // LblResult1
             // 
             this.LblResult1.AutoSize = true;
+            this.LblResult1.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblResult1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblResult1.ForeColor = System.Drawing.Color.Red;
-            this.LblResult1.Location = new System.Drawing.Point(848, 415);
+            this.LblResult1.ForeColor = System.Drawing.Color.White;
+            this.LblResult1.Location = new System.Drawing.Point(822, 95);
             this.LblResult1.Name = "LblResult1";
             this.LblResult1.Size = new System.Drawing.Size(91, 24);
             this.LblResult1.TabIndex = 3;
             this.LblResult1.Text = "LblResult1";
             // 
-            // LstViewResult1
-            // 
-            this.LstViewResult1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LstViewResult1.FullRowSelect = true;
-            this.LstViewResult1.Location = new System.Drawing.Point(39, 60);
-            this.LstViewResult1.Name = "LstViewResult1";
-            this.LstViewResult1.Size = new System.Drawing.Size(900, 352);
-            this.LstViewResult1.TabIndex = 4;
-            this.LstViewResult1.UseCompatibleStateImageBehavior = false;
-            // 
             // LstViewResult2
             // 
             this.LstViewResult2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult2.FullRowSelect = true;
-            this.LstViewResult2.Location = new System.Drawing.Point(966, 60);
+            this.LstViewResult2.Location = new System.Drawing.Point(20, 122);
             this.LstViewResult2.Name = "LstViewResult2";
-            this.LstViewResult2.Size = new System.Drawing.Size(900, 352);
+            this.LstViewResult2.Size = new System.Drawing.Size(900, 350);
             this.LstViewResult2.TabIndex = 5;
             this.LstViewResult2.UseCompatibleStateImageBehavior = false;
             // 
             // LblTitle1
             // 
             this.LblTitle1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.LblTitle1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblTitle1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblTitle1.ForeColor = System.Drawing.Color.White;
-            this.LblTitle1.Location = new System.Drawing.Point(39, 9);
+            this.LblTitle1.Location = new System.Drawing.Point(19, 92);
             this.LblTitle1.Name = "LblTitle1";
-            this.LblTitle1.Size = new System.Drawing.Size(144, 45);
+            this.LblTitle1.Size = new System.Drawing.Size(900, 30);
             this.LblTitle1.TabIndex = 6;
-            this.LblTitle1.Text = "１号機";
-            this.LblTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.LblTitle1.Text = "オーダーテーブル";
+            this.LblTitle1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.label1.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(966, 9);
+            this.label1.Location = new System.Drawing.Point(20, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 45);
+            this.label1.Size = new System.Drawing.Size(900, 30);
             this.label1.TabIndex = 7;
-            this.label1.Text = "２号機";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Text = "オーダーテーブル";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LblResult2
             // 
             this.LblResult2.AutoSize = true;
+            this.LblResult2.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblResult2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblResult2.ForeColor = System.Drawing.Color.Red;
-            this.LblResult2.Location = new System.Drawing.Point(1775, 415);
+            this.LblResult2.ForeColor = System.Drawing.Color.White;
+            this.LblResult2.Location = new System.Drawing.Point(820, 95);
             this.LblResult2.Name = "LblResult2";
             this.LblResult2.Size = new System.Drawing.Size(91, 24);
             this.LblResult2.TabIndex = 8;
@@ -147,9 +143,9 @@
             // 
             this.BtnRefresh2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRefresh2.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
-            this.BtnRefresh2.Location = new System.Drawing.Point(1555, 12);
+            this.BtnRefresh2.Location = new System.Drawing.Point(501, 31);
             this.BtnRefresh2.Name = "BtnRefresh2";
-            this.BtnRefresh2.Size = new System.Drawing.Size(133, 45);
+            this.BtnRefresh2.Size = new System.Drawing.Size(133, 50);
             this.BtnRefresh2.TabIndex = 9;
             this.BtnRefresh2.Text = "更新";
             this.BtnRefresh2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -170,17 +166,17 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.TxtIpAddress1);
-            this.groupBox1.Location = new System.Drawing.Point(189, 1);
+            this.groupBox1.Location = new System.Drawing.Point(58, 24);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(180, 59);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "1号機IPアドレス";
+            this.groupBox1.Text = "IPアドレス";
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.TxtIpAddress2);
-            this.groupBox2.Location = new System.Drawing.Point(1116, 1);
+            this.groupBox2.Location = new System.Drawing.Point(62, 24);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(180, 59);
             this.groupBox2.TabIndex = 14;
@@ -201,9 +197,9 @@
             // 
             this.LstViewResult3.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult3.FullRowSelect = true;
-            this.LstViewResult3.Location = new System.Drawing.Point(39, 501);
+            this.LstViewResult3.Location = new System.Drawing.Point(19, 511);
             this.LstViewResult3.Name = "LstViewResult3";
-            this.LstViewResult3.Size = new System.Drawing.Size(900, 397);
+            this.LstViewResult3.Size = new System.Drawing.Size(900, 350);
             this.LstViewResult3.TabIndex = 15;
             this.LstViewResult3.UseCompatibleStateImageBehavior = false;
             // 
@@ -211,9 +207,9 @@
             // 
             this.BtnRefresh3.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRefresh3.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
-            this.BtnRefresh3.Location = new System.Drawing.Point(639, 450);
+            this.BtnRefresh3.Location = new System.Drawing.Point(654, 33);
             this.BtnRefresh3.Name = "BtnRefresh3";
-            this.BtnRefresh3.Size = new System.Drawing.Size(133, 45);
+            this.BtnRefresh3.Size = new System.Drawing.Size(133, 50);
             this.BtnRefresh3.TabIndex = 16;
             this.BtnRefresh3.Text = "更新";
             this.BtnRefresh3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -224,17 +220,20 @@
             // 
             // LblResult3
             // 
+            this.LblResult3.AutoSize = true;
+            this.LblResult3.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblResult3.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblResult3.ForeColor = System.Drawing.Color.Red;
-            this.LblResult3.Location = new System.Drawing.Point(804, 901);
+            this.LblResult3.ForeColor = System.Drawing.Color.White;
+            this.LblResult3.Location = new System.Drawing.Point(822, 484);
             this.LblResult3.Name = "LblResult3";
-            this.LblResult3.Size = new System.Drawing.Size(133, 24);
+            this.LblResult3.Size = new System.Drawing.Size(91, 24);
             this.LblResult3.TabIndex = 17;
             this.LblResult3.Text = "LblResult3";
             this.LblResult3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LblVersion
             // 
+            this.LblVersion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.LblVersion.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.ForeColor = System.Drawing.Color.RoyalBlue;
             this.LblVersion.Location = new System.Drawing.Point(1612, 929);
@@ -248,7 +247,7 @@
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
-            this.BtnEnd.Location = new System.Drawing.Point(39, 907);
+            this.BtnEnd.Location = new System.Drawing.Point(31, 907);
             this.BtnEnd.Name = "BtnEnd";
             this.BtnEnd.Size = new System.Drawing.Size(133, 45);
             this.BtnEnd.TabIndex = 19;
@@ -270,7 +269,7 @@
             // 
             this.groupBox3.Controls.Add(this.CmbComp1);
             this.groupBox3.Controls.Add(this.dTimPickerImportDate1);
-            this.groupBox3.Location = new System.Drawing.Point(377, 0);
+            this.groupBox3.Location = new System.Drawing.Point(244, 24);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(247, 59);
             this.groupBox3.TabIndex = 14;
@@ -290,7 +289,7 @@
             // 
             this.groupBox4.Controls.Add(this.CmbComp2);
             this.groupBox4.Controls.Add(this.dTimPickerImportDate2);
-            this.groupBox4.Location = new System.Drawing.Point(1302, 0);
+            this.groupBox4.Location = new System.Drawing.Point(248, 24);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(247, 59);
             this.groupBox4.TabIndex = 20;
@@ -317,44 +316,44 @@
             // label2
             // 
             this.label2.BackColor = System.Drawing.Color.RoyalBlue;
-            this.label2.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(39, 450);
+            this.label2.Location = new System.Drawing.Point(19, 481);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 45);
+            this.label2.Size = new System.Drawing.Size(900, 30);
             this.label2.TabIndex = 21;
             this.label2.Text = "履歴テーブル";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // LstViewResult4
             // 
             this.LstViewResult4.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult4.FullRowSelect = true;
-            this.LstViewResult4.Location = new System.Drawing.Point(966, 501);
+            this.LstViewResult4.Location = new System.Drawing.Point(20, 511);
             this.LstViewResult4.Name = "LstViewResult4";
-            this.LstViewResult4.Size = new System.Drawing.Size(900, 397);
+            this.LstViewResult4.Size = new System.Drawing.Size(900, 350);
             this.LstViewResult4.TabIndex = 24;
             this.LstViewResult4.UseCompatibleStateImageBehavior = false;
             // 
             // label3
             // 
             this.label3.BackColor = System.Drawing.Color.RoyalBlue;
-            this.label3.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(966, 450);
+            this.label3.Location = new System.Drawing.Point(20, 481);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(144, 45);
+            this.label3.Size = new System.Drawing.Size(900, 30);
             this.label3.TabIndex = 26;
             this.label3.Text = "履歴テーブル";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // BtnRefresh4
             // 
             this.BtnRefresh4.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnRefresh4.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
-            this.BtnRefresh4.Location = new System.Drawing.Point(1566, 450);
+            this.BtnRefresh4.Location = new System.Drawing.Point(640, 30);
             this.BtnRefresh4.Name = "BtnRefresh4";
-            this.BtnRefresh4.Size = new System.Drawing.Size(133, 45);
+            this.BtnRefresh4.Size = new System.Drawing.Size(133, 50);
             this.BtnRefresh4.TabIndex = 25;
             this.BtnRefresh4.Text = "更新";
             this.BtnRefresh4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -365,48 +364,85 @@
             // 
             // LblResult4
             // 
+            this.LblResult4.AutoSize = true;
+            this.LblResult4.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblResult4.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblResult4.ForeColor = System.Drawing.Color.Red;
-            this.LblResult4.Location = new System.Drawing.Point(1730, 901);
+            this.LblResult4.ForeColor = System.Drawing.Color.White;
+            this.LblResult4.Location = new System.Drawing.Point(820, 484);
             this.LblResult4.Name = "LblResult4";
-            this.LblResult4.Size = new System.Drawing.Size(133, 24);
+            this.LblResult4.Size = new System.Drawing.Size(91, 24);
             this.LblResult4.TabIndex = 29;
             this.LblResult4.Text = "LblResult4";
             this.LblResult4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox5.Controls.Add(this.LstViewResult1);
+            this.groupBox5.Controls.Add(this.BtnRefresh1);
+            this.groupBox5.Controls.Add(this.groupBox3);
+            this.groupBox5.Controls.Add(this.BtnRefresh3);
+            this.groupBox5.Controls.Add(this.groupBox1);
+            this.groupBox5.Controls.Add(this.LblResult1);
+            this.groupBox5.Controls.Add(this.LstViewResult3);
+            this.groupBox5.Controls.Add(this.LblResult3);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.LblTitle1);
+            this.groupBox5.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox5.Location = new System.Drawing.Point(12, 20);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(937, 878);
+            this.groupBox5.TabIndex = 30;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "1号機";
+            // 
+            // LstViewResult1
+            // 
+            this.LstViewResult1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LstViewResult1.FullRowSelect = true;
+            this.LstViewResult1.Location = new System.Drawing.Point(19, 122);
+            this.LstViewResult1.Name = "LstViewResult1";
+            this.LstViewResult1.Size = new System.Drawing.Size(900, 350);
+            this.LstViewResult1.TabIndex = 5;
+            this.LstViewResult1.UseCompatibleStateImageBehavior = false;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox6.Controls.Add(this.groupBox2);
+            this.groupBox6.Controls.Add(this.LstViewResult4);
+            this.groupBox6.Controls.Add(this.LblResult4);
+            this.groupBox6.Controls.Add(this.groupBox4);
+            this.groupBox6.Controls.Add(this.BtnRefresh2);
+            this.groupBox6.Controls.Add(this.BtnRefresh4);
+            this.groupBox6.Controls.Add(this.LblResult2);
+            this.groupBox6.Controls.Add(this.LstViewResult2);
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupBox6.Location = new System.Drawing.Point(955, 20);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(937, 878);
+            this.groupBox6.TabIndex = 31;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "２号機";
             // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1904, 961);
-            this.Controls.Add(this.LblResult4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.BtnRefresh4);
-            this.Controls.Add(this.LstViewResult4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.BtnEnd);
             this.Controls.Add(this.LblVersion);
-            this.Controls.Add(this.LblResult3);
-            this.Controls.Add(this.BtnRefresh3);
-            this.Controls.Add(this.LstViewResult3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.BtnRefresh2);
-            this.Controls.Add(this.LblResult2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.LblTitle1);
-            this.Controls.Add(this.LstViewResult2);
-            this.Controls.Add(this.LstViewResult1);
-            this.Controls.Add(this.LblResult1);
-            this.Controls.Add(this.BtnRefresh1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "OperationLogDisplayForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "稼働ログ表示";
+            this.Text = "稼動ログ表示";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OperationLogDisplayForm_FormClosing);
             this.Load += new System.EventHandler(this.OperationLogDisplayForm_Load);
             this.groupBox1.ResumeLayout(false);
@@ -415,15 +451,17 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private Button BtnRefresh1;
         private Label LblResult1;
-        private ListView LstViewResult1;
         private ListView LstViewResult2;
         private Label LblTitle1;
         private Label label1;
@@ -449,5 +487,8 @@
         private Label label3;
         private Button BtnRefresh4;
         private Label LblResult4;
+        private GroupBox groupBox5;
+        private ListView LstViewResult1;
+        private GroupBox groupBox6;
     }
 }
