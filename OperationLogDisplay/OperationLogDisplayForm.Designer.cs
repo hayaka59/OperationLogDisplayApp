@@ -260,9 +260,9 @@
             // dTimPickerImportDate1
             // 
             this.dTimPickerImportDate1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dTimPickerImportDate1.Location = new System.Drawing.Point(71, 22);
+            this.dTimPickerImportDate1.Location = new System.Drawing.Point(6, 21);
             this.dTimPickerImportDate1.Name = "dTimPickerImportDate1";
-            this.dTimPickerImportDate1.Size = new System.Drawing.Size(160, 27);
+            this.dTimPickerImportDate1.Size = new System.Drawing.Size(147, 27);
             this.dTimPickerImportDate1.TabIndex = 20;
             // 
             // groupBox3
@@ -280,9 +280,9 @@
             // 
             this.CmbComp1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbComp1.FormattingEnabled = true;
-            this.CmbComp1.Location = new System.Drawing.Point(15, 22);
+            this.CmbComp1.Location = new System.Drawing.Point(159, 20);
             this.CmbComp1.Name = "CmbComp1";
-            this.CmbComp1.Size = new System.Drawing.Size(50, 28);
+            this.CmbComp1.Size = new System.Drawing.Size(82, 28);
             this.CmbComp1.TabIndex = 20;
             // 
             // groupBox4
@@ -300,17 +300,17 @@
             // 
             this.CmbComp2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbComp2.FormattingEnabled = true;
-            this.CmbComp2.Location = new System.Drawing.Point(15, 22);
+            this.CmbComp2.Location = new System.Drawing.Point(159, 21);
             this.CmbComp2.Name = "CmbComp2";
-            this.CmbComp2.Size = new System.Drawing.Size(50, 28);
+            this.CmbComp2.Size = new System.Drawing.Size(82, 28);
             this.CmbComp2.TabIndex = 20;
             // 
             // dTimPickerImportDate2
             // 
             this.dTimPickerImportDate2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dTimPickerImportDate2.Location = new System.Drawing.Point(71, 22);
+            this.dTimPickerImportDate2.Location = new System.Drawing.Point(6, 22);
             this.dTimPickerImportDate2.Name = "dTimPickerImportDate2";
-            this.dTimPickerImportDate2.Size = new System.Drawing.Size(160, 27);
+            this.dTimPickerImportDate2.Size = new System.Drawing.Size(147, 27);
             this.dTimPickerImportDate2.TabIndex = 20;
             // 
             // label2
