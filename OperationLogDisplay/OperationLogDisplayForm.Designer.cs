@@ -219,6 +219,7 @@
             this.BtnRefresh3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnRefresh3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnRefresh3.UseVisualStyleBackColor = true;
+            this.BtnRefresh3.Visible = false;
             this.BtnRefresh3.Click += new System.EventHandler(this.BtnRefresh3_Click);
             // 
             // LblResult3
@@ -359,6 +360,7 @@
             this.BtnRefresh4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnRefresh4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnRefresh4.UseVisualStyleBackColor = true;
+            this.BtnRefresh4.Visible = false;
             this.BtnRefresh4.Click += new System.EventHandler(this.BtnRefresh4_Click);
             // 
             // LblResult4

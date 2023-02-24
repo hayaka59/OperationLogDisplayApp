@@ -661,6 +661,9 @@ namespace OperationLogDisplay
                     }
                 }
                 LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
+
+                // 履歴テーブルの更新
+                BtnRefresh3_Click(sender, e);
             }
             catch (Exception ex)
             {
@@ -755,6 +758,10 @@ namespace OperationLogDisplay
                     }
                 }
                 LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
+
+                // 履歴テーブルの更新
+                BtnRefresh4_Click(sender, e);
+
             }
             catch (Exception ex)
             {
