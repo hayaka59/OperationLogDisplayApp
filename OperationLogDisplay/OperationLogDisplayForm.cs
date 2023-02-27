@@ -33,17 +33,8 @@ namespace OperationLogDisplay
                 LblResult3.Text = "";
                 LblResult4.Text = "";
 
-                CmbComp1.Items.Clear();
-                CmbComp1.Items.Add("＞");
-                CmbComp1.Items.Add("＝");
-                CmbComp1.Items.Add("＜");
-                CmbComp1.SelectedIndex = 1;
-
-                CmbComp2.Items.Clear();
-                CmbComp2.Items.Add("＞");
-                CmbComp2.Items.Add("＝");
-                CmbComp2.Items.Add("＜");
-                CmbComp2.SelectedIndex = 1;
+                SetCmpComp(CmbComp1);
+                SetCmpComp(CmbComp2);
 
                 DisplayHeader(LstViewResult1);
                 DisplayHeader(LstViewResult2);
@@ -55,6 +46,19 @@ namespace OperationLogDisplay
             {
                 MessageBox.Show(ex.Message, "【OperationLogDisplayForm_Load】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="comboBox"></param>
+        private void SetCmpComp(ComboBox comboBox)
+        {
+            comboBox.Items.Clear();
+            comboBox.Items.Add("より後");
+            comboBox.Items.Add("等しい");
+            comboBox.Items.Add("より前");
+            comboBox.SelectedIndex = 1;
         }
 
         /// <summary>
