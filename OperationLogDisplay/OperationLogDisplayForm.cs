@@ -49,7 +49,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// 取付日付検索条件コンボ設定
         /// </summary>
         /// <param name="comboBox"></param>
         private void SetCmpComp(ComboBox comboBox)
@@ -340,39 +340,7 @@ namespace OperationLogDisplay
                 MessageBox.Show(ex.Message, "【DisplayHeaderForHistory】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-
-        public static void ExecuteNonQuery(string query)
-        {
-            // MySQLへの接続情報を設定
-            //var server = "127.0.0.1";  // ホスト名
-            var server = "192.168.40.119";  // ホスト名
-            var port = 3306;                // ポート
-            var user = "root";              // ユーザー名
-            var pass = "srobo";             // パスワード
-            var charset = "utf8";           // エンコード
-            var connectionString = $"Hostname={server};Port={port};Username={user};Password={pass};Charset={charset};";
-
-            try
-            {
-                using MySqlConnection connection = new(connectionString);
-                using var command = connection.CreateCommand();
-                // MySQLへ接続
-                connection.Open();
-
-                // クエリーの実行処理
-                command.CommandText = query;
-                //command.ExecuteNonQuery();
-                var value = command.ExecuteNonQuery();
-                MessageBox.Show($"更新されたレコード数は {value} です。");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "【ExecuteNonQuery】", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+ 
         /// <summary>
         /// オーダーデータ読込
         /// </summary>
