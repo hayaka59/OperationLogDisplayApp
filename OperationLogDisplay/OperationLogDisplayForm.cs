@@ -1,7 +1,7 @@
 //using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.ApplicationServices;
+//using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
-using System.Diagnostics;
+//using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Diagnostics;
 //using System.Drawing;
@@ -25,9 +25,11 @@ namespace OperationLogDisplay
         {
             try
             {
-                LblVersion.Text = "Ver.0.0.0.1";
-                TxtIpAddress1.Text = "127.0.0.1";
-                TxtIpAddress2.Text = "192.168.3.11";
+                PubConstClass.objSyncHist = new object();
+
+                LblVersion.Text = PubConstClass.DEF_VERSION;
+                //TxtIpAddress1.Text = "127.0.0.1";
+                //TxtIpAddress2.Text = "192.168.3.11";
                 LblResult1.Text = "";
                 LblResult2.Text = "";
                 LblResult3.Text = "";
@@ -41,6 +43,12 @@ namespace OperationLogDisplay
 
                 DisplayHeaderForHistory(LstViewResult3);
                 DisplayHeaderForHistory(LstViewResult4);
+
+                CommonModule.GetSystemDefinition();
+                TxtIpAddress1.Text = PubConstClass.pblIpAddress1;
+                TxtIpAddress2.Text = PubConstClass.pblIpAddress2;
+
+
             }
             catch (Exception ex)
             {
