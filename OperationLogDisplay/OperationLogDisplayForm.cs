@@ -971,6 +971,7 @@ namespace OperationLogDisplay
             dialogResult = MessageBox.Show("終了しますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
+                CommonModule.OutPutLogFile("「終了」ボタンにて終了");
                 this.Dispose();
             }
         }
@@ -986,9 +987,15 @@ namespace OperationLogDisplay
             dialogResult = MessageBox.Show("終了しますか？", "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.No)
             {
+                CommonModule.OutPutLogFile("「x」ボタンキャンセル");
                 // フォームを閉じるのをキャンセル
                 e.Cancel = true;
-            }            
+            }
+            else
+            {
+                CommonModule.OutPutLogFile("「x」ボタンにて終了");
+            }
+            
         }
 
     }
