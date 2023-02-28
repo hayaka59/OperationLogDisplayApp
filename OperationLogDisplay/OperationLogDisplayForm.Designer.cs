@@ -278,6 +278,7 @@
             // 
             // CmbComp1
             // 
+            this.CmbComp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComp1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbComp1.FormattingEnabled = true;
             this.CmbComp1.Location = new System.Drawing.Point(159, 20);
@@ -298,6 +299,7 @@
             // 
             // CmbComp2
             // 
+            this.CmbComp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComp2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbComp2.FormattingEnabled = true;
             this.CmbComp2.Location = new System.Drawing.Point(159, 21);
