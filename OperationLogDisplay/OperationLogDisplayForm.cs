@@ -28,8 +28,7 @@ namespace OperationLogDisplay
                 PubConstClass.objSyncHist = new object();
 
                 LblVersion.Text = PubConstClass.DEF_VERSION;
-                //TxtIpAddress1.Text = "127.0.0.1";
-                //TxtIpAddress2.Text = "192.168.3.11";
+                CommonModule.OutPutLogFile("稼動ログ表示アプリ起動：" + PubConstClass.DEF_VERSION);
                 LblResult1.Text = "";
                 LblResult2.Text = "";
                 LblResult3.Text = "";
@@ -47,7 +46,8 @@ namespace OperationLogDisplay
                 CommonModule.GetSystemDefinition();
                 TxtIpAddress1.Text = PubConstClass.pblIpAddress1;
                 TxtIpAddress2.Text = PubConstClass.pblIpAddress2;
-
+                CommonModule.OutPutLogFile(PubConstClass.DEF_IP_ADDRESS1 + "：" + PubConstClass.pblIpAddress1);
+                CommonModule.OutPutLogFile(PubConstClass.DEF_IP_ADDRESS2 + "：" + PubConstClass.pblIpAddress2);
 
             }
             catch (Exception ex)
@@ -555,7 +555,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 「更新１」ボタン処理
+        /// 「更新1」ボタン処理（1号機オーダーテーブル表示用）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -586,7 +586,7 @@ namespace OperationLogDisplay
                         sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
                         break;
                 }
-
+                CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】検索条件：" + sSQLData);
                 var result = ExecuteReader(sSQLData, TxtIpAddress1.Text);
                 foreach (var ret in result)
                 {
@@ -649,6 +649,13 @@ namespace OperationLogDisplay
                             LstViewResult1.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
+                    string sResult = "";
+                    foreach(var sData in col)
+                    {
+                        sResult += sData + ",";
+                    }
+                    CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】" + sResult);
+
                 }
                 LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
 
@@ -662,7 +669,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 「更新２」ボタン処理
+        /// 「更新2」ボタン処理（2号機オーダーテーブル表示用）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -693,7 +700,7 @@ namespace OperationLogDisplay
                         sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
                         break;
                 }
-
+                CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】検索条件：" + sSQLData);
                 var result = ExecuteReader(sSQLData, TxtIpAddress2.Text);
                 foreach (var ret in result)
                 {
@@ -756,6 +763,14 @@ namespace OperationLogDisplay
                             LstViewResult2.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
+
+                    string sResult = "";
+                    foreach (var sData in col)
+                    {
+                        sResult += sData + ",";
+                    }
+                    CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】" + sResult);
+
                 }
                 LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
 
@@ -770,7 +785,7 @@ namespace OperationLogDisplay
         }
 
         /// <summary>
-        /// 「更新３」ボタン処理
+        /// 「更新3」ボタン処理（1号機履歴テーブル表示用）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -800,6 +815,7 @@ namespace OperationLogDisplay
                         sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START < " + sDate1 + ";";
                         break;
                 }
+                CommonModule.OutPutLogFile("【1号機】【履歴テーブル】検索条件：" + sSQLData);
                 var result = ExecuteReaderForHistory(sSQLData, TxtIpAddress1.Text);
                 foreach (var ret in result)
                 {
@@ -821,7 +837,7 @@ namespace OperationLogDisplay
                     col[12] = ret.Is_offline.ToString();
                     col[13] = ret.Is_retried.ToString();
                     if(ret.Cancel_reason is not null)
-                        col[14] = ret.Cancel_reason.ToString();
+                        col[14] = ret.Cancel_reason.ToString().Replace('\n', '■');
                     if(ret.Productivity_time is not null)
                         col[15] = ret.Productivity_time.ToString();
                     col[16] = ret.Order_id.ToString();
@@ -838,6 +854,14 @@ namespace OperationLogDisplay
                             LstViewResult3.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
+
+                    string sResult = "";
+                    foreach (var sData in col)
+                    {
+                        sResult += sData + ",";
+                    }
+                    CommonModule.OutPutLogFile("【1号機】【履歴テーブル】" + sResult);
+
                 }
                 LblResult3.Text = LstViewResult3.Items.Count.ToString("###,##0") + "件";
             }
@@ -850,7 +874,7 @@ namespace OperationLogDisplay
 
 
         /// <summary>
-        /// 「更新４」ボタン処理
+        /// 「更新4」ボタン処理（2号機履歴テーブル用）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -880,6 +904,7 @@ namespace OperationLogDisplay
                         sSQLData = "SELECT * FROM `history` WHERE PROCESS_DATE_START < " + sDate1 + ";";
                         break;
                 }
+                CommonModule.OutPutLogFile("【2号機】【履歴テーブル】検索条件：" + sSQLData);
                 var result4 = ExecuteReaderForHistory(sSQLData, TxtIpAddress2.Text);
                 foreach (var ret in result4)
                 {
@@ -900,8 +925,8 @@ namespace OperationLogDisplay
                         col[11] = ret.Device_id.ToString();
                     col[12] = ret.Is_offline.ToString();
                     col[13] = ret.Is_retried.ToString();
-                    if(ret.Cancel_reason is not null)
-                        col[14] = ret.Cancel_reason.ToString();
+                    if (ret.Cancel_reason is not null)
+                        col[14] = ret.Cancel_reason.ToString().Replace('\n', '■');
                     if(ret.Productivity_time is not null)
                         col[15] = ret.Productivity_time.ToString();
                     col[16] = ret.Order_id.ToString();
@@ -918,6 +943,14 @@ namespace OperationLogDisplay
                             LstViewResult4.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                         }
                     }
+
+                    string sResult = "";
+                    foreach (var sData in col)
+                    {
+                        sResult += sData + ",";
+                    }
+                    CommonModule.OutPutLogFile("【2号機】【履歴テーブル】" + sResult);
+
                 }
                 LblResult4.Text = LstViewResult4.Items.Count.ToString("###,##0") + "件";
             }
