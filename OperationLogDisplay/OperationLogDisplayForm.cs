@@ -34,6 +34,9 @@ namespace OperationLogDisplay
                 LblResult2.Text = "";
                 LblResult3.Text = "";
                 LblResult4.Text = "";
+                LblDateTimeLocal.Text = "";
+                TimDateTime.Interval = 1000;
+                TimDateTime.Enabled = true;
 
                 SetCmpComp(CmbComp1);
                 SetCmpComp(CmbComp2);
@@ -1010,6 +1013,11 @@ namespace OperationLogDisplay
         {
             orderFileReadForm.Show(this);
             this.Hide();
+        }
+
+        private void TimDateTime_Tick(object sender, EventArgs e)
+        {
+            LblDateTimeLocal.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
     }
 }
