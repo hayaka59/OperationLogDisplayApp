@@ -1,6 +1,7 @@
 //using Microsoft.VisualBasic;
 //using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
+using プロジェクト名_OperationLogDisplay;
 //using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Diagnostics;
@@ -998,5 +999,17 @@ namespace OperationLogDisplay
             
         }
 
+        OrderFileReadForm orderFileReadForm = new OrderFileReadForm();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnOrderFileRead_Click(object sender, EventArgs e)
+        {
+            orderFileReadForm.Show(this);
+            this.Hide();
+        }
     }
 }

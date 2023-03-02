@@ -59,6 +59,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.LstViewResult1 = new System.Windows.Forms.ListView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.BtnOrderFileRead = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -247,9 +248,9 @@
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
-            this.BtnEnd.Location = new System.Drawing.Point(31, 907);
+            this.BtnEnd.Location = new System.Drawing.Point(798, 904);
             this.BtnEnd.Name = "BtnEnd";
-            this.BtnEnd.Size = new System.Drawing.Size(133, 45);
+            this.BtnEnd.Size = new System.Drawing.Size(133, 50);
             this.BtnEnd.TabIndex = 19;
             this.BtnEnd.Text = "終了";
             this.BtnEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -429,12 +430,27 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "２号機";
             // 
+            // BtnOrderFileRead
+            // 
+            this.BtnOrderFileRead.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnOrderFileRead.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.read_data;
+            this.BtnOrderFileRead.Location = new System.Drawing.Point(31, 904);
+            this.BtnOrderFileRead.Name = "BtnOrderFileRead";
+            this.BtnOrderFileRead.Size = new System.Drawing.Size(310, 50);
+            this.BtnOrderFileRead.TabIndex = 32;
+            this.BtnOrderFileRead.Text = "オーダーファイル取込";
+            this.BtnOrderFileRead.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnOrderFileRead.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnOrderFileRead.UseVisualStyleBackColor = true;
+            this.BtnOrderFileRead.Click += new System.EventHandler(this.BtnOrderFileRead_Click);
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.BtnOrderFileRead);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.BtnEnd);
@@ -492,5 +508,6 @@
         private GroupBox groupBox5;
         private ListView LstViewResult1;
         private GroupBox groupBox6;
+        private Button BtnOrderFileRead;
     }
 }
