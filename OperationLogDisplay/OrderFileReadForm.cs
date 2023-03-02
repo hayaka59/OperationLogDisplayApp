@@ -489,12 +489,16 @@ namespace プロジェクト名_OperationLogDisplay
         private void ReadOrderData(string filePath)
         {
             string sReadData;
-
+            string sResultMessage;
+            int iReadRecNumber = 0;
             string[] col = new string[85];
             ListViewItem itm;
 
             try
             {
+                sResultMessage = "データ読込：" + filePath;
+                DispResult(sResultMessage);
+
                 LstOrderFile.Items.Clear();
                 // Windowsのシステムが提供するエンコーディングの全てを利用可能とする
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -502,10 +506,12 @@ namespace プロジェクト名_OperationLogDisplay
                 {
                     while (!sr.EndOfStream)
                     {
+                        iReadRecNumber++;
                         sReadData = sr.ReadLine();
-
-                        if (sReadData.Length >= 160)
+                        CommonModule.OutPutLogFile("【読込レコード長】" + sReadData.Length.ToString());
+                        if (sReadData.Length >= 517)
                         {
+                            #region 読込データの分解
                             col[0] = sReadData.Substring(1 - 1, 2);
                             col[1] = sReadData.Substring(3 - 1, 1);
                             col[2] = sReadData.Substring(4 - 1, 5);
@@ -591,6 +597,7 @@ namespace プロジェクト名_OperationLogDisplay
                             col[82] = sReadData.Substring(505 - 1, 2);
                             col[83] = sReadData.Substring(507 - 1, 9);
                             col[84] = sReadData.Substring(516 - 1, 2);
+                            #endregion
 
                             // データの表示
                             itm = new ListViewItem(col);
@@ -605,7 +612,23 @@ namespace プロジェクト名_OperationLogDisplay
                                     LstOrderFile.Items[LstOrderFile.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                                 }
                             }
+
+                            string sCsvData = "";
+                            // CSVデータを操作ログに残す
+                            foreach(string sData in col)
+                            {
+                                sCsvData += sData + ",";
+                            }
+                            CommonModule.OutPutLogFile("【表示データ】" + sCsvData);
                         }
+                        else
+                        {
+                            sResultMessage = "【ERROR】既定レコード長未満：" + sReadData.Length.ToString();
+                            DispResult(sResultMessage);
+                            sResultMessage = iReadRecNumber.ToString() + "行目：" + sReadData;
+                            DispResult(sResultMessage);
+                        }
+
                     }
                 }
             }
@@ -619,5 +642,22 @@ namespace プロジェクト名_OperationLogDisplay
         {
             LblDateTimeLocal.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
+
+        private void DispResult(string sData)
+        {
+            try
+            {
+                LstResult.Items.Add(sData);
+                LstResult.SelectedIndex=LstResult.Items.Count-1;
+
+                CommonModule.OutPutLogFile(sData);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace, "【DispResult】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

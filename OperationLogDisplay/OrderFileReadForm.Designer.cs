@@ -36,6 +36,7 @@
             this.LblSelectFilePath = new System.Windows.Forms.Label();
             this.LblDateTimeLocal = new System.Windows.Forms.Label();
             this.TimDateTime = new System.Windows.Forms.Timer(this.components);
+            this.LstResult = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // BtnClose
@@ -57,7 +58,7 @@
             this.LstOrderFile.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstOrderFile.Location = new System.Drawing.Point(11, 68);
             this.LstOrderFile.Name = "LstOrderFile";
-            this.LstOrderFile.Size = new System.Drawing.Size(1877, 810);
+            this.LstOrderFile.Size = new System.Drawing.Size(1877, 546);
             this.LstOrderFile.TabIndex = 21;
             this.LstOrderFile.UseCompatibleStateImageBehavior = false;
             // 
@@ -101,11 +102,24 @@
             // 
             this.TimDateTime.Tick += new System.EventHandler(this.TimDateTime_Tick);
             // 
+            // LstResult
+            // 
+            this.LstResult.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LstResult.FormattingEnabled = true;
+            this.LstResult.HorizontalScrollbar = true;
+            this.LstResult.ItemHeight = 24;
+            this.LstResult.Location = new System.Drawing.Point(11, 640);
+            this.LstResult.Name = "LstResult";
+            this.LstResult.ScrollAlwaysVisible = true;
+            this.LstResult.Size = new System.Drawing.Size(1877, 244);
+            this.LstResult.TabIndex = 25;
+            // 
             // OrderFileReadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1900, 957);
+            this.Controls.Add(this.LstResult);
             this.Controls.Add(this.LblDateTimeLocal);
             this.Controls.Add(this.LblSelectFilePath);
             this.Controls.Add(this.BtnSelectOrderFile);
@@ -131,5 +145,6 @@
         private Label LblSelectFilePath;
         private Label LblDateTimeLocal;
         private System.Windows.Forms.Timer TimDateTime;
+        private ListBox LstResult;
     }
 }
