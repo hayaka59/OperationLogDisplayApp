@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OperationLogDisplayForm));
             this.BtnRefresh1 = new System.Windows.Forms.Button();
             this.LblResult1 = new System.Windows.Forms.Label();
@@ -57,8 +58,11 @@
             this.BtnRefresh4 = new System.Windows.Forms.Button();
             this.LblResult4 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.LblDateTimeLocal = new System.Windows.Forms.Label();
             this.LstViewResult1 = new System.Windows.Forms.ListView();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.BtnOrderFileRead = new System.Windows.Forms.Button();
+            this.TimDateTime = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -206,13 +210,11 @@
             // BtnRefresh3
             // 
             this.BtnRefresh3.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefresh3.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
-            this.BtnRefresh3.Location = new System.Drawing.Point(654, 33);
+            this.BtnRefresh3.Location = new System.Drawing.Point(868, 18);
             this.BtnRefresh3.Name = "BtnRefresh3";
-            this.BtnRefresh3.Size = new System.Drawing.Size(133, 50);
+            this.BtnRefresh3.Size = new System.Drawing.Size(66, 50);
             this.BtnRefresh3.TabIndex = 16;
             this.BtnRefresh3.Text = "更新";
-            this.BtnRefresh3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.BtnRefresh3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnRefresh3.UseVisualStyleBackColor = true;
             this.BtnRefresh3.Visible = false;
@@ -236,7 +238,7 @@
             this.LblVersion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.LblVersion.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblVersion.Location = new System.Drawing.Point(1612, 929);
+            this.LblVersion.Location = new System.Drawing.Point(1474, 929);
             this.LblVersion.Name = "LblVersion";
             this.LblVersion.Size = new System.Drawing.Size(254, 23);
             this.LblVersion.TabIndex = 18;
@@ -247,9 +249,9 @@
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
-            this.BtnEnd.Location = new System.Drawing.Point(31, 907);
+            this.BtnEnd.Location = new System.Drawing.Point(1742, 904);
             this.BtnEnd.Name = "BtnEnd";
-            this.BtnEnd.Size = new System.Drawing.Size(133, 45);
+            this.BtnEnd.Size = new System.Drawing.Size(133, 50);
             this.BtnEnd.TabIndex = 19;
             this.BtnEnd.Text = "終了";
             this.BtnEnd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -278,6 +280,7 @@
             // 
             // CmbComp1
             // 
+            this.CmbComp1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComp1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbComp1.FormattingEnabled = true;
             this.CmbComp1.Location = new System.Drawing.Point(159, 20);
@@ -298,6 +301,7 @@
             // 
             // CmbComp2
             // 
+            this.CmbComp2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CmbComp2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbComp2.FormattingEnabled = true;
             this.CmbComp2.Location = new System.Drawing.Point(159, 21);
@@ -378,6 +382,7 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox5.Controls.Add(this.LblDateTimeLocal);
             this.groupBox5.Controls.Add(this.LstViewResult1);
             this.groupBox5.Controls.Add(this.BtnRefresh1);
             this.groupBox5.Controls.Add(this.groupBox3);
@@ -395,6 +400,18 @@
             this.groupBox5.TabIndex = 30;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "1号機";
+            // 
+            // LblDateTimeLocal
+            // 
+            this.LblDateTimeLocal.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.LblDateTimeLocal.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblDateTimeLocal.ForeColor = System.Drawing.Color.Blue;
+            this.LblDateTimeLocal.Location = new System.Drawing.Point(653, 34);
+            this.LblDateTimeLocal.Name = "LblDateTimeLocal";
+            this.LblDateTimeLocal.Size = new System.Drawing.Size(277, 47);
+            this.LblDateTimeLocal.TabIndex = 22;
+            this.LblDateTimeLocal.Text = "LblDateTimeLocal";
+            this.LblDateTimeLocal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LstViewResult1
             // 
@@ -427,12 +444,31 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "２号機";
             // 
+            // BtnOrderFileRead
+            // 
+            this.BtnOrderFileRead.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnOrderFileRead.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.read_data;
+            this.BtnOrderFileRead.Location = new System.Drawing.Point(31, 904);
+            this.BtnOrderFileRead.Name = "BtnOrderFileRead";
+            this.BtnOrderFileRead.Size = new System.Drawing.Size(310, 50);
+            this.BtnOrderFileRead.TabIndex = 32;
+            this.BtnOrderFileRead.Text = "オーダーファイル取込";
+            this.BtnOrderFileRead.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnOrderFileRead.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnOrderFileRead.UseVisualStyleBackColor = true;
+            this.BtnOrderFileRead.Click += new System.EventHandler(this.BtnOrderFileRead_Click);
+            // 
+            // TimDateTime
+            // 
+            this.TimDateTime.Tick += new System.EventHandler(this.TimDateTime_Tick);
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.BtnOrderFileRead);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.BtnEnd);
@@ -490,5 +526,8 @@
         private GroupBox groupBox5;
         private ListView LstViewResult1;
         private GroupBox groupBox6;
+        private Button BtnOrderFileRead;
+        private Label LblDateTimeLocal;
+        private System.Windows.Forms.Timer TimDateTime;
     }
 }

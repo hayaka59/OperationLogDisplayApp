@@ -4,5 +4,8 @@
     <Compile Update="OperationLogDisplayForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="OrderFileReadForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
