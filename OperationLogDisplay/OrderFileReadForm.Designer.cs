@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderFileReadForm));
             this.BtnClose = new System.Windows.Forms.Button();
             this.LstOrderFile = new System.Windows.Forms.ListView();
             this.BtnSelectOrderFile = new System.Windows.Forms.Button();
             this.LblSelectFilePath = new System.Windows.Forms.Label();
+            this.LblDateTimeLocal = new System.Windows.Forms.Label();
+            this.TimDateTime = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // BtnClose
@@ -82,11 +85,28 @@
             this.LblSelectFilePath.TabIndex = 23;
             this.LblSelectFilePath.Text = "LblSelectFilePath";
             // 
+            // LblDateTimeLocal
+            // 
+            this.LblDateTimeLocal.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.LblDateTimeLocal.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblDateTimeLocal.ForeColor = System.Drawing.Color.Blue;
+            this.LblDateTimeLocal.Location = new System.Drawing.Point(1611, 9);
+            this.LblDateTimeLocal.Name = "LblDateTimeLocal";
+            this.LblDateTimeLocal.Size = new System.Drawing.Size(277, 47);
+            this.LblDateTimeLocal.TabIndex = 24;
+            this.LblDateTimeLocal.Text = "LblDateTimeLocal";
+            this.LblDateTimeLocal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TimDateTime
+            // 
+            this.TimDateTime.Tick += new System.EventHandler(this.TimDateTime_Tick);
+            // 
             // OrderFileReadForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1900, 957);
+            this.Controls.Add(this.LblDateTimeLocal);
             this.Controls.Add(this.LblSelectFilePath);
             this.Controls.Add(this.BtnSelectOrderFile);
             this.Controls.Add(this.LstOrderFile);
@@ -109,5 +129,7 @@
         private ListView LstOrderFile;
         private Button BtnSelectOrderFile;
         private Label LblSelectFilePath;
+        private Label LblDateTimeLocal;
+        private System.Windows.Forms.Timer TimDateTime;
     }
 }

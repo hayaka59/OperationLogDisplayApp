@@ -28,6 +28,11 @@ namespace プロジェクト名_OperationLogDisplay
             try
             {
                 LblSelectFilePath.Text = "";
+                
+                LblDateTimeLocal.Text = "";
+                TimDateTime.Interval = 1000;
+                TimDateTime.Enabled = true;
+
                 DisplayHeader(LstOrderFile);
             }
             catch (Exception ex)
@@ -439,7 +444,7 @@ namespace プロジェクト名_OperationLogDisplay
         {
             try
             {
-                OpenFileDialog ofd = new OpenFileDialog();
+                OpenFileDialog ofd = new();
                 try
                 {
                     CommonModule.OutPutLogFile("「オーダーファイル選択」ボタンクリック");
@@ -483,8 +488,7 @@ namespace プロジェクト名_OperationLogDisplay
         /// <param name="filePath"></param>
         private void ReadOrderData(string filePath)
         {
-            string sReadData = "";
-            int iReadCounter = 0;
+            string sReadData;
 
             string[] col = new string[85];
             ListViewItem itm;
@@ -494,7 +498,7 @@ namespace プロジェクト名_OperationLogDisplay
                 LstOrderFile.Items.Clear();
                 // Windowsのシステムが提供するエンコーディングの全てを利用可能とする
                 Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-                using (StreamReader sr = new StreamReader(filePath, Encoding.GetEncoding("shift_jis")))
+                using (StreamReader sr = new(filePath, Encoding.GetEncoding("shift_jis")))
                 {
                     while (!sr.EndOfStream)
                     {
@@ -611,6 +615,9 @@ namespace プロジェクト名_OperationLogDisplay
             }
         }
 
-
+        private void TimDateTime_Tick(object sender, EventArgs e)
+        {
+            LblDateTimeLocal.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using Microsoft.VisualBasic;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace OperationLogDisplay
 {
@@ -157,5 +159,55 @@ namespace OperationLogDisplay
                 MessageBox.Show(ex.StackTrace, "【putSystemDefinition】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
+        //[System.Runtime.InteropServices.DllImport("netapi32")]
+        //private static extern int NetRemoteTOD([MarshalAs(UnmanagedType.LPWStr)] string ServerName, ref IntPtr BufferPtr);
+        //[System.Runtime.InteropServices.DllImport("netapi32")]
+        //private static extern int NetApiBufferFree(IntPtr Buffer);
+
+        //struct TIME_OF_DAY_INFO
+        //{
+        //    public int tod_elapsedt;
+        //    public int tod_msecs;
+        //    public int tod_hours;
+        //    public int tod_mins;
+        //    public int tod_secs;
+        //    public int tod_hunds;
+        //    public int tod_timezone;
+        //    public int tod_tinterval;
+        //    public int tod_day;
+        //    public int tod_month;
+        //    public int tod_year;
+        //    public int tod_weekday;
+        //}
+
+        //public DateTime GetNetRemoteTOD(string strServerName)
+        //{
+        //    try
+        //    {
+        //        int iRet;
+        //        IntPtr ptodi;
+        //        TIME_OF_DAY_INFO todi;
+        //        DateTime dDate;
+        //        strServerName = strServerName + Constants.vbNullChar;
+        //        iRet = NetRemoteTOD(strServerName, ptodi);
+        //        if (iRet == 0)
+        //        {
+        //            todi = (TIME_OF_DAY_INFO)Marshal.PtrToStructure(ptodi, typeof(TIME_OF_DAY_INFO));
+        //            NetApiBufferFree(ptodi);
+        //            dDate = DateSerial(todi.tod_year, todi.tod_month, todi.tod_day) + " " + TimeSerial(todi.tod_hours, todi.tod_mins - todi.tod_timezone, todi.tod_secs);
+        //            GetNetRemoteTOD = dDate;
+        //        }
+        //        else
+        //            Interaction.MsgBox("Error retrieving time");
+        //    }
+        //    catch
+        //    {
+        //        Interaction.MsgBox("Error in GetNetRemoteTOD: " + Information.Err.Description);
+        //    }
+        //}
+
+
     }
 }
