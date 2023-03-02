@@ -109,5 +109,15 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap select_file {
+            get {
+                object obj = ResourceManager.GetObject("select_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
