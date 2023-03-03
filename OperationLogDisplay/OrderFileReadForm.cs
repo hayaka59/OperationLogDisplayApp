@@ -34,6 +34,8 @@ namespace プロジェクト名_OperationLogDisplay
                 TimDateTime.Enabled = true;
 
                 DisplayHeader(LstOrderFile);
+
+                DisplayHeaderForResult();
             }
             catch (Exception ex)
             {
@@ -64,6 +66,7 @@ namespace プロジェクト名_OperationLogDisplay
 
                 #region 列の新規作成
                 ColumnHeader col01 = new();
+                ColumnHeader col02 = new();
                 ColumnHeader col03 = new();
                 ColumnHeader col04 = new();
                 ColumnHeader col05 = new();
@@ -74,8 +77,7 @@ namespace プロジェクト名_OperationLogDisplay
                 ColumnHeader col10 = new();
                 ColumnHeader col11 = new();
                 ColumnHeader col12 = new();
-                ColumnHeader col13 = new();
-                ColumnHeader col02 = new();
+                ColumnHeader col13 = new();                
                 ColumnHeader col14 = new();
                 ColumnHeader col15 = new();
                 ColumnHeader col16 = new();
@@ -435,6 +437,50 @@ namespace プロジェクト名_OperationLogDisplay
             }
         }
 
+        private void DisplayHeaderForResult()
+        {
+            try
+            {
+                LstViewResult.View = View.Details;
+
+                #region 列の新規作成
+                ColumnHeader col01 = new();
+                ColumnHeader col02 = new();
+                ColumnHeader col03 = new();
+                #endregion
+
+                #region 列名称設定
+                col01.Text = "日付";
+                col02.Text = "項目";
+                col03.Text = "内容";
+                #endregion
+
+                #region 列揃え指定
+                col01.TextAlign = HorizontalAlignment.Center;
+                col02.TextAlign = HorizontalAlignment.Center;
+                col03.TextAlign = HorizontalAlignment.Left;
+                #endregion
+
+                #region 列幅指定
+                col01.Width = 250;
+                col02.Width = 200;
+                col03.Width = 2000;
+                #endregion
+
+                #region 列表示
+                ColumnHeader[] colHeader = new[] { col01, col02, col03 };
+                LstViewResult.Columns.AddRange(colHeader);
+                #endregion
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【DisplayHeaderForResult】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
         /// <summary>
         /// 「オーダーファイル選択」ボタン処理
         /// </summary>
@@ -448,8 +494,7 @@ namespace プロジェクト名_OperationLogDisplay
                 try
                 {
                     CommonModule.OutPutLogFile("「オーダーファイル選択」ボタンクリック");
-                    // 初期表示するフォルダの指定（「空の文字列」の時は現在のディレクトリを表示）
-                    //ofd.InitialDirectory = @"C:\";
+
                     // 「ファイルの種類」に表示される選択肢の指定
                     ofd.Filter = "TXTファイル(*.txt;*.TXT)|*.txt;*.TXT|すべてのファイル(*.*)|*.*";
                     // 「ファイルの種類」ではじめに「すべてのファイル(*.*)|*.*」を選択
@@ -489,15 +534,14 @@ namespace プロジェクト名_OperationLogDisplay
         private void ReadOrderData(string filePath)
         {
             string sReadData;
-            string sResultMessage;
             int iReadRecNumber = 0;
             string[] col = new string[85];
             ListViewItem itm;
 
             try
             {
-                sResultMessage = "データ読込：" + filePath;
-                DispResult(sResultMessage);
+                DisplayViewResult("取込日付", dTimPickerImportDate.Value.ToString("yyyy/MM/dd"));
+                DisplayViewResult("データ読込", filePath);
 
                 LstOrderFile.Items.Clear();
                 // Windowsのシステムが提供するエンコーディングの全てを利用可能とする
@@ -602,14 +646,14 @@ namespace プロジェクト名_OperationLogDisplay
                             // データの表示
                             itm = new ListViewItem(col);
                             LstOrderFile.Items.Add(itm);
-                            LstOrderFile.Items[LstOrderFile.Items.Count - 1].UseItemStyleForSubItems = false;
+                            LstOrderFile.Items[^1].UseItemStyleForSubItems = false;
 
                             if (LstOrderFile.Items.Count % 2 == 0)
                             {
                                 // 偶数行の色反転
                                 for (var intLoopCnt = 0; intLoopCnt < col.Length; intLoopCnt++)
                                 {
-                                    LstOrderFile.Items[LstOrderFile.Items.Count - 1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                                    LstOrderFile.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                                 }
                             }
 
@@ -623,10 +667,8 @@ namespace プロジェクト名_OperationLogDisplay
                         }
                         else
                         {
-                            sResultMessage = "【ERROR】既定レコード長未満：" + sReadData.Length.ToString();
-                            DispResult(sResultMessage);
-                            sResultMessage = iReadRecNumber.ToString() + "行目：" + sReadData;
-                            DispResult(sResultMessage);
+                            DisplayViewResult("ERROR", "既定レコード長未満：" + sReadData.Length.ToString());
+                            DisplayViewResult("ERROR", iReadRecNumber.ToString() + "行目：" + sReadData);
                         }
 
                     }
@@ -638,25 +680,56 @@ namespace プロジェクト名_OperationLogDisplay
             }
         }
 
-        private void TimDateTime_Tick(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sItem"></param>
+        /// <param name="sContent"></param>
+        private void DisplayViewResult(string sItem, string sContent)
         {
-            LblDateTimeLocal.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
-        }
+            string[] col = new string[3];
+            ListViewItem itm;
 
-        private void DispResult(string sData)
-        {
             try
             {
-                LstResult.Items.Add(sData);
-                LstResult.SelectedIndex=LstResult.Items.Count-1;
+                // データのセット
+                col[0] = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                col[1] = sItem;
+                col[2] = sContent;
 
-                CommonModule.OutPutLogFile(sData);
+                // データの表示
+                itm = new ListViewItem(col);
+                LstViewResult.Items.Add(itm);
+                LstViewResult.Items[^1].UseItemStyleForSubItems = false;
 
+                if (LstViewResult.Items.Count % 2 == 0)
+                {
+                    // 偶数行の色反転
+                    for (var intLoopCnt = 0; intLoopCnt < col.Length; intLoopCnt++)
+                    {
+                        LstViewResult.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+
+                if (sItem=="ERROR")
+                {
+                    for (var intLoopCnt = 0; intLoopCnt < col.Length; intLoopCnt++)
+                    {
+                        LstViewResult.Items[^1].SubItems[intLoopCnt].ForeColor = Color.FromArgb(255, 0, 0);
+                    }
+                    //LstViewResult.Items[LstViewResult.Items.Count - 1].SubItems[1].BackColor = Color.FromArgb(230, 200, 200);
+                }
+                CommonModule.OutPutLogFile("【" + col[1] + "】" + col[2]);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.StackTrace, "【DispResult】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.StackTrace, "【DisplayViewResult】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void TimDateTime_Tick(object sender, EventArgs e)
+        {
+            LblDateTimeLocal.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
 
     }
