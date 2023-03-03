@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace プロジェクト名_OperationLogDisplay
 {
@@ -27,14 +28,14 @@ namespace プロジェクト名_OperationLogDisplay
         {
             try
             {
-                LblSelectFilePath.Text = "";
-                
+                LblSelectFilePath.Text = "";                
                 LblDateTimeLocal.Text = "";
+                // 日付表示用タイマーのセット
                 TimDateTime.Interval = 1000;
                 TimDateTime.Enabled = true;
-
-                DisplayHeader(LstOrderFile);
-
+                // オーダーファイル表示用リストビューのヘッダー表示
+                DisplayHeaderForOrder();
+                // 取込結果表示用リストビューのヘッダー表示
                 DisplayHeaderForResult();
             }
             catch (Exception ex)
@@ -44,7 +45,7 @@ namespace プロジェクト名_OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// 「閉じる」ボタン処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -55,15 +56,13 @@ namespace プロジェクト名_OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// オーダーファイル表示用リストビューのヘッダー表示
         /// </summary>
-        /// <param name="LstViewResult"></param>
-        private static void DisplayHeader(ListView LstViewResult)
+        private void DisplayHeaderForOrder()
         {
             try
             {
-                LstViewResult.View = View.Details;
-
+                LstOrderFile.View = View.Details;
                 #region 列の新規作成
                 ColumnHeader col01 = new();
                 ColumnHeader col02 = new();
@@ -151,7 +150,6 @@ namespace プロジェクト名_OperationLogDisplay
                 ColumnHeader col84 = new();
                 ColumnHeader col85 = new();
                 #endregion
-
                 #region 列名称設定
                 col01.Text = "レコード識別";
                 col02.Text = "データ区分";
@@ -239,7 +237,6 @@ namespace プロジェクト名_OperationLogDisplay
                 col84.Text = "保存方法２";
                 col85.Text = "フォーマットNo";
                 #endregion
-
                 #region 列揃え指定
                 col01.TextAlign = HorizontalAlignment.Center;
                 col02.TextAlign = HorizontalAlignment.Center;
@@ -327,7 +324,6 @@ namespace プロジェクト名_OperationLogDisplay
                 col84.TextAlign = HorizontalAlignment.Center;
                 col85.TextAlign = HorizontalAlignment.Center;
                 #endregion
-
                 #region 列幅指定
                 col01.Width = 90;
                 col02.Width = 90;
@@ -415,7 +411,6 @@ namespace プロジェクト名_OperationLogDisplay
                 col84.Width = 90;
                 col85.Width = 90;
                 #endregion
-
                 #region 列表示
                 ColumnHeader[] colHeader = new[] { col01, col02, col03, col04, col05, col06, col07, col08, col09, col10,
                                                    col11, col12, col13, col14, col15, col16, col17, col18, col19, col20,
@@ -427,52 +422,47 @@ namespace プロジェクト名_OperationLogDisplay
                                                    col71, col72, col73, col74, col75, col76, col77, col78, col79, col80,
                                                    col81, col82, col83, col84, col85
                                                   };
-                LstViewResult.Columns.AddRange(colHeader);
+                LstOrderFile.Columns.AddRange(colHeader);
                 #endregion
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【DisplayHeader】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "【DisplayHeaderForOrder】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        /// <summary>
+        /// 取込結果表示用リストビューのヘッダー表示
+        /// </summary>
         private void DisplayHeaderForResult()
         {
             try
             {
                 LstViewResult.View = View.Details;
-
                 #region 列の新規作成
                 ColumnHeader col01 = new();
                 ColumnHeader col02 = new();
                 ColumnHeader col03 = new();
                 #endregion
-
                 #region 列名称設定
                 col01.Text = "日付";
                 col02.Text = "項目";
                 col03.Text = "内容";
                 #endregion
-
                 #region 列揃え指定
                 col01.TextAlign = HorizontalAlignment.Center;
                 col02.TextAlign = HorizontalAlignment.Center;
                 col03.TextAlign = HorizontalAlignment.Left;
                 #endregion
-
                 #region 列幅指定
                 col01.Width = 250;
                 col02.Width = 200;
                 col03.Width = 2000;
                 #endregion
-
                 #region 列表示
                 ColumnHeader[] colHeader = new[] { col01, col02, col03 };
                 LstViewResult.Columns.AddRange(colHeader);
                 #endregion
-
-
             }
             catch (Exception ex)
             {
@@ -556,12 +546,12 @@ namespace プロジェクト名_OperationLogDisplay
                         if (sReadData.Length >= 517)
                         {
                             #region 読込データの分解
-                            col[0] = sReadData.Substring(1 - 1, 2);
-                            col[1] = sReadData.Substring(3 - 1, 1);
-                            col[2] = sReadData.Substring(4 - 1, 5);
-                            col[3] = sReadData.Substring(9 - 1, 8);
-                            col[4] = sReadData.Substring(17 - 1, 1);
-                            col[5] = sReadData.Substring(18 - 1, 8);
+                            col[0] = sReadData.Substring(1 - 1, 2);     // レコード識別
+                            col[1] = sReadData.Substring(3 - 1, 1);     // データ区分
+                            col[2] = sReadData.Substring(4 - 1, 5);     // 物流センターコード
+                            col[3] = sReadData.Substring(9 - 1, 8);     // 出荷No
+                            col[4] = sReadData.Substring(17 - 1, 1);    // 作業識別
+                            col[5] = sReadData.Substring(18 - 1, 8);    // 出荷予定日
                             col[6] = sReadData.Substring(26 - 1, 4);
                             col[7] = sReadData.Substring(30 - 1, 1);
                             col[8] = sReadData.Substring(31 - 1, 20);
@@ -647,6 +637,14 @@ namespace プロジェクト名_OperationLogDisplay
                             itm = new ListViewItem(col);
                             LstOrderFile.Items.Add(itm);
                             LstOrderFile.Items[^1].UseItemStyleForSubItems = false;
+
+                            if (col[5] != dTimPickerImportDate.Value.ToString("yyyyMMdd"))
+                            {
+                                string sMessage = "";
+                                sMessage += "取込日付（" + dTimPickerImportDate.Value.ToString("yyyyMMdd");
+                                sMessage += "）と出荷予定日（" + col[5] + "）が異なる";
+                                DisplayViewResult("ERROR", sMessage);
+                            }
 
                             if (LstOrderFile.Items.Count % 2 == 0)
                             {
