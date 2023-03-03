@@ -699,6 +699,8 @@ namespace プロジェクト名_OperationLogDisplay
                 itm = new ListViewItem(col);
                 LstViewResult.Items.Add(itm);
                 LstViewResult.Items[^1].UseItemStyleForSubItems = false;
+                LstViewResult.Select();
+                LstViewResult.Items[LstViewResult.Items.Count - 1].EnsureVisible();
 
                 if (LstViewResult.Items.Count % 2 == 0)
                 {

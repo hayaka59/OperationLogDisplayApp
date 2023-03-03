@@ -130,6 +130,7 @@
             this.LstViewResult.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult.FullRowSelect = true;
             this.LstViewResult.Location = new System.Drawing.Point(11, 521);
+            this.LstViewResult.MultiSelect = false;
             this.LstViewResult.Name = "LstViewResult";
             this.LstViewResult.Size = new System.Drawing.Size(1876, 366);
             this.LstViewResult.TabIndex = 27;
