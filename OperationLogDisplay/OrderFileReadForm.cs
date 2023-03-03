@@ -679,7 +679,7 @@ namespace プロジェクト名_OperationLogDisplay
         }
 
         /// <summary>
-        /// 
+        /// 取込結果表示処理
         /// </summary>
         /// <param name="sItem"></param>
         /// <param name="sContent"></param>
@@ -727,10 +727,26 @@ namespace プロジェクト名_OperationLogDisplay
             }
         }
 
+        /// <summary>
+        /// 「年月日時分秒」表示タイマー
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimDateTime_Tick(object sender, EventArgs e)
         {
             LblDateTimeLocal.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
         }
 
+        /// <summary>
+        /// 「✕」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OrderFileReadForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CommonModule.OutPutLogFile("オーダーファイル取込画面の「x」ボタンキャンセル");
+            // フォームを閉じるのをキャンセル
+            e.Cancel = true;
+        }
     }
 }

@@ -167,6 +167,7 @@
             this.Name = "OrderFileReadForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "オーダーファイル取込";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OrderFileReadForm_FormClosing);
             this.Load += new System.EventHandler(this.OrderFileReadForm_Load);
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
