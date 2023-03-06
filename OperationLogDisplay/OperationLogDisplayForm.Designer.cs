@@ -238,7 +238,7 @@
             this.LblVersion.BackColor = System.Drawing.Color.WhiteSmoke;
             this.LblVersion.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblVersion.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblVersion.Location = new System.Drawing.Point(1474, 929);
+            this.LblVersion.Location = new System.Drawing.Point(1476, 917);
             this.LblVersion.Name = "LblVersion";
             this.LblVersion.Size = new System.Drawing.Size(254, 23);
             this.LblVersion.TabIndex = 18;
@@ -249,7 +249,7 @@
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
-            this.BtnEnd.Location = new System.Drawing.Point(1742, 904);
+            this.BtnEnd.Location = new System.Drawing.Point(1742, 895);
             this.BtnEnd.Name = "BtnEnd";
             this.BtnEnd.Size = new System.Drawing.Size(133, 50);
             this.BtnEnd.TabIndex = 19;
@@ -394,7 +394,7 @@
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.LblTitle1);
             this.groupBox5.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(12, 20);
+            this.groupBox5.Location = new System.Drawing.Point(12, 7);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(937, 878);
             this.groupBox5.TabIndex = 30;
@@ -437,7 +437,7 @@
             this.groupBox6.Controls.Add(this.label3);
             this.groupBox6.Controls.Add(this.label1);
             this.groupBox6.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.Location = new System.Drawing.Point(955, 20);
+            this.groupBox6.Location = new System.Drawing.Point(955, 7);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(937, 878);
             this.groupBox6.TabIndex = 31;
@@ -448,7 +448,7 @@
             // 
             this.BtnOrderFileRead.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.BtnOrderFileRead.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.read_data;
-            this.BtnOrderFileRead.Location = new System.Drawing.Point(31, 904);
+            this.BtnOrderFileRead.Location = new System.Drawing.Point(31, 895);
             this.BtnOrderFileRead.Name = "BtnOrderFileRead";
             this.BtnOrderFileRead.Size = new System.Drawing.Size(310, 50);
             this.BtnOrderFileRead.TabIndex = 32;
