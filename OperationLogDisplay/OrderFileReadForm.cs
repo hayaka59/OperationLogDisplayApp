@@ -1,4 +1,5 @@
-﻿using OperationLogDisplay;
+﻿using Google.Protobuf;
+using OperationLogDisplay;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -524,6 +525,7 @@ namespace プロジェクト名_OperationLogDisplay
         private void ReadOrderData(string filePath)
         {
             string sReadData;
+            string sMessage;
             int iReadRecNumber = 0;
             string[] col = new string[85];
             ListViewItem itm;
@@ -619,7 +621,7 @@ namespace プロジェクト名_OperationLogDisplay
                             col[70] = sReadData.Substring(419 - 1, 16);
                             col[71] = sReadData.Substring(435 - 1, 7);
                             col[72] = sReadData.Substring(442 - 1, 1);
-                            col[73] = sReadData.Substring(443 - 1, 2);
+                            col[73] = sReadData.Substring(443 - 1, 2);  // 期限日数
                             col[74] = sReadData.Substring(445 - 1, 1);
                             col[75] = sReadData.Substring(446 - 1, 9);
                             col[76] = sReadData.Substring(455 - 1, 8);
@@ -638,13 +640,27 @@ namespace プロジェクト名_OperationLogDisplay
                             LstOrderFile.Items.Add(itm);
                             LstOrderFile.Items[^1].UseItemStyleForSubItems = false;
 
+                            #region 取込日付のチェック
                             if (col[5] != dTimPickerImportDate.Value.ToString("yyyyMMdd"))
-                            {
-                                string sMessage = "";
-                                sMessage += "取込日付（" + dTimPickerImportDate.Value.ToString("yyyyMMdd");
+                            {                                
+                                sMessage = "取込日付（" + dTimPickerImportDate.Value.ToString("yyyyMMdd");
                                 sMessage += "）と出荷予定日（" + col[5] + "）が異なる";
                                 DisplayViewResult("ERROR", sMessage);
                             }
+                            #endregion
+
+                            #region 期限日数のチェック
+                            if (col[73].Trim() == "")
+                            {
+                                sMessage = "期限日数が設定されていません。";
+                                DisplayViewResult("ERROR", sMessage);
+                            }
+                            else if(!int.TryParse(col[73], out int tmp))
+                            {
+                                sMessage = string.Format($"期限日数（{col[73].ToString()}）が数字以外です");
+                                DisplayViewResult("ERROR", sMessage);
+                            }
+                            #endregion
 
                             if (LstOrderFile.Items.Count % 2 == 0)
                             {
