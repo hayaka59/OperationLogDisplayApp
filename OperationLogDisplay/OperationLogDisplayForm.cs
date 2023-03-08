@@ -645,9 +645,9 @@ namespace OperationLogDisplay
                     LstViewResult1.Items.Add(itm1);
                     LstViewResult1.Items[^1].UseItemStyleForSubItems = false;
 
-                    if (LstViewResult1.Items.Count % 2 == 0)
+                    if (LstViewResult1.Items.Count % 2 == 1)
                     {
-                        // 偶数行の色反転
+                        // 奇数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
                         {
                             LstViewResult1.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
@@ -759,9 +759,9 @@ namespace OperationLogDisplay
                     LstViewResult2.Items.Add(itm2);
                     LstViewResult2.Items[^1].UseItemStyleForSubItems = false;
 
-                    if (LstViewResult2.Items.Count % 2 == 0)
+                    if (LstViewResult2.Items.Count % 2 == 1)
                     {
-                        // 偶数行の色反転
+                        // 奇数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
                         {
                             LstViewResult2.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
@@ -850,9 +850,9 @@ namespace OperationLogDisplay
                     LstViewResult3.Items.Add(itm3);
                     LstViewResult3.Items[^1].UseItemStyleForSubItems = false;
 
-                    if (LstViewResult3.Items.Count % 2 == 0)
+                    if (LstViewResult3.Items.Count % 2 == 1)
                     {
-                        // 偶数行の色反転
+                        // 奇数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 16; intLoopCnt++)
                         {
                             LstViewResult3.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
@@ -939,9 +939,9 @@ namespace OperationLogDisplay
                     LstViewResult4.Items.Add(itm4);
                     LstViewResult4.Items[^1].UseItemStyleForSubItems = false;
 
-                    if (LstViewResult4.Items.Count % 2 == 0)
+                    if (LstViewResult4.Items.Count % 2 == 1)
                     {
-                        // 偶数行の色反転
+                        // 奇数行の色反転
                         for (var intLoopCnt = 0; intLoopCnt <= 16; intLoopCnt++)
                         {
                             LstViewResult4.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);

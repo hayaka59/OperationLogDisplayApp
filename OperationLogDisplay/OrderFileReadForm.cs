@@ -526,6 +526,8 @@ namespace プロジェクト名_OperationLogDisplay
         {
             string sReadData;
             string sMessage;
+            Boolean bIsWrongImportDate;
+            Boolean bIsWrongDeadlineDays;
             int iReadRecNumber = 0;
             string[] col = new string[85];
             ListViewItem itm;
@@ -542,6 +544,8 @@ namespace プロジェクト名_OperationLogDisplay
                 {
                     while (!sr.EndOfStream)
                     {
+                        bIsWrongImportDate = false;
+                        bIsWrongDeadlineDays = false;
                         iReadRecNumber++;
                         sReadData = sr.ReadLine();
                         CommonModule.OutPutLogFile("【読込レコード長】" + sReadData.Length.ToString());
@@ -645,7 +649,8 @@ namespace プロジェクト名_OperationLogDisplay
                             {                                
                                 sMessage = "取込日付（" + dTimPickerImportDate.Value.ToString("yyyyMMdd");
                                 sMessage += "）と出荷予定日（" + col[5] + "）が異なる";
-                                DisplayViewResult("ERROR", sMessage);
+                                DisplayViewResult("ERROR", sMessage);                                
+                                bIsWrongImportDate = true;
                             }
                             #endregion
 
@@ -654,21 +659,33 @@ namespace プロジェクト名_OperationLogDisplay
                             {
                                 sMessage = "期限日数が設定されていません。";
                                 DisplayViewResult("ERROR", sMessage);
+                                bIsWrongDeadlineDays = true;
                             }
                             else if(!int.TryParse(col[73], out int tmp))
                             {
-                                sMessage = string.Format($"期限日数（{col[73].ToString()}）が数字以外です");
+                                sMessage = string.Format($"期限日数（{col[73]}）が数字以外です");
                                 DisplayViewResult("ERROR", sMessage);
+                                bIsWrongDeadlineDays = true;
                             }
                             #endregion
 
-                            if (LstOrderFile.Items.Count % 2 == 0)
+                            if (LstOrderFile.Items.Count % 2 == 1)
                             {
-                                // 偶数行の色反転
+                                // 奇数行の色反転
                                 for (var intLoopCnt = 0; intLoopCnt < col.Length; intLoopCnt++)
                                 {
                                     LstOrderFile.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
                                 }
+                            }
+                            // 取込日付エラー時の背景色変更
+                            if (bIsWrongImportDate)
+                            {
+                                LstOrderFile.Items[^1].SubItems[5].BackColor = Color.LightPink;
+                            }
+                            // 期限日数エラー時の背景色変更
+                            if (bIsWrongDeadlineDays)
+                            {
+                                LstOrderFile.Items[^1].SubItems[73].BackColor = Color.LightPink;
                             }
 
                             string sCsvData = "";
@@ -718,9 +735,9 @@ namespace プロジェクト名_OperationLogDisplay
                 LstViewResult.Select();
                 LstViewResult.Items[LstViewResult.Items.Count - 1].EnsureVisible();
 
-                if (LstViewResult.Items.Count % 2 == 0)
+                if (LstViewResult.Items.Count % 2 == 1)
                 {
-                    // 偶数行の色反転
+                    // 奇数の色反転
                     for (var intLoopCnt = 0; intLoopCnt < col.Length; intLoopCnt++)
                     {
                         LstViewResult.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
