@@ -11,8 +11,12 @@ namespace OperationLogDisplay
 
         public const string DEF_IP_ADDRESS1 = "1号機IPアドレス";
         public const string DEF_IP_ADDRESS2 = "2号機IPアドレス";
+        public const string DEF_HOST_NAME1 = "1号機ホスト名";
+        public const string DEF_HOST_NAME2 = "2号機ホスト名";
 
         public static string? pblIpAddress1;
         public static string? pblIpAddress2;
+        public static string? pblHostName1;
+        public static string? pblHostName2;
     }
 }

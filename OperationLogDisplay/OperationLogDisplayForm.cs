@@ -52,7 +52,10 @@ namespace OperationLogDisplay
                 TxtIpAddress2.Text = PubConstClass.pblIpAddress2;
                 CommonModule.OutPutLogFile(PubConstClass.DEF_IP_ADDRESS1 + "：" + PubConstClass.pblIpAddress1);
                 CommonModule.OutPutLogFile(PubConstClass.DEF_IP_ADDRESS2 + "：" + PubConstClass.pblIpAddress2);
-
+                GrpHost1.Text = PubConstClass.pblHostName1;
+                GrpHost2.Text = PubConstClass.pblHostName2;
+                CommonModule.OutPutLogFile(PubConstClass.DEF_HOST_NAME1 + "：" + PubConstClass.pblHostName1);
+                CommonModule.OutPutLogFile(PubConstClass.DEF_HOST_NAME2 + "：" + PubConstClass.pblHostName2);
             }
             catch (Exception ex)
             {
