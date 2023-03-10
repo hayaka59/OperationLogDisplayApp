@@ -57,24 +57,30 @@
             this.label3 = new System.Windows.Forms.Label();
             this.BtnRefresh4 = new System.Windows.Forms.Button();
             this.LblResult4 = new System.Windows.Forms.Label();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.GrpHost1 = new System.Windows.Forms.GroupBox();
             this.LblDateTimeLocal = new System.Windows.Forms.Label();
             this.LstViewResult1 = new System.Windows.Forms.ListView();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.GrpHost2 = new System.Windows.Forms.GroupBox();
             this.BtnOrderFileRead = new System.Windows.Forms.Button();
             this.TimDateTime = new System.Windows.Forms.Timer(this.components);
+            this.GrpRefreshTimer = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CmbRefreshTimer = new System.Windows.Forms.ComboBox();
+            this.BtnRefreshSet = new System.Windows.Forms.Button();
+            this.TimRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
+            this.GrpHost1.SuspendLayout();
+            this.GrpHost2.SuspendLayout();
+            this.GrpRefreshTimer.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRefresh1
             // 
             this.BtnRefresh1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefresh1.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
+            this.BtnRefresh1.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh1.Location = new System.Drawing.Point(515, 33);
             this.BtnRefresh1.Name = "BtnRefresh1";
             this.BtnRefresh1.Size = new System.Drawing.Size(133, 50);
@@ -146,7 +152,7 @@
             // BtnRefresh2
             // 
             this.BtnRefresh2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefresh2.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
+            this.BtnRefresh2.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh2.Location = new System.Drawing.Point(501, 31);
             this.BtnRefresh2.Name = "BtnRefresh2";
             this.BtnRefresh2.Size = new System.Drawing.Size(133, 50);
@@ -210,6 +216,7 @@
             // BtnRefresh3
             // 
             this.BtnRefresh3.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefresh3.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh3.Location = new System.Drawing.Point(868, 18);
             this.BtnRefresh3.Name = "BtnRefresh3";
             this.BtnRefresh3.Size = new System.Drawing.Size(66, 50);
@@ -248,7 +255,7 @@
             // BtnEnd
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
+            this.BtnEnd.Image = global::OperationLogDisplay.Properties.Resources.exit_icon_small;
             this.BtnEnd.Location = new System.Drawing.Point(1742, 895);
             this.BtnEnd.Name = "BtnEnd";
             this.BtnEnd.Size = new System.Drawing.Size(133, 50);
@@ -354,7 +361,7 @@
             // BtnRefresh4
             // 
             this.BtnRefresh4.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefresh4.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
+            this.BtnRefresh4.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh4.Location = new System.Drawing.Point(640, 30);
             this.BtnRefresh4.Name = "BtnRefresh4";
             this.BtnRefresh4.Size = new System.Drawing.Size(133, 50);
@@ -379,27 +386,27 @@
             this.LblResult4.Text = "LblResult4";
             this.LblResult4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // groupBox5
+            // GrpHost1
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox5.Controls.Add(this.LblDateTimeLocal);
-            this.groupBox5.Controls.Add(this.LstViewResult1);
-            this.groupBox5.Controls.Add(this.BtnRefresh1);
-            this.groupBox5.Controls.Add(this.groupBox3);
-            this.groupBox5.Controls.Add(this.BtnRefresh3);
-            this.groupBox5.Controls.Add(this.groupBox1);
-            this.groupBox5.Controls.Add(this.LblResult1);
-            this.groupBox5.Controls.Add(this.LstViewResult3);
-            this.groupBox5.Controls.Add(this.LblResult3);
-            this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Controls.Add(this.LblTitle1);
-            this.groupBox5.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox5.Location = new System.Drawing.Point(12, 7);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(937, 878);
-            this.groupBox5.TabIndex = 30;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "1号機";
+            this.GrpHost1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GrpHost1.Controls.Add(this.LblDateTimeLocal);
+            this.GrpHost1.Controls.Add(this.LstViewResult1);
+            this.GrpHost1.Controls.Add(this.BtnRefresh1);
+            this.GrpHost1.Controls.Add(this.groupBox3);
+            this.GrpHost1.Controls.Add(this.BtnRefresh3);
+            this.GrpHost1.Controls.Add(this.groupBox1);
+            this.GrpHost1.Controls.Add(this.LblResult1);
+            this.GrpHost1.Controls.Add(this.LstViewResult3);
+            this.GrpHost1.Controls.Add(this.LblResult3);
+            this.GrpHost1.Controls.Add(this.label2);
+            this.GrpHost1.Controls.Add(this.LblTitle1);
+            this.GrpHost1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GrpHost1.Location = new System.Drawing.Point(12, 7);
+            this.GrpHost1.Name = "GrpHost1";
+            this.GrpHost1.Size = new System.Drawing.Size(937, 878);
+            this.GrpHost1.TabIndex = 30;
+            this.GrpHost1.TabStop = false;
+            this.GrpHost1.Text = "1号機";
             // 
             // LblDateTimeLocal
             // 
@@ -423,31 +430,31 @@
             this.LstViewResult1.TabIndex = 5;
             this.LstViewResult1.UseCompatibleStateImageBehavior = false;
             // 
-            // groupBox6
+            // GrpHost2
             // 
-            this.groupBox6.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox6.Controls.Add(this.groupBox2);
-            this.groupBox6.Controls.Add(this.LstViewResult4);
-            this.groupBox6.Controls.Add(this.LblResult4);
-            this.groupBox6.Controls.Add(this.groupBox4);
-            this.groupBox6.Controls.Add(this.BtnRefresh2);
-            this.groupBox6.Controls.Add(this.BtnRefresh4);
-            this.groupBox6.Controls.Add(this.LblResult2);
-            this.groupBox6.Controls.Add(this.LstViewResult2);
-            this.groupBox6.Controls.Add(this.label3);
-            this.groupBox6.Controls.Add(this.label1);
-            this.groupBox6.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBox6.Location = new System.Drawing.Point(955, 7);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(937, 878);
-            this.groupBox6.TabIndex = 31;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "２号機";
+            this.GrpHost2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GrpHost2.Controls.Add(this.groupBox2);
+            this.GrpHost2.Controls.Add(this.LstViewResult4);
+            this.GrpHost2.Controls.Add(this.LblResult4);
+            this.GrpHost2.Controls.Add(this.groupBox4);
+            this.GrpHost2.Controls.Add(this.BtnRefresh2);
+            this.GrpHost2.Controls.Add(this.BtnRefresh4);
+            this.GrpHost2.Controls.Add(this.LblResult2);
+            this.GrpHost2.Controls.Add(this.LstViewResult2);
+            this.GrpHost2.Controls.Add(this.label3);
+            this.GrpHost2.Controls.Add(this.label1);
+            this.GrpHost2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.GrpHost2.Location = new System.Drawing.Point(955, 7);
+            this.GrpHost2.Name = "GrpHost2";
+            this.GrpHost2.Size = new System.Drawing.Size(937, 878);
+            this.GrpHost2.TabIndex = 31;
+            this.GrpHost2.TabStop = false;
+            this.GrpHost2.Text = "２号機";
             // 
             // BtnOrderFileRead
             // 
             this.BtnOrderFileRead.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnOrderFileRead.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.read_data;
+            this.BtnOrderFileRead.Image = global::OperationLogDisplay.Properties.Resources.read_data;
             this.BtnOrderFileRead.Location = new System.Drawing.Point(31, 895);
             this.BtnOrderFileRead.Name = "BtnOrderFileRead";
             this.BtnOrderFileRead.Size = new System.Drawing.Size(310, 50);
@@ -462,15 +469,66 @@
             // 
             this.TimDateTime.Tick += new System.EventHandler(this.TimDateTime_Tick);
             // 
+            // GrpRefreshTimer
+            // 
+            this.GrpRefreshTimer.Controls.Add(this.label4);
+            this.GrpRefreshTimer.Controls.Add(this.CmbRefreshTimer);
+            this.GrpRefreshTimer.Location = new System.Drawing.Point(393, 891);
+            this.GrpRefreshTimer.Name = "GrpRefreshTimer";
+            this.GrpRefreshTimer.Size = new System.Drawing.Size(110, 59);
+            this.GrpRefreshTimer.TabIndex = 33;
+            this.GrpRefreshTimer.TabStop = false;
+            this.GrpRefreshTimer.Text = "更新タイマー設定";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(66, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 24);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "秒";
+            // 
+            // CmbRefreshTimer
+            // 
+            this.CmbRefreshTimer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbRefreshTimer.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbRefreshTimer.FormattingEnabled = true;
+            this.CmbRefreshTimer.Location = new System.Drawing.Point(14, 20);
+            this.CmbRefreshTimer.Name = "CmbRefreshTimer";
+            this.CmbRefreshTimer.Size = new System.Drawing.Size(45, 28);
+            this.CmbRefreshTimer.TabIndex = 20;
+            // 
+            // BtnRefreshSet
+            // 
+            this.BtnRefreshSet.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefreshSet.Image = global::OperationLogDisplay.Properties.Resources.gear_white;
+            this.BtnRefreshSet.Location = new System.Drawing.Point(509, 899);
+            this.BtnRefreshSet.Name = "BtnRefreshSet";
+            this.BtnRefreshSet.Size = new System.Drawing.Size(133, 50);
+            this.BtnRefreshSet.TabIndex = 34;
+            this.BtnRefreshSet.Text = "開始";
+            this.BtnRefreshSet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRefreshSet.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnRefreshSet.UseVisualStyleBackColor = true;
+            this.BtnRefreshSet.Click += new System.EventHandler(this.BtnRefreshSet_Click);
+            // 
+            // TimRefreshTimer
+            // 
+            this.TimRefreshTimer.Tick += new System.EventHandler(this.TimRefreshTimer_Tick);
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.BtnRefreshSet);
+            this.Controls.Add(this.GrpRefreshTimer);
             this.Controls.Add(this.BtnOrderFileRead);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.GrpHost2);
+            this.Controls.Add(this.GrpHost1);
             this.Controls.Add(this.BtnEnd);
             this.Controls.Add(this.LblVersion);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -487,10 +545,12 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
+            this.GrpHost1.ResumeLayout(false);
+            this.GrpHost1.PerformLayout();
+            this.GrpHost2.ResumeLayout(false);
+            this.GrpHost2.PerformLayout();
+            this.GrpRefreshTimer.ResumeLayout(false);
+            this.GrpRefreshTimer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -523,11 +583,16 @@
         private Label label3;
         private Button BtnRefresh4;
         private Label LblResult4;
-        private GroupBox groupBox5;
+        private GroupBox GrpHost1;
         private ListView LstViewResult1;
-        private GroupBox groupBox6;
+        private GroupBox GrpHost2;
         private Button BtnOrderFileRead;
         private Label LblDateTimeLocal;
         private System.Windows.Forms.Timer TimDateTime;
+        private GroupBox GrpRefreshTimer;
+        private Label label4;
+        private ComboBox CmbRefreshTimer;
+        private Button BtnRefreshSet;
+        private System.Windows.Forms.Timer TimRefreshTimer;
     }
 }

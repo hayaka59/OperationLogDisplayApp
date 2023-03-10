@@ -119,6 +119,18 @@ namespace OperationLogDisplay
                                 PubConstClass.pblIpAddress2 = strArray[1];
                                 break;
                             }
+                        // 1号機ホスト名
+                        case PubConstClass.DEF_HOST_NAME1:
+                            {
+                                PubConstClass.pblHostName1 = strArray[1];
+                                break;
+                            }
+                        // 2号機ホスト名
+                        case PubConstClass.DEF_HOST_NAME2:
+                            {
+                                PubConstClass.pblHostName2 = strArray[1];
+                                break;
+                            }
 
                         default:
                             {

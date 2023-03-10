@@ -1,7 +1,7 @@
 //using Microsoft.VisualBasic;
 //using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
-using プロジェクト名_OperationLogDisplay;
+//using OperationLogDisplay;
 //using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Diagnostics;
@@ -47,12 +47,23 @@ namespace OperationLogDisplay
                 DisplayHeaderForHistory(LstViewResult3);
                 DisplayHeaderForHistory(LstViewResult4);
 
+                CmbRefreshTimer.Items.Clear();
+                CmbRefreshTimer.Items.Add("1");
+                CmbRefreshTimer.Items.Add("2");
+                CmbRefreshTimer.Items.Add("3");
+                CmbRefreshTimer.Items.Add("4");
+                CmbRefreshTimer.Items.Add("5");
+                CmbRefreshTimer.SelectedIndex = 4;
+
                 CommonModule.GetSystemDefinition();
                 TxtIpAddress1.Text = PubConstClass.pblIpAddress1;
                 TxtIpAddress2.Text = PubConstClass.pblIpAddress2;
                 CommonModule.OutPutLogFile(PubConstClass.DEF_IP_ADDRESS1 + "：" + PubConstClass.pblIpAddress1);
                 CommonModule.OutPutLogFile(PubConstClass.DEF_IP_ADDRESS2 + "：" + PubConstClass.pblIpAddress2);
-
+                GrpHost1.Text = PubConstClass.pblHostName1;
+                GrpHost2.Text = PubConstClass.pblHostName2;
+                CommonModule.OutPutLogFile(PubConstClass.DEF_HOST_NAME1 + "：" + PubConstClass.pblHostName1);
+                CommonModule.OutPutLogFile(PubConstClass.DEF_HOST_NAME2 + "：" + PubConstClass.pblHostName2);
             }
             catch (Exception ex)
             {
@@ -426,7 +437,8 @@ namespace OperationLogDisplay
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "【ExecuteReader1】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StopRefReshTimer();
+                MessageBox.Show(ex.Message, "【ExecuteReader】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return Datas;
         }
@@ -666,8 +678,8 @@ namespace OperationLogDisplay
                 // 履歴テーブルの更新
                 BtnRefresh3_Click(sender, e);
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex)                
+            {                
                 MessageBox.Show(ex.Message, "【BtnDisplay1_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -783,7 +795,7 @@ namespace OperationLogDisplay
 
             }
             catch (Exception ex)
-            {
+            {                
                 MessageBox.Show(ex.Message, "【BtnDisplay2_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -1002,10 +1014,10 @@ namespace OperationLogDisplay
             
         }
 
-        OrderFileReadForm orderFileReadForm = new OrderFileReadForm();
+        OrderFileReadForm orderFileReadForm = new();
 
         /// <summary>
-        /// 
+        /// 「オーダーファイル取込」ボタン処理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1015,9 +1027,68 @@ namespace OperationLogDisplay
             this.Hide();
         }
 
+        /// <summary>
+        /// 現在日付表示タイマー処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TimDateTime_Tick(object sender, EventArgs e)
         {
             LblDateTimeLocal.Text = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+        }
+
+        /// <summary>
+        /// 「開始／停止」ボタン処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRefreshSet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (BtnRefreshSet.Text=="開始")
+                {
+                    BtnRefreshSet.Text = "停止";
+                    GrpRefreshTimer.Enabled = false;
+                    TimRefreshTimer.Interval = (CmbRefreshTimer.SelectedIndex + 1) * 1000;
+                    TimRefreshTimer.Enabled = true;
+                }
+                else
+                {
+                    StopRefReshTimer();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "【BtnRefreshSet_Click】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void StopRefReshTimer()
+        {
+            BtnRefreshSet.Text = "開始";
+            GrpRefreshTimer.Enabled = true;
+            TimRefreshTimer.Enabled = false;
+        }
+
+        /// <summary>
+        /// 更新処理タイマー
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TimRefreshTimer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                //MessageBox.Show(DateTime.Now.ToString("HH:mm:ss"));
+                BtnRefresh1.PerformClick();
+                BtnRefresh2.PerformClick();
+            }
+            catch (Exception ex)
+            {
+                TimRefreshTimer.Enabled = false;
+                MessageBox.Show(ex.Message, "【TimRefreshTimer_Tick】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
