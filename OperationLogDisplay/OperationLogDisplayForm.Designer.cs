@@ -63,12 +63,18 @@
             this.GrpHost2 = new System.Windows.Forms.GroupBox();
             this.BtnOrderFileRead = new System.Windows.Forms.Button();
             this.TimDateTime = new System.Windows.Forms.Timer(this.components);
+            this.GrpRefreshTimer = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CmbRefreshTimer = new System.Windows.Forms.ComboBox();
+            this.BtnRefreshSet = new System.Windows.Forms.Button();
+            this.TimRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.GrpHost1.SuspendLayout();
             this.GrpHost2.SuspendLayout();
+            this.GrpRefreshTimer.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnRefresh1
@@ -462,12 +468,63 @@
             // 
             this.TimDateTime.Tick += new System.EventHandler(this.TimDateTime_Tick);
             // 
+            // GrpRefreshTimer
+            // 
+            this.GrpRefreshTimer.Controls.Add(this.label4);
+            this.GrpRefreshTimer.Controls.Add(this.CmbRefreshTimer);
+            this.GrpRefreshTimer.Location = new System.Drawing.Point(393, 891);
+            this.GrpRefreshTimer.Name = "GrpRefreshTimer";
+            this.GrpRefreshTimer.Size = new System.Drawing.Size(110, 59);
+            this.GrpRefreshTimer.TabIndex = 33;
+            this.GrpRefreshTimer.TabStop = false;
+            this.GrpRefreshTimer.Text = "更新タイマー設定";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(66, 22);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 24);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "秒";
+            // 
+            // CmbRefreshTimer
+            // 
+            this.CmbRefreshTimer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbRefreshTimer.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CmbRefreshTimer.FormattingEnabled = true;
+            this.CmbRefreshTimer.Location = new System.Drawing.Point(14, 20);
+            this.CmbRefreshTimer.Name = "CmbRefreshTimer";
+            this.CmbRefreshTimer.Size = new System.Drawing.Size(45, 28);
+            this.CmbRefreshTimer.TabIndex = 20;
+            // 
+            // BtnRefreshSet
+            // 
+            this.BtnRefreshSet.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefreshSet.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.gear_white;
+            this.BtnRefreshSet.Location = new System.Drawing.Point(509, 899);
+            this.BtnRefreshSet.Name = "BtnRefreshSet";
+            this.BtnRefreshSet.Size = new System.Drawing.Size(133, 50);
+            this.BtnRefreshSet.TabIndex = 34;
+            this.BtnRefreshSet.Text = "開始";
+            this.BtnRefreshSet.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnRefreshSet.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BtnRefreshSet.UseVisualStyleBackColor = true;
+            this.BtnRefreshSet.Click += new System.EventHandler(this.BtnRefreshSet_Click);
+            // 
+            // TimRefreshTimer
+            // 
+            this.TimRefreshTimer.Tick += new System.EventHandler(this.TimRefreshTimer_Tick);
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.BtnRefreshSet);
+            this.Controls.Add(this.GrpRefreshTimer);
             this.Controls.Add(this.BtnOrderFileRead);
             this.Controls.Add(this.GrpHost2);
             this.Controls.Add(this.GrpHost1);
@@ -491,6 +548,8 @@
             this.GrpHost1.PerformLayout();
             this.GrpHost2.ResumeLayout(false);
             this.GrpHost2.PerformLayout();
+            this.GrpRefreshTimer.ResumeLayout(false);
+            this.GrpRefreshTimer.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -529,5 +588,10 @@
         private Button BtnOrderFileRead;
         private Label LblDateTimeLocal;
         private System.Windows.Forms.Timer TimDateTime;
+        private GroupBox GrpRefreshTimer;
+        private Label label4;
+        private ComboBox CmbRefreshTimer;
+        private Button BtnRefreshSet;
+        private System.Windows.Forms.Timer TimRefreshTimer;
     }
 }

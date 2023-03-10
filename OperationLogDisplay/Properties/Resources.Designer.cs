@@ -22,7 +22,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("プロジェクト名_OperationLogDisplay.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         ///   現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap analysis {
+        public static System.Drawing.Bitmap analysis {
             get {
                 object obj = ResourceManager.GetObject("analysis", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap cancel {
+        public static System.Drawing.Bitmap cancel {
             get {
                 object obj = ResourceManager.GetObject("cancel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap exit_icon_small {
+        public static System.Drawing.Bitmap exit_icon_small {
             get {
                 object obj = ResourceManager.GetObject("exit_icon_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +93,17 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap read_data {
+        public static System.Drawing.Bitmap gear_white {
+            get {
+                object obj = ResourceManager.GetObject("gear_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap read_data {
             get {
                 object obj = ResourceManager.GetObject("read_data", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +113,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap reload_small {
+        public static System.Drawing.Bitmap reload_small {
             get {
                 object obj = ResourceManager.GetObject("reload_small", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,9 +123,39 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap select_file {
+        public static System.Drawing.Bitmap running_icon {
+            get {
+                object obj = ResourceManager.GetObject("running_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap select_file {
             get {
                 object obj = ResourceManager.GetObject("select_file", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap stop1 {
+            get {
+                object obj = ResourceManager.GetObject("stop1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        public static System.Drawing.Bitmap switch_icon {
+            get {
+                object obj = ResourceManager.GetObject("switch_icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
