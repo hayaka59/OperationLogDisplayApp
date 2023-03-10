@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace プロジェクト名_OperationLogDisplay.Properties {
+namespace OperationLogDisplay.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace プロジェクト名_OperationLogDisplay.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("プロジェクト名_OperationLogDisplay.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("OperationLogDisplay.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -1,7 +1,7 @@
 //using Microsoft.VisualBasic;
 //using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
-using プロジェクト名_OperationLogDisplay;
+//using OperationLogDisplay;
 //using System.Diagnostics;
 //using System.Collections.Generic;
 //using System.Diagnostics;

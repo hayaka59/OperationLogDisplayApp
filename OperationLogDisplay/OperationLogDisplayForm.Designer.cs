@@ -80,7 +80,7 @@
             // BtnRefresh1
             // 
             this.BtnRefresh1.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefresh1.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
+            this.BtnRefresh1.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh1.Location = new System.Drawing.Point(515, 33);
             this.BtnRefresh1.Name = "BtnRefresh1";
             this.BtnRefresh1.Size = new System.Drawing.Size(133, 50);
@@ -152,7 +152,7 @@
             // BtnRefresh2
             // 
             this.BtnRefresh2.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefresh2.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
+            this.BtnRefresh2.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh2.Location = new System.Drawing.Point(501, 31);
             this.BtnRefresh2.Name = "BtnRefresh2";
             this.BtnRefresh2.Size = new System.Drawing.Size(133, 50);
@@ -216,6 +216,7 @@
             // BtnRefresh3
             // 
             this.BtnRefresh3.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BtnRefresh3.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh3.Location = new System.Drawing.Point(868, 18);
             this.BtnRefresh3.Name = "BtnRefresh3";
             this.BtnRefresh3.Size = new System.Drawing.Size(66, 50);
@@ -254,7 +255,7 @@
             // BtnEnd
             // 
             this.BtnEnd.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnEnd.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.exit_icon_small;
+            this.BtnEnd.Image = global::OperationLogDisplay.Properties.Resources.exit_icon_small;
             this.BtnEnd.Location = new System.Drawing.Point(1742, 895);
             this.BtnEnd.Name = "BtnEnd";
             this.BtnEnd.Size = new System.Drawing.Size(133, 50);
@@ -360,7 +361,7 @@
             // BtnRefresh4
             // 
             this.BtnRefresh4.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefresh4.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.reload_small;
+            this.BtnRefresh4.Image = global::OperationLogDisplay.Properties.Resources.reload_small;
             this.BtnRefresh4.Location = new System.Drawing.Point(640, 30);
             this.BtnRefresh4.Name = "BtnRefresh4";
             this.BtnRefresh4.Size = new System.Drawing.Size(133, 50);
@@ -453,7 +454,7 @@
             // BtnOrderFileRead
             // 
             this.BtnOrderFileRead.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnOrderFileRead.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.read_data;
+            this.BtnOrderFileRead.Image = global::OperationLogDisplay.Properties.Resources.read_data;
             this.BtnOrderFileRead.Location = new System.Drawing.Point(31, 895);
             this.BtnOrderFileRead.Name = "BtnOrderFileRead";
             this.BtnOrderFileRead.Size = new System.Drawing.Size(310, 50);
@@ -502,7 +503,7 @@
             // BtnRefreshSet
             // 
             this.BtnRefreshSet.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnRefreshSet.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.gear_white;
+            this.BtnRefreshSet.Image = global::OperationLogDisplay.Properties.Resources.gear_white;
             this.BtnRefreshSet.Location = new System.Drawing.Point(509, 899);
             this.BtnRefreshSet.Name = "BtnRefreshSet";
             this.BtnRefreshSet.Size = new System.Drawing.Size(133, 50);

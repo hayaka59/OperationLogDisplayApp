@@ -1,4 +1,4 @@
-﻿namespace プロジェクト名_OperationLogDisplay
+﻿namespace OperationLogDisplay
 {
     partial class OrderFileReadForm
     {
@@ -46,7 +46,7 @@
             // BtnClose
             // 
             this.BtnClose.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnClose.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.cancel;
+            this.BtnClose.Image = global::OperationLogDisplay.Properties.Resources.cancel;
             this.BtnClose.Location = new System.Drawing.Point(1755, 895);
             this.BtnClose.Name = "BtnClose";
             this.BtnClose.Size = new System.Drawing.Size(133, 50);
@@ -70,7 +70,7 @@
             // BtnSelectOrderFile
             // 
             this.BtnSelectOrderFile.Font = new System.Drawing.Font("メイリオ", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BtnSelectOrderFile.Image = global::プロジェクト名_OperationLogDisplay.Properties.Resources.select_file;
+            this.BtnSelectOrderFile.Image = global::OperationLogDisplay.Properties.Resources.select_file;
             this.BtnSelectOrderFile.Location = new System.Drawing.Point(11, 12);
             this.BtnSelectOrderFile.Name = "BtnSelectOrderFile";
             this.BtnSelectOrderFile.Size = new System.Drawing.Size(293, 50);
