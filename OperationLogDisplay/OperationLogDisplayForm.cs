@@ -53,7 +53,7 @@ namespace OperationLogDisplay
                 CmbRefreshTimer.Items.Add("3");
                 CmbRefreshTimer.Items.Add("4");
                 CmbRefreshTimer.Items.Add("5");
-                CmbRefreshTimer.SelectedIndex = 0;
+                CmbRefreshTimer.SelectedIndex = 4;
 
                 CommonModule.GetSystemDefinition();
                 TxtIpAddress1.Text = PubConstClass.pblIpAddress1;
