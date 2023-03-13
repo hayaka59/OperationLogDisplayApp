@@ -1,6 +1,7 @@
 //using Microsoft.VisualBasic;
 //using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI.Common;
 //using OperationLogDisplay;
 //using System.Diagnostics;
 //using System.Collections.Generic;
@@ -34,6 +35,9 @@ namespace OperationLogDisplay
                 LblResult2.Text = "";
                 LblResult3.Text = "";
                 LblResult4.Text = "";
+                LblStatus.Text = "";
+                LblError1.Visible = false;
+                LblError2.Visible = false;
                 LblDateTimeLocal.Text = "";
                 TimDateTime.Interval = 1000;
                 TimDateTime.Enabled = true;
@@ -369,10 +373,11 @@ namespace OperationLogDisplay
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        private List<OrderData> ExecuteReader(string query, string sServer)
+        private List<OrderData> ExecuteReader(string query, string sServer, ref string sErrorMessage)
         {
             // 検索条件に一致したレコードを格納するコレクション
             List<OrderData> Datas = new();
+            sErrorMessage = "";
 
             // MySQLへの接続情報を設定
             var server = sServer;               // ホスト名
@@ -438,7 +443,8 @@ namespace OperationLogDisplay
             catch (Exception ex)
             {
                 StopRefReshTimer();
-                MessageBox.Show(ex.Message, "【ExecuteReader】", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sErrorMessage = ex.Message;
+                //MessageBox.Show(sErrorMessage, "【ExecuteReader】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return Datas;
         }
@@ -583,6 +589,7 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult1.Items.Clear();
+                LblError1.Visible = false;
 
                 string sSQLData = "";
                 string sPicDay1 = dTimPickerImportDate1.Value.ToString("yyyy-MM-dd");
@@ -602,8 +609,16 @@ namespace OperationLogDisplay
                         sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
                         break;
                 }
+                string sErrorMessage = "";
                 CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】検索条件：" + sSQLData);
-                var result = ExecuteReader(sSQLData, TxtIpAddress1.Text);
+                var result = ExecuteReader(sSQLData, TxtIpAddress1.Text, ref sErrorMessage);
+                if (result.Count == 0)
+                {
+                    LblError1.Text = sErrorMessage;
+                    LblError1.Visible = true;
+                    CommonModule.OutPutLogFile("【エラー】1号機用「更新」ボタン処理：" + sErrorMessage);
+                    return;
+                }
                 foreach (var ret in result)
                 {
                     // 検索結果を表示
@@ -691,12 +706,14 @@ namespace OperationLogDisplay
         /// <param name="e"></param>
         private void BtnRefresh2_Click(object sender, EventArgs e)
         {
+            string sErrorMessage = "";
             string[] col = new string[35];
             ListViewItem itm2;
 
             try
             {
                 LstViewResult2.Items.Clear();
+                LblError2.Visible = false;
 
                 string sSQLData = "";
                 string sPicDay1 = dTimPickerImportDate2.Value.ToString("yyyy-MM-dd");
@@ -717,7 +734,13 @@ namespace OperationLogDisplay
                         break;
                 }
                 CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】検索条件：" + sSQLData);
-                var result = ExecuteReader(sSQLData, TxtIpAddress2.Text);
+                var result = ExecuteReader(sSQLData, TxtIpAddress2.Text, ref sErrorMessage);
+                if (result.Count == 0) {
+                    LblError2.Text = sErrorMessage;
+                    LblError2.Visible = true;
+                    CommonModule.OutPutLogFile("【エラー】2号機用「更新」ボタン処理：" + sErrorMessage);
+                    return;
+                }
                 foreach (var ret in result)
                 {
                     // 検索結果を表示
@@ -1052,6 +1075,7 @@ namespace OperationLogDisplay
                     GrpRefreshTimer.Enabled = false;
                     TimRefreshTimer.Interval = (CmbRefreshTimer.SelectedIndex + 1) * 1000;
                     TimRefreshTimer.Enabled = true;
+                    LblStatus.Text = "自動更新（" + CmbRefreshTimer.Text + "秒間隔）実行中";
                 }
                 else
                 {
@@ -1069,6 +1093,7 @@ namespace OperationLogDisplay
             BtnRefreshSet.Text = "開始";
             GrpRefreshTimer.Enabled = true;
             TimRefreshTimer.Enabled = false;
+            LblStatus.Text = "";
         }
 
         /// <summary>

@@ -61,6 +61,7 @@
             this.LblDateTimeLocal = new System.Windows.Forms.Label();
             this.LstViewResult1 = new System.Windows.Forms.ListView();
             this.GrpHost2 = new System.Windows.Forms.GroupBox();
+            this.LblError2 = new System.Windows.Forms.Label();
             this.BtnOrderFileRead = new System.Windows.Forms.Button();
             this.TimDateTime = new System.Windows.Forms.Timer(this.components);
             this.GrpRefreshTimer = new System.Windows.Forms.GroupBox();
@@ -68,6 +69,8 @@
             this.CmbRefreshTimer = new System.Windows.Forms.ComboBox();
             this.BtnRefreshSet = new System.Windows.Forms.Button();
             this.TimRefreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.LblStatus = new System.Windows.Forms.Label();
+            this.LblError1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -109,7 +112,7 @@
             this.LstViewResult2.FullRowSelect = true;
             this.LstViewResult2.Location = new System.Drawing.Point(20, 122);
             this.LstViewResult2.Name = "LstViewResult2";
-            this.LstViewResult2.Size = new System.Drawing.Size(900, 350);
+            this.LstViewResult2.Size = new System.Drawing.Size(900, 332);
             this.LstViewResult2.TabIndex = 5;
             this.LstViewResult2.UseCompatibleStateImageBehavior = false;
             // 
@@ -207,7 +210,7 @@
             // 
             this.LstViewResult3.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult3.FullRowSelect = true;
-            this.LstViewResult3.Location = new System.Drawing.Point(19, 511);
+            this.LstViewResult3.Location = new System.Drawing.Point(19, 488);
             this.LstViewResult3.Name = "LstViewResult3";
             this.LstViewResult3.Size = new System.Drawing.Size(900, 350);
             this.LstViewResult3.TabIndex = 15;
@@ -233,7 +236,7 @@
             this.LblResult3.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblResult3.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblResult3.ForeColor = System.Drawing.Color.White;
-            this.LblResult3.Location = new System.Drawing.Point(822, 484);
+            this.LblResult3.Location = new System.Drawing.Point(822, 464);
             this.LblResult3.Name = "LblResult3";
             this.LblResult3.Size = new System.Drawing.Size(91, 24);
             this.LblResult3.TabIndex = 17;
@@ -329,7 +332,7 @@
             this.label2.BackColor = System.Drawing.Color.RoyalBlue;
             this.label2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(19, 481);
+            this.label2.Location = new System.Drawing.Point(19, 458);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(900, 30);
             this.label2.TabIndex = 21;
@@ -340,7 +343,7 @@
             // 
             this.LstViewResult4.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult4.FullRowSelect = true;
-            this.LstViewResult4.Location = new System.Drawing.Point(20, 511);
+            this.LstViewResult4.Location = new System.Drawing.Point(20, 488);
             this.LstViewResult4.Name = "LstViewResult4";
             this.LstViewResult4.Size = new System.Drawing.Size(900, 350);
             this.LstViewResult4.TabIndex = 24;
@@ -351,7 +354,7 @@
             this.label3.BackColor = System.Drawing.Color.RoyalBlue;
             this.label3.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(20, 481);
+            this.label3.Location = new System.Drawing.Point(20, 458);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(900, 30);
             this.label3.TabIndex = 26;
@@ -389,6 +392,7 @@
             // GrpHost1
             // 
             this.GrpHost1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GrpHost1.Controls.Add(this.LblError1);
             this.GrpHost1.Controls.Add(this.LblDateTimeLocal);
             this.GrpHost1.Controls.Add(this.LstViewResult1);
             this.GrpHost1.Controls.Add(this.BtnRefresh1);
@@ -426,13 +430,14 @@
             this.LstViewResult1.FullRowSelect = true;
             this.LstViewResult1.Location = new System.Drawing.Point(19, 122);
             this.LstViewResult1.Name = "LstViewResult1";
-            this.LstViewResult1.Size = new System.Drawing.Size(900, 350);
+            this.LstViewResult1.Size = new System.Drawing.Size(900, 332);
             this.LstViewResult1.TabIndex = 5;
             this.LstViewResult1.UseCompatibleStateImageBehavior = false;
             // 
             // GrpHost2
             // 
             this.GrpHost2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GrpHost2.Controls.Add(this.LblError2);
             this.GrpHost2.Controls.Add(this.groupBox2);
             this.GrpHost2.Controls.Add(this.LstViewResult4);
             this.GrpHost2.Controls.Add(this.LblResult4);
@@ -450,6 +455,18 @@
             this.GrpHost2.TabIndex = 31;
             this.GrpHost2.TabStop = false;
             this.GrpHost2.Text = "２号機";
+            // 
+            // LblError2
+            // 
+            this.LblError2.BackColor = System.Drawing.Color.HotPink;
+            this.LblError2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblError2.ForeColor = System.Drawing.Color.White;
+            this.LblError2.Location = new System.Drawing.Point(20, 840);
+            this.LblError2.Name = "LblError2";
+            this.LblError2.Size = new System.Drawing.Size(900, 30);
+            this.LblError2.TabIndex = 30;
+            this.LblError2.Text = "LblError2";
+            this.LblError2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BtnOrderFileRead
             // 
@@ -518,12 +535,37 @@
             // 
             this.TimRefreshTimer.Tick += new System.EventHandler(this.TimRefreshTimer_Tick);
             // 
+            // LblStatus
+            // 
+            this.LblStatus.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.LblStatus.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblStatus.ForeColor = System.Drawing.Color.Blue;
+            this.LblStatus.Location = new System.Drawing.Point(654, 911);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(292, 35);
+            this.LblStatus.TabIndex = 23;
+            this.LblStatus.Text = "LblStatus";
+            this.LblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // LblError1
+            // 
+            this.LblError1.BackColor = System.Drawing.Color.HotPink;
+            this.LblError1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblError1.ForeColor = System.Drawing.Color.White;
+            this.LblError1.Location = new System.Drawing.Point(19, 840);
+            this.LblError1.Name = "LblError1";
+            this.LblError1.Size = new System.Drawing.Size(900, 30);
+            this.LblError1.TabIndex = 31;
+            this.LblError1.Text = "LblError1";
+            this.LblError1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.LblStatus);
             this.Controls.Add(this.BtnRefreshSet);
             this.Controls.Add(this.GrpRefreshTimer);
             this.Controls.Add(this.BtnOrderFileRead);
@@ -594,5 +636,8 @@
         private ComboBox CmbRefreshTimer;
         private Button BtnRefreshSet;
         private System.Windows.Forms.Timer TimRefreshTimer;
+        private Label LblStatus;
+        private Label LblError2;
+        private Label LblError1;
     }
 }
