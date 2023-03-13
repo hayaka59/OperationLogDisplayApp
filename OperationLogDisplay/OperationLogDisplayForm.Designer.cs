@@ -68,6 +68,7 @@
             this.CmbRefreshTimer = new System.Windows.Forms.ComboBox();
             this.BtnRefreshSet = new System.Windows.Forms.Button();
             this.TimRefreshTimer = new System.Windows.Forms.Timer(this.components);
+            this.LblStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -518,12 +519,25 @@
             // 
             this.TimRefreshTimer.Tick += new System.EventHandler(this.TimRefreshTimer_Tick);
             // 
+            // LblStatus
+            // 
+            this.LblStatus.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.LblStatus.Font = new System.Drawing.Font("メイリオ", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblStatus.ForeColor = System.Drawing.Color.Blue;
+            this.LblStatus.Location = new System.Drawing.Point(654, 911);
+            this.LblStatus.Name = "LblStatus";
+            this.LblStatus.Size = new System.Drawing.Size(292, 35);
+            this.LblStatus.TabIndex = 23;
+            this.LblStatus.Text = "LblStatus";
+            this.LblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // OperationLogDisplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1904, 961);
+            this.Controls.Add(this.LblStatus);
             this.Controls.Add(this.BtnRefreshSet);
             this.Controls.Add(this.GrpRefreshTimer);
             this.Controls.Add(this.BtnOrderFileRead);
@@ -594,5 +608,6 @@
         private ComboBox CmbRefreshTimer;
         private Button BtnRefreshSet;
         private System.Windows.Forms.Timer TimRefreshTimer;
+        private Label LblStatus;
     }
 }

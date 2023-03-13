@@ -54,6 +54,7 @@ namespace OperationLogDisplay
                 CmbRefreshTimer.Items.Add("4");
                 CmbRefreshTimer.Items.Add("5");
                 CmbRefreshTimer.SelectedIndex = 4;
+                LblStatus.Text = "";
 
                 CommonModule.GetSystemDefinition();
                 TxtIpAddress1.Text = PubConstClass.pblIpAddress1;
@@ -1052,6 +1053,7 @@ namespace OperationLogDisplay
                     GrpRefreshTimer.Enabled = false;
                     TimRefreshTimer.Interval = (CmbRefreshTimer.SelectedIndex + 1) * 1000;
                     TimRefreshTimer.Enabled = true;
+                    LblStatus.Text = "自動更新（" + CmbRefreshTimer.Text + "秒間隔）実行中";
                 }
                 else
                 {
@@ -1069,6 +1071,7 @@ namespace OperationLogDisplay
             BtnRefreshSet.Text = "開始";
             GrpRefreshTimer.Enabled = true;
             TimRefreshTimer.Enabled = false;
+            LblStatus.Text = "";
         }
 
         /// <summary>
