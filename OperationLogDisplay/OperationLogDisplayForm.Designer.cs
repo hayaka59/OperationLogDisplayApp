@@ -58,9 +58,14 @@
             this.BtnRefresh4 = new System.Windows.Forms.Button();
             this.LblResult4 = new System.Windows.Forms.Label();
             this.GrpHost1 = new System.Windows.Forms.GroupBox();
+            this.PicWaiting3 = new System.Windows.Forms.PictureBox();
+            this.PicWaiting1 = new System.Windows.Forms.PictureBox();
+            this.LblError1 = new System.Windows.Forms.Label();
             this.LblDateTimeLocal = new System.Windows.Forms.Label();
             this.LstViewResult1 = new System.Windows.Forms.ListView();
             this.GrpHost2 = new System.Windows.Forms.GroupBox();
+            this.PicWaiting4 = new System.Windows.Forms.PictureBox();
+            this.PicWaiting2 = new System.Windows.Forms.PictureBox();
             this.LblError2 = new System.Windows.Forms.Label();
             this.BtnOrderFileRead = new System.Windows.Forms.Button();
             this.TimDateTime = new System.Windows.Forms.Timer(this.components);
@@ -70,13 +75,18 @@
             this.BtnRefreshSet = new System.Windows.Forms.Button();
             this.TimRefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.LblStatus = new System.Windows.Forms.Label();
-            this.LblError1 = new System.Windows.Forms.Label();
+            this.BgWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.BgWorker2 = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.GrpHost1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting1)).BeginInit();
             this.GrpHost2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting2)).BeginInit();
             this.GrpRefreshTimer.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -343,7 +353,7 @@
             // 
             this.LstViewResult4.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LstViewResult4.FullRowSelect = true;
-            this.LstViewResult4.Location = new System.Drawing.Point(20, 488);
+            this.LstViewResult4.Location = new System.Drawing.Point(20, 487);
             this.LstViewResult4.Name = "LstViewResult4";
             this.LstViewResult4.Size = new System.Drawing.Size(900, 350);
             this.LstViewResult4.TabIndex = 24;
@@ -382,7 +392,7 @@
             this.LblResult4.BackColor = System.Drawing.Color.RoyalBlue;
             this.LblResult4.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.LblResult4.ForeColor = System.Drawing.Color.White;
-            this.LblResult4.Location = new System.Drawing.Point(820, 484);
+            this.LblResult4.Location = new System.Drawing.Point(820, 464);
             this.LblResult4.Name = "LblResult4";
             this.LblResult4.Size = new System.Drawing.Size(91, 24);
             this.LblResult4.TabIndex = 29;
@@ -392,6 +402,8 @@
             // GrpHost1
             // 
             this.GrpHost1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GrpHost1.Controls.Add(this.PicWaiting3);
+            this.GrpHost1.Controls.Add(this.PicWaiting1);
             this.GrpHost1.Controls.Add(this.LblError1);
             this.GrpHost1.Controls.Add(this.LblDateTimeLocal);
             this.GrpHost1.Controls.Add(this.LstViewResult1);
@@ -411,6 +423,38 @@
             this.GrpHost1.TabIndex = 30;
             this.GrpHost1.TabStop = false;
             this.GrpHost1.Text = "1号機";
+            // 
+            // PicWaiting3
+            // 
+            this.PicWaiting3.Image = global::OperationLogDisplay.Properties.Resources.waiting;
+            this.PicWaiting3.Location = new System.Drawing.Point(403, 608);
+            this.PicWaiting3.Name = "PicWaiting3";
+            this.PicWaiting3.Size = new System.Drawing.Size(104, 102);
+            this.PicWaiting3.TabIndex = 37;
+            this.PicWaiting3.TabStop = false;
+            this.PicWaiting3.Visible = false;
+            // 
+            // PicWaiting1
+            // 
+            this.PicWaiting1.Image = global::OperationLogDisplay.Properties.Resources.waiting;
+            this.PicWaiting1.Location = new System.Drawing.Point(403, 231);
+            this.PicWaiting1.Name = "PicWaiting1";
+            this.PicWaiting1.Size = new System.Drawing.Size(104, 102);
+            this.PicWaiting1.TabIndex = 36;
+            this.PicWaiting1.TabStop = false;
+            this.PicWaiting1.Visible = false;
+            // 
+            // LblError1
+            // 
+            this.LblError1.BackColor = System.Drawing.Color.HotPink;
+            this.LblError1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LblError1.ForeColor = System.Drawing.Color.White;
+            this.LblError1.Location = new System.Drawing.Point(19, 840);
+            this.LblError1.Name = "LblError1";
+            this.LblError1.Size = new System.Drawing.Size(900, 30);
+            this.LblError1.TabIndex = 31;
+            this.LblError1.Text = "LblError1";
+            this.LblError1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LblDateTimeLocal
             // 
@@ -437,6 +481,8 @@
             // GrpHost2
             // 
             this.GrpHost2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.GrpHost2.Controls.Add(this.PicWaiting4);
+            this.GrpHost2.Controls.Add(this.PicWaiting2);
             this.GrpHost2.Controls.Add(this.LblError2);
             this.GrpHost2.Controls.Add(this.groupBox2);
             this.GrpHost2.Controls.Add(this.LstViewResult4);
@@ -446,8 +492,8 @@
             this.GrpHost2.Controls.Add(this.BtnRefresh4);
             this.GrpHost2.Controls.Add(this.LblResult2);
             this.GrpHost2.Controls.Add(this.LstViewResult2);
-            this.GrpHost2.Controls.Add(this.label3);
             this.GrpHost2.Controls.Add(this.label1);
+            this.GrpHost2.Controls.Add(this.label3);
             this.GrpHost2.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.GrpHost2.Location = new System.Drawing.Point(955, 7);
             this.GrpHost2.Name = "GrpHost2";
@@ -455,6 +501,26 @@
             this.GrpHost2.TabIndex = 31;
             this.GrpHost2.TabStop = false;
             this.GrpHost2.Text = "２号機";
+            // 
+            // PicWaiting4
+            // 
+            this.PicWaiting4.Image = global::OperationLogDisplay.Properties.Resources.waiting;
+            this.PicWaiting4.Location = new System.Drawing.Point(407, 608);
+            this.PicWaiting4.Name = "PicWaiting4";
+            this.PicWaiting4.Size = new System.Drawing.Size(104, 102);
+            this.PicWaiting4.TabIndex = 38;
+            this.PicWaiting4.TabStop = false;
+            this.PicWaiting4.Visible = false;
+            // 
+            // PicWaiting2
+            // 
+            this.PicWaiting2.Image = global::OperationLogDisplay.Properties.Resources.waiting;
+            this.PicWaiting2.Location = new System.Drawing.Point(407, 231);
+            this.PicWaiting2.Name = "PicWaiting2";
+            this.PicWaiting2.Size = new System.Drawing.Size(104, 102);
+            this.PicWaiting2.TabIndex = 37;
+            this.PicWaiting2.TabStop = false;
+            this.PicWaiting2.Visible = false;
             // 
             // LblError2
             // 
@@ -547,17 +613,17 @@
             this.LblStatus.Text = "LblStatus";
             this.LblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // LblError1
+            // BgWorker1
             // 
-            this.LblError1.BackColor = System.Drawing.Color.HotPink;
-            this.LblError1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblError1.ForeColor = System.Drawing.Color.White;
-            this.LblError1.Location = new System.Drawing.Point(19, 840);
-            this.LblError1.Name = "LblError1";
-            this.LblError1.Size = new System.Drawing.Size(900, 30);
-            this.LblError1.TabIndex = 31;
-            this.LblError1.Text = "LblError1";
-            this.LblError1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.BgWorker1.WorkerReportsProgress = true;
+            this.BgWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgWorker1_DoWork);
+            this.BgWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BgWorker1_RunWorkerCompleted);
+            // 
+            // BgWorker2
+            // 
+            this.BgWorker2.WorkerReportsProgress = true;
+            this.BgWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BgWorker2_DoWork);
+            this.BgWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BgWorker2_RunWorkerCompleted);
             // 
             // OperationLogDisplayForm
             // 
@@ -589,8 +655,12 @@
             this.groupBox4.ResumeLayout(false);
             this.GrpHost1.ResumeLayout(false);
             this.GrpHost1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting1)).EndInit();
             this.GrpHost2.ResumeLayout(false);
             this.GrpHost2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicWaiting2)).EndInit();
             this.GrpRefreshTimer.ResumeLayout(false);
             this.GrpRefreshTimer.PerformLayout();
             this.ResumeLayout(false);
@@ -639,5 +709,11 @@
         private Label LblStatus;
         private Label LblError2;
         private Label LblError1;
+        private System.ComponentModel.BackgroundWorker BgWorker1;
+        private PictureBox PicWaiting1;
+        private PictureBox PicWaiting2;
+        private System.ComponentModel.BackgroundWorker BgWorker2;
+        private PictureBox PicWaiting3;
+        private PictureBox PicWaiting4;
     }
 }
