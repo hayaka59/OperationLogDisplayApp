@@ -1005,7 +1005,7 @@ namespace OperationLogDisplay
 
             PicWaiting1.Visible = false;
             BtnRefresh1.Enabled = true;
-            if (result1.Count == 0)
+            if (result1.Count == 0 && sErrorMessage1 !="")
             {
                 LblError1.Text = sErrorMessage1;
                 LblError1.Visible = true;
@@ -1117,7 +1117,7 @@ namespace OperationLogDisplay
 
             PicWaiting2.Visible = false;
             BtnRefresh2.Enabled = true;
-            if (result2.Count == 0)
+            if (result2.Count == 0 && sErrorMessage2 != "")
             {
                 LblError2.Text = sErrorMessage2;
                 LblError2.Visible = true;
