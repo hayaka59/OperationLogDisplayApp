@@ -583,13 +583,13 @@ namespace OperationLogDisplay
         private void BtnRefresh1_Click(object sender, EventArgs e)
         {
             string[] col = new string[35];
-            ListViewItem itm1;
             
             try
             {
                 LstViewResult1.Items.Clear();
                 LstViewResult3.Items.Clear();
                 LblError1.Visible = false;
+                BtnRefresh1.Enabled = false;
 
                 string sSQLData = "";
                 string sPicDay1 = dTimPickerImportDate1.Value.ToString("yyyy-MM-dd");
@@ -611,9 +611,17 @@ namespace OperationLogDisplay
                 }
                 sErrorMessage1 = "";
                 PicWaiting1.Visible = true;
-                bIsBgWork1 = true;
                 CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】検索条件：" + sSQLData);
-                BgWorker1.RunWorkerAsync(sSQLData + "〓" + TxtIpAddress1.Text);
+                if (BgWorker1.IsBusy == true)
+                {
+                    //MessageBox.Show("BgWorker1.IsBusy == true");
+                    CommonModule.OutPutLogFile("BgWorker1 が実行中なので、BgWorker1を新規で実行出来ません。");
+                }
+                else
+                {
+                    BgWorker1.RunWorkerAsync(sSQLData + "〓" + TxtIpAddress1.Text);
+                }
+                
 
                 #region 近々削除する
                 //var result = ExecuteReader(sSQLData, TxtIpAddress1.Text, ref sErrorMessage);
@@ -713,13 +721,13 @@ namespace OperationLogDisplay
         private void BtnRefresh2_Click(object sender, EventArgs e)
         {
             string[] col = new string[35];
-            ListViewItem itm2;
 
             try
             {
                 LstViewResult2.Items.Clear();
                 LstViewResult4.Items.Clear();
                 LblError2.Visible = false;
+                BtnRefresh2.Enabled = false;
 
                 string sSQLData = "";
                 string sPicDay1 = dTimPickerImportDate2.Value.ToString("yyyy-MM-dd");
@@ -742,9 +750,17 @@ namespace OperationLogDisplay
 
                 sErrorMessage2 = "";
                 PicWaiting2.Visible = true;
-                bIsBgWork2 = true;
-                CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】検索条件：" + sSQLData);                
-                BgWorker2.RunWorkerAsync(sSQLData + "〓" + TxtIpAddress2.Text);
+                CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】検索条件：" + sSQLData);
+                if (BgWorker2.IsBusy == true)
+                {
+                    //MessageBox.Show("BgWorker2.IsBusy == true");
+                    CommonModule.OutPutLogFile("BgWorker2 が実行中なので、BgWorker2を新規で実行出来ません。");
+                }
+                else
+                {
+                    BgWorker2.RunWorkerAsync(sSQLData + "〓" + TxtIpAddress2.Text);
+                }
+                
 
                 #region 近々削除する
                 //var result = ExecuteReader(sSQLData, TxtIpAddress2.Text, ref sErrorMessage);
@@ -1118,15 +1134,8 @@ namespace OperationLogDisplay
         {
             try
             {
-                //MessageBox.Show(DateTime.Now.ToString("HH:mm:ss"));
-                if (bIsBgWork1==false)
-                {
-                    BtnRefresh1.PerformClick();
-                }
-                if (bIsBgWork2 == false)
-                {
-                    BtnRefresh2.PerformClick();
-                }                
+                BtnRefresh1.PerformClick();
+                BtnRefresh2.PerformClick();
             }
             catch (Exception ex)
             {
@@ -1135,12 +1144,10 @@ namespace OperationLogDisplay
             }
         }
 
-        private List<OrderData> result1;
-        private List<OrderData> result2;
-        private string sErrorMessage1;
-        private string sErrorMessage2;
-        private Boolean bIsBgWork1;
-        private Boolean bIsBgWork2;
+        private List<OrderData>? result1;
+        private List<OrderData>? result2;
+        private string? sErrorMessage1;
+        private string? sErrorMessage2;
 
         /// <summary>
         /// BackgroundWorkerコンポーネントのRunWorkerAsyncメソッドで呼び出されるイベント・ハンドラ
@@ -1168,7 +1175,7 @@ namespace OperationLogDisplay
             ListViewItem itm1;
 
             PicWaiting1.Visible = false;
-            bIsBgWork1 = false;
+            BtnRefresh1.Enabled = true;
             if (result1.Count == 0)
             {
                 LblError1.Text = sErrorMessage1;
@@ -1280,7 +1287,7 @@ namespace OperationLogDisplay
             ListViewItem itm2;
 
             PicWaiting2.Visible = false;
-            bIsBgWork2 = false;
+            BtnRefresh2.Enabled = true;
             if (result2.Count == 0)
             {
                 LblError2.Text = sErrorMessage2;
