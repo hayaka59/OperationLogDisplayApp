@@ -1,7 +1,6 @@
 //using Microsoft.VisualBasic;
 //using Microsoft.VisualBasic.ApplicationServices;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI.Common;
 //using OperationLogDisplay;
 //using System.Diagnostics;
 //using System.Collections.Generic;
@@ -589,6 +588,7 @@ namespace OperationLogDisplay
             try
             {
                 LstViewResult1.Items.Clear();
+                LstViewResult3.Items.Clear();
                 LblError1.Visible = false;
 
                 string sSQLData = "";
@@ -609,89 +609,95 @@ namespace OperationLogDisplay
                         sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
                         break;
                 }
-                string sErrorMessage = "";
+                sErrorMessage1 = "";
+                PicWaiting1.Visible = true;
+                bIsBgWork1 = true;
                 CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】検索条件：" + sSQLData);
-                var result = ExecuteReader(sSQLData, TxtIpAddress1.Text, ref sErrorMessage);
-                if (result.Count == 0)
-                {
-                    LblError1.Text = sErrorMessage;
-                    LblError1.Visible = true;
-                    CommonModule.OutPutLogFile("【エラー】1号機用「更新」ボタン処理：" + sErrorMessage);
-                    return;
-                }
-                foreach (var ret in result)
-                {
-                    // 検索結果を表示
-                    col[0] = ret.Id.ToString();
-                    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
-                    col[2] = ret.Import_index.ToString();
-                    col[3] = ret.Status.ToString();
-                    col[4] = ret.Is_retried.ToString();
-                    if(ret.Record_id is not null)
-                        col[5] = ret.Record_id.ToString();
-                    col[6] = ret.Data_category.ToString();
-                    col[7] = ret.Logistics_center_code.ToString();
-                    col[8] = ret.Shipment_no.ToString();
-                    if(ret.Process_id is not null)
-                        col[9] = ret.Process_id.ToString();                    
-                    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
-                    col[11] = ret.Picking_no.ToString();
-                    if(ret.List_pattern_name is not null)
-                        col[12] = ret.List_pattern_name.ToString();
-                    col[13] = ret.Process_category.ToString();
-                    if(ret.Customer_center_code is not null)
-                        col[14] = ret.Customer_center_code.ToString();                    
-                    col[15] = ret.Customer_company_code.ToString();
-                    if (ret.Customer_name is not null)
-                        col[16] = ret.Customer_name.ToString();
-                    if (ret.Customer_center_name is not null)
-                        col[17] = ret.Customer_center_name.ToString();
-                    if (ret.Product_code is not null)
-                        col[18] = ret.Product_code.ToString();
-                    if (ret.Product_sub_code is not null)
-                        col[19] = ret.Product_sub_code.ToString();
-                    if (ret.Product_name is not null)
-                        col[20] = ret.Product_name.ToString();
-                    col[21] = ret.Count_per_case.ToString();
-                    col[22] = ret.Piece_count.ToString();
-                    col[23] = ret.Count_per_pack.ToString();
-                    col[24] = ret.Limit_type.ToString();
-                    col[25] = ret.Limit_days.ToString();
-                    col[26] = ret.Case_paste_category.ToString();
-                    col[27] = ret.Selling_price.ToString();
-                    if(ret.Storage_method is not null)
-                        col[28] = ret.Storage_method.ToString();
-                    col[29] = ret.Planed_count.ToString();
-                    col[30] = ret.Skipped_count.ToString();
-                    col[31] = ret.Printed_count.ToString();
-                    col[32] = ret.Pasted_count.ToString();
-                    col[33] = ret.Passed_count.ToString();
-                    col[34] = ret.Rejected_count.ToString();
+                BgWorker1.RunWorkerAsync(sSQLData + "〓" + TxtIpAddress1.Text);
 
-                    itm1 = new ListViewItem(col);
-                    LstViewResult1.Items.Add(itm1);
-                    LstViewResult1.Items[^1].UseItemStyleForSubItems = false;
+                #region 近々削除する
+                //var result = ExecuteReader(sSQLData, TxtIpAddress1.Text, ref sErrorMessage);
+                //if (result1.Count == 0)
+                //{
+                //    LblError1.Text = sErrorMessage1;
+                //    LblError1.Visible = true;
+                //    CommonModule.OutPutLogFile("【エラー】1号機用「更新」ボタン処理：" + sErrorMessage1);
+                //    return;
+                //}
+                //foreach (var ret in result1)
+                //{
+                //    // 検索結果を表示
+                //    col[0] = ret.Id.ToString();
+                //    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
+                //    col[2] = ret.Import_index.ToString();
+                //    col[3] = ret.Status.ToString();
+                //    col[4] = ret.Is_retried.ToString();
+                //    if (ret.Record_id is not null)
+                //        col[5] = ret.Record_id.ToString();
+                //    col[6] = ret.Data_category.ToString();
+                //    col[7] = ret.Logistics_center_code.ToString();
+                //    col[8] = ret.Shipment_no.ToString();
+                //    if (ret.Process_id is not null)
+                //        col[9] = ret.Process_id.ToString();
+                //    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
+                //    col[11] = ret.Picking_no.ToString();
+                //    if (ret.List_pattern_name is not null)
+                //        col[12] = ret.List_pattern_name.ToString();
+                //    col[13] = ret.Process_category.ToString();
+                //    if (ret.Customer_center_code is not null)
+                //        col[14] = ret.Customer_center_code.ToString();
+                //    col[15] = ret.Customer_company_code.ToString();
+                //    if (ret.Customer_name is not null)
+                //        col[16] = ret.Customer_name.ToString();
+                //    if (ret.Customer_center_name is not null)
+                //        col[17] = ret.Customer_center_name.ToString();
+                //    if (ret.Product_code is not null)
+                //        col[18] = ret.Product_code.ToString();
+                //    if (ret.Product_sub_code is not null)
+                //        col[19] = ret.Product_sub_code.ToString();
+                //    if (ret.Product_name is not null)
+                //        col[20] = ret.Product_name.ToString();
+                //    col[21] = ret.Count_per_case.ToString();
+                //    col[22] = ret.Piece_count.ToString();
+                //    col[23] = ret.Count_per_pack.ToString();
+                //    col[24] = ret.Limit_type.ToString();
+                //    col[25] = ret.Limit_days.ToString();
+                //    col[26] = ret.Case_paste_category.ToString();
+                //    col[27] = ret.Selling_price.ToString();
+                //    if (ret.Storage_method is not null)
+                //        col[28] = ret.Storage_method.ToString();
+                //    col[29] = ret.Planed_count.ToString();
+                //    col[30] = ret.Skipped_count.ToString();
+                //    col[31] = ret.Printed_count.ToString();
+                //    col[32] = ret.Pasted_count.ToString();
+                //    col[33] = ret.Passed_count.ToString();
+                //    col[34] = ret.Rejected_count.ToString();
 
-                    if (LstViewResult1.Items.Count % 2 == 1)
-                    {
-                        // 奇数行の色反転
-                        for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
-                        {
-                            LstViewResult1.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
-                        }
-                    }
-                    string sResult = "";
-                    foreach(var sData in col)
-                    {
-                        sResult += sData + ",";
-                    }
-                    CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】" + sResult);
+                //    itm1 = new ListViewItem(col);
+                //    LstViewResult1.Items.Add(itm1);
+                //    LstViewResult1.Items[^1].UseItemStyleForSubItems = false;
 
-                }
-                LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
+                //    if (LstViewResult1.Items.Count % 2 == 1)
+                //    {
+                //        // 奇数行の色反転
+                //        for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
+                //        {
+                //            LstViewResult1.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                //        }
+                //    }
+                //    string sResult = "";
+                //    foreach (var sData in col)
+                //    {
+                //        sResult += sData + ",";
+                //    }
+                //    CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】" + sResult);
 
-                // 履歴テーブルの更新
-                BtnRefresh3_Click(sender, e);
+                //}
+                //LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
+
+                //// 履歴テーブルの更新
+                //BtnRefresh3_Click(sender, e);
+                #endregion
             }
             catch (Exception ex)                
             {                
@@ -706,13 +712,13 @@ namespace OperationLogDisplay
         /// <param name="e"></param>
         private void BtnRefresh2_Click(object sender, EventArgs e)
         {
-            string sErrorMessage = "";
             string[] col = new string[35];
             ListViewItem itm2;
 
             try
             {
                 LstViewResult2.Items.Clear();
+                LstViewResult4.Items.Clear();
                 LblError2.Visible = false;
 
                 string sSQLData = "";
@@ -733,89 +739,97 @@ namespace OperationLogDisplay
                         sSQLData = "SELECT * FROM `order` WHERE IMPORT_TIME < " + sDate1 + ";";
                         break;
                 }
-                CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】検索条件：" + sSQLData);
-                var result = ExecuteReader(sSQLData, TxtIpAddress2.Text, ref sErrorMessage);
-                if (result.Count == 0) {
-                    LblError2.Text = sErrorMessage;
-                    LblError2.Visible = true;
-                    CommonModule.OutPutLogFile("【エラー】2号機用「更新」ボタン処理：" + sErrorMessage);
-                    return;
-                }
-                foreach (var ret in result)
-                {
-                    // 検索結果を表示
-                    col[0] = ret.Id.ToString();
-                    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
-                    col[2] = ret.Import_index.ToString();
-                    col[3] = ret.Status.ToString();
-                    col[4] = ret.Is_retried.ToString();
-                    if(ret.Record_id is not null)
-                        col[5] = ret.Record_id.ToString();
-                    col[6] = ret.Data_category.ToString();
-                    col[7] = ret.Logistics_center_code.ToString();
-                    col[8] = ret.Shipment_no.ToString();
-                    if(ret.Process_id is not null)
-                        col[9] = ret.Process_id.ToString();
-                    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
-                    col[11] = ret.Picking_no.ToString();
-                    if(ret.List_pattern_name is not null)    
-                        col[12] = ret.List_pattern_name.ToString();
-                    col[13] = ret.Process_category.ToString();
-                    if(ret.Customer_center_code is not null)
-                        col[14] = ret.Customer_center_code.ToString();
-                    col[15] = ret.Customer_company_code.ToString();
-                    if(ret.Customer_name is not null)
-                        col[16] = ret.Customer_name.ToString();                                       
-                    if(ret.Customer_center_name is not null)
-                        col[17] = ret.Customer_center_name.ToString();
-                    if (ret.Product_code is not null)
-                        col[18] = ret.Product_code.ToString();
-                    if (ret.Product_sub_code is not null)
-                        col[19] = ret.Product_sub_code.ToString();
-                    if (ret.Product_name is not null)
-                        col[20] = ret.Product_name.ToString();
-                    col[21] = ret.Count_per_case.ToString();
-                    col[22] = ret.Piece_count.ToString();
-                    col[23] = ret.Count_per_pack.ToString();
-                    col[24] = ret.Limit_type.ToString();
-                    col[25] = ret.Limit_days.ToString();
-                    col[26] = ret.Case_paste_category.ToString();
-                    col[27] = ret.Selling_price.ToString();
-                    if(ret.Storage_method is not null)
-                        col[28] = ret.Storage_method.ToString();
-                    col[29] = ret.Planed_count.ToString();
-                    col[30] = ret.Skipped_count.ToString();
-                    col[31] = ret.Printed_count.ToString();
-                    col[32] = ret.Pasted_count.ToString();
-                    col[33] = ret.Passed_count.ToString();
-                    col[34] = ret.Rejected_count.ToString();
 
-                    itm2 = new ListViewItem(col);
-                    LstViewResult2.Items.Add(itm2);
-                    LstViewResult2.Items[^1].UseItemStyleForSubItems = false;
+                sErrorMessage2 = "";
+                PicWaiting2.Visible = true;
+                bIsBgWork2 = true;
+                CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】検索条件：" + sSQLData);                
+                BgWorker2.RunWorkerAsync(sSQLData + "〓" + TxtIpAddress2.Text);
 
-                    if (LstViewResult2.Items.Count % 2 == 1)
-                    {
-                        // 奇数行の色反転
-                        for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
-                        {
-                            LstViewResult2.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
-                        }
-                    }
+                #region 近々削除する
+                //var result = ExecuteReader(sSQLData, TxtIpAddress2.Text, ref sErrorMessage);
+                //if (result2.Count == 0)
+                //{
+                //    LblError2.Text = sErrorMessage2;
+                //    LblError2.Visible = true;
+                //    CommonModule.OutPutLogFile("【エラー】2号機用「更新」ボタン処理：" + sErrorMessage2);
+                //    return;
+                //}
+                //foreach (var ret in result2)
+                //{
+                //    // 検索結果を表示
+                //    col[0] = ret.Id.ToString();
+                //    col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
+                //    col[2] = ret.Import_index.ToString();
+                //    col[3] = ret.Status.ToString();
+                //    col[4] = ret.Is_retried.ToString();
+                //    if (ret.Record_id is not null)
+                //        col[5] = ret.Record_id.ToString();
+                //    col[6] = ret.Data_category.ToString();
+                //    col[7] = ret.Logistics_center_code.ToString();
+                //    col[8] = ret.Shipment_no.ToString();
+                //    if (ret.Process_id is not null)
+                //        col[9] = ret.Process_id.ToString();
+                //    col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
+                //    col[11] = ret.Picking_no.ToString();
+                //    if (ret.List_pattern_name is not null)
+                //        col[12] = ret.List_pattern_name.ToString();
+                //    col[13] = ret.Process_category.ToString();
+                //    if (ret.Customer_center_code is not null)
+                //        col[14] = ret.Customer_center_code.ToString();
+                //    col[15] = ret.Customer_company_code.ToString();
+                //    if (ret.Customer_name is not null)
+                //        col[16] = ret.Customer_name.ToString();
+                //    if (ret.Customer_center_name is not null)
+                //        col[17] = ret.Customer_center_name.ToString();
+                //    if (ret.Product_code is not null)
+                //        col[18] = ret.Product_code.ToString();
+                //    if (ret.Product_sub_code is not null)
+                //        col[19] = ret.Product_sub_code.ToString();
+                //    if (ret.Product_name is not null)
+                //        col[20] = ret.Product_name.ToString();
+                //    col[21] = ret.Count_per_case.ToString();
+                //    col[22] = ret.Piece_count.ToString();
+                //    col[23] = ret.Count_per_pack.ToString();
+                //    col[24] = ret.Limit_type.ToString();
+                //    col[25] = ret.Limit_days.ToString();
+                //    col[26] = ret.Case_paste_category.ToString();
+                //    col[27] = ret.Selling_price.ToString();
+                //    if (ret.Storage_method is not null)
+                //        col[28] = ret.Storage_method.ToString();
+                //    col[29] = ret.Planed_count.ToString();
+                //    col[30] = ret.Skipped_count.ToString();
+                //    col[31] = ret.Printed_count.ToString();
+                //    col[32] = ret.Pasted_count.ToString();
+                //    col[33] = ret.Passed_count.ToString();
+                //    col[34] = ret.Rejected_count.ToString();
 
-                    string sResult = "";
-                    foreach (var sData in col)
-                    {
-                        sResult += sData + ",";
-                    }
-                    CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】" + sResult);
+                //    itm2 = new ListViewItem(col);
+                //    LstViewResult2.Items.Add(itm2);
+                //    LstViewResult2.Items[^1].UseItemStyleForSubItems = false;
 
-                }
-                LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
+                //    if (LstViewResult2.Items.Count % 2 == 1)
+                //    {
+                //        // 奇数行の色反転
+                //        for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
+                //        {
+                //            LstViewResult2.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                //        }
+                //    }
 
-                // 履歴テーブルの更新
-                BtnRefresh4_Click(sender, e);
+                //    string sResult = "";
+                //    foreach (var sData in col)
+                //    {
+                //        sResult += sData + ",";
+                //    }
+                //    CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】" + sResult);
 
+                //}
+                //LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
+
+                //// 履歴テーブルの更新
+                //BtnRefresh4_Click(sender, e);
+                #endregion
             }
             catch (Exception ex)
             {                
@@ -1033,8 +1047,7 @@ namespace OperationLogDisplay
             else
             {
                 CommonModule.OutPutLogFile("「x」ボタンにて終了");
-            }
-            
+            }            
         }
 
         OrderFileReadForm orderFileReadForm = new();
@@ -1106,14 +1119,249 @@ namespace OperationLogDisplay
             try
             {
                 //MessageBox.Show(DateTime.Now.ToString("HH:mm:ss"));
-                BtnRefresh1.PerformClick();
-                BtnRefresh2.PerformClick();
+                if (bIsBgWork1==false)
+                {
+                    BtnRefresh1.PerformClick();
+                }
+                if (bIsBgWork2 == false)
+                {
+                    BtnRefresh2.PerformClick();
+                }                
             }
             catch (Exception ex)
             {
                 TimRefreshTimer.Enabled = false;
                 MessageBox.Show(ex.Message, "【TimRefreshTimer_Tick】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private List<OrderData> result1;
+        private List<OrderData> result2;
+        private string sErrorMessage1;
+        private string sErrorMessage2;
+        private Boolean bIsBgWork1;
+        private Boolean bIsBgWork2;
+
+        /// <summary>
+        /// BackgroundWorkerコンポーネントのRunWorkerAsyncメソッドで呼び出されるイベント・ハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BgWorker1_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (e.Argument != null)
+            {
+                String bgWorkerArg = (String)e.Argument;
+                String[] sAray = bgWorkerArg.Split('〓');
+                result1 = ExecuteReader(sAray[0], sAray[1], ref sErrorMessage1);
+            }
+        }
+
+        /// <summary>
+        /// 処理完了時に実行されるRunWorkerCompletedイベント・ハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BgWorker1_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            string[] col = new string[35];
+            ListViewItem itm1;
+
+            PicWaiting1.Visible = false;
+            bIsBgWork1 = false;
+            if (result1.Count == 0)
+            {
+                LblError1.Text = sErrorMessage1;
+                LblError1.Visible = true;
+                CommonModule.OutPutLogFile("【エラー】1号機用「更新」ボタン処理：" + sErrorMessage1);
+                return;
+            }
+            foreach (var ret in result1)
+            {
+                #region 検索結果の取得
+                col[0] = ret.Id.ToString();
+                col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
+                col[2] = ret.Import_index.ToString();
+                col[3] = ret.Status.ToString();
+                col[4] = ret.Is_retried.ToString();
+                if (ret.Record_id is not null)
+                    col[5] = ret.Record_id.ToString();
+                col[6] = ret.Data_category.ToString();
+                col[7] = ret.Logistics_center_code.ToString();
+                col[8] = ret.Shipment_no.ToString();
+                if (ret.Process_id is not null)
+                    col[9] = ret.Process_id.ToString();
+                col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
+                col[11] = ret.Picking_no.ToString();
+                if (ret.List_pattern_name is not null)
+                    col[12] = ret.List_pattern_name.ToString();
+                col[13] = ret.Process_category.ToString();
+                if (ret.Customer_center_code is not null)
+                    col[14] = ret.Customer_center_code.ToString();
+                col[15] = ret.Customer_company_code.ToString();
+                if (ret.Customer_name is not null)
+                    col[16] = ret.Customer_name.ToString();
+                if (ret.Customer_center_name is not null)
+                    col[17] = ret.Customer_center_name.ToString();
+                if (ret.Product_code is not null)
+                    col[18] = ret.Product_code.ToString();
+                if (ret.Product_sub_code is not null)
+                    col[19] = ret.Product_sub_code.ToString();
+                if (ret.Product_name is not null)
+                    col[20] = ret.Product_name.ToString();
+                col[21] = ret.Count_per_case.ToString();
+                col[22] = ret.Piece_count.ToString();
+                col[23] = ret.Count_per_pack.ToString();
+                col[24] = ret.Limit_type.ToString();
+                col[25] = ret.Limit_days.ToString();
+                col[26] = ret.Case_paste_category.ToString();
+                col[27] = ret.Selling_price.ToString();
+                if (ret.Storage_method is not null)
+                    col[28] = ret.Storage_method.ToString();
+                col[29] = ret.Planed_count.ToString();
+                col[30] = ret.Skipped_count.ToString();
+                col[31] = ret.Printed_count.ToString();
+                col[32] = ret.Pasted_count.ToString();
+                col[33] = ret.Passed_count.ToString();
+                col[34] = ret.Rejected_count.ToString();
+                #endregion
+
+                itm1 = new ListViewItem(col);
+                LstViewResult1.Items.Add(itm1);
+                LstViewResult1.Items[^1].UseItemStyleForSubItems = false;
+
+                if (LstViewResult1.Items.Count % 2 == 1)
+                {
+                    // 奇数行の色反転
+                    for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
+                    {
+                        LstViewResult1.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+                string sResult = "";
+                foreach (var sData in col)
+                {
+                    sResult += sData + ",";
+                }
+                CommonModule.OutPutLogFile("【1号機】【オーダーテーブル】" + sResult);
+            }
+            LblResult1.Text = LstViewResult1.Items.Count.ToString("###,##0") + "件";
+
+            // 履歴テーブルの更新
+            PicWaiting3.Visible = true;
+            BtnRefresh3_Click(sender, e);
+            PicWaiting3.Visible = false;
+        }
+
+        /// <summary>
+        /// BackgroundWorkerコンポーネントのRunWorkerAsyncメソッドで呼び出されるイベント・ハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BgWorker2_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            if (e.Argument != null)
+            {
+                String bgWorkerArg = (String)e.Argument;
+                String[] sAray = bgWorkerArg.Split('〓');
+                result2 = ExecuteReader(sAray[0], sAray[1], ref sErrorMessage2);
+            }
+        }
+
+        /// <summary>
+        /// 処理完了時に実行されるRunWorkerCompletedイベント・ハンドラ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BgWorker2_RunWorkerCompleted(object sender, System.ComponentModel.RunWorkerCompletedEventArgs e)
+        {
+            string[] col = new string[35];
+            ListViewItem itm2;
+
+            PicWaiting2.Visible = false;
+            bIsBgWork2 = false;
+            if (result2.Count == 0)
+            {
+                LblError2.Text = sErrorMessage2;
+                LblError2.Visible = true;
+                CommonModule.OutPutLogFile("【エラー】2号機用「更新」ボタン処理：" + sErrorMessage2);
+                return;
+            }
+
+            foreach (var ret in result2)
+            {
+                #region 検索結果の取得
+                col[0] = ret.Id.ToString();
+                col[1] = DateTimeOffset.FromUnixTimeSeconds(ret.Import_time / 1000).ToLocalTime().ToString();
+                col[2] = ret.Import_index.ToString();
+                col[3] = ret.Status.ToString();
+                col[4] = ret.Is_retried.ToString();
+                if (ret.Record_id is not null)
+                    col[5] = ret.Record_id.ToString();
+                col[6] = ret.Data_category.ToString();
+                col[7] = ret.Logistics_center_code.ToString();
+                col[8] = ret.Shipment_no.ToString();
+                if (ret.Process_id is not null)
+                    col[9] = ret.Process_id.ToString();
+                col[10] = DateTimeOffset.FromUnixTimeSeconds(ret.Planed_shipping_date / 1000).ToLocalTime().ToString();
+                col[11] = ret.Picking_no.ToString();
+                if (ret.List_pattern_name is not null)
+                    col[12] = ret.List_pattern_name.ToString();
+                col[13] = ret.Process_category.ToString();
+                if (ret.Customer_center_code is not null)
+                    col[14] = ret.Customer_center_code.ToString();
+                col[15] = ret.Customer_company_code.ToString();
+                if (ret.Customer_name is not null)
+                    col[16] = ret.Customer_name.ToString();
+                if (ret.Customer_center_name is not null)
+                    col[17] = ret.Customer_center_name.ToString();
+                if (ret.Product_code is not null)
+                    col[18] = ret.Product_code.ToString();
+                if (ret.Product_sub_code is not null)
+                    col[19] = ret.Product_sub_code.ToString();
+                if (ret.Product_name is not null)
+                    col[20] = ret.Product_name.ToString();
+                col[21] = ret.Count_per_case.ToString();
+                col[22] = ret.Piece_count.ToString();
+                col[23] = ret.Count_per_pack.ToString();
+                col[24] = ret.Limit_type.ToString();
+                col[25] = ret.Limit_days.ToString();
+                col[26] = ret.Case_paste_category.ToString();
+                col[27] = ret.Selling_price.ToString();
+                if (ret.Storage_method is not null)
+                    col[28] = ret.Storage_method.ToString();
+                col[29] = ret.Planed_count.ToString();
+                col[30] = ret.Skipped_count.ToString();
+                col[31] = ret.Printed_count.ToString();
+                col[32] = ret.Pasted_count.ToString();
+                col[33] = ret.Passed_count.ToString();
+                col[34] = ret.Rejected_count.ToString();
+                #endregion
+                itm2 = new ListViewItem(col);
+                LstViewResult2.Items.Add(itm2);
+                LstViewResult2.Items[^1].UseItemStyleForSubItems = false;
+
+                if (LstViewResult2.Items.Count % 2 == 1)
+                {
+                    // 奇数行の色反転
+                    for (var intLoopCnt = 0; intLoopCnt <= 33; intLoopCnt++)
+                    {
+                        LstViewResult2.Items[^1].SubItems[intLoopCnt].BackColor = Color.FromArgb(200, 200, 230);
+                    }
+                }
+                string sResult = "";
+                foreach (var sData in col)
+                {
+                    sResult += sData + ",";
+                }
+                CommonModule.OutPutLogFile("【2号機】【オーダーテーブル】" + sResult);
+            }
+            LblResult2.Text = LstViewResult2.Items.Count.ToString("###,##0") + "件";
+
+            // 履歴テーブルの更新
+            PicWaiting4.Visible = true;
+            BtnRefresh4_Click(sender, e);
+            PicWaiting4.Visible = false;
         }
     }
 }
