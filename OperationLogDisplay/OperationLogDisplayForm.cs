@@ -441,7 +441,7 @@ namespace OperationLogDisplay
             }
             catch (Exception ex)
             {
-                StopRefReshTimer();
+                //StopRefReshTimer();
                 sErrorMessage = ex.Message;
                 //MessageBox.Show(sErrorMessage, "【ExecuteReader】", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -1174,6 +1174,7 @@ namespace OperationLogDisplay
                 LblError1.Text = sErrorMessage1;
                 LblError1.Visible = true;
                 CommonModule.OutPutLogFile("【エラー】1号機用「更新」ボタン処理：" + sErrorMessage1);
+                StopRefReshTimer();
                 return;
             }
             foreach (var ret in result1)
@@ -1285,6 +1286,7 @@ namespace OperationLogDisplay
                 LblError2.Text = sErrorMessage2;
                 LblError2.Visible = true;
                 CommonModule.OutPutLogFile("【エラー】2号機用「更新」ボタン処理：" + sErrorMessage2);
+                StopRefReshTimer();
                 return;
             }
 
